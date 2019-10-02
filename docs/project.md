@@ -88,6 +88,7 @@ TAs during the last week of labs / tutorials.
 
 Click on the deliverable name for more details.
 
+<<<<<<< HEAD
 | # | Deliverable | Mark | Weight | Due Date |
 | --- | --- | --- | --- | --- |
 | 1 | [Github repository and user accounts](/docs/deliverable01.md) | 100 | 3% | Oct 20 |
@@ -95,6 +96,15 @@ Click on the deliverable name for more details.
 | 3 | [Walk-in employee user functionality](/docs/deliverable03.md) | 100 | 3% | Nov 20 |
 | 4 | [Patient and application functionality](/docs/deliverable04.md) | 130 | 9% | Dec 04 |
 | 5 | [Demo (during labs / tutorials)](/docs/deliverable05.md) | 100 | 2% | Last week |
+=======
+| # | Deliverable | Weight | Due Date |
+| --- | --- | --- | --- |
+| 1 | [Github repository and user accounts](/docs/deliverable01.md) | 3% | Oct 20 |
+| 2 | Admin functionality | 3% | Nov 10 |
+| 3 | Walk-in employee user functionality | 3% | Nov 20 |
+| 4 | Patient and application functionality | 9% | Dec 04 |
+| 5 | Demo (during labs / tutorials) | 2% | Last week |
+>>>>>>> Initialize f/deliverable01
 
 The project is to be carried out throughout the session and students are
 strongly encouraged to maintain a log of their project activities,

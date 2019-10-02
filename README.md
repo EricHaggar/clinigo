@@ -1,7 +1,9 @@
+# Forward Inc.
 
-Placeholder for your project coverpage,
-please refer to the [project details](/docs/project.md)
-before getting started.
+## Team Members
 
-
-
+| Name | Student Number |
+| --- | --- |
+| Andrew Forward | 1484511  |
+| Andrew Forward | 1929204  |
+| Ayana Nurse | 2128439 |
