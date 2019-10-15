@@ -1,9 +1,10 @@
-# Forward Inc.
+# Camel
 
 ## Team Members
 
 | Name | Student Number |
 | --- | --- |
-| Andrew Forward | 1484511  |
-| Andrew Forward | 1929204  |
-| Ayana Nurse | 2128439 |
+| Eric Haggar | 7674509 |
+| Adel Araji | 7897476 |
+| Mark Bastawros | 8123595 |
+| Lev Guzman Aparicio   |  300038033 |
