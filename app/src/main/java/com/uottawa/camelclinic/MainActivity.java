@@ -6,6 +6,8 @@ import android.content.Intent;
 
 import android.os.Bundle;
 
+import com.uottawa.camelclinic.ui.login.LoginActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -16,6 +18,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToUserTypeSelectionScreen (View view) {
         Intent intent = new Intent(this, UserTypeSelection.class);
+
+        startActivity(intent);
+    }
+
+    public void goToSignInPage (View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
 
         startActivity(intent);
     }
