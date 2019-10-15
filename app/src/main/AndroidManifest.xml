@@ -16,7 +16,6 @@
             android:label="@string/title_activity_login" />
         <activity android:name=".NewAccountWelcome"></activity>
         <activity android:name=".CreatingNewAccount" />
-        <activity android:name=".UserTypeSelection" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
