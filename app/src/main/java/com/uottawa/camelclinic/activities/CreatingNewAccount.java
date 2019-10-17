@@ -15,6 +15,14 @@ import com.uottawa.camelclinic.R;
 
 public class CreatingNewAccount extends AppCompatActivity {
 
+    private EditText firstNameEditText;
+    private EditText lastNameEditText;
+    private EditText passwordEditText;
+    private EditText role;
+
+    FirebaseAuth mAuth;
+    FirebaseDatabase mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,17 +37,11 @@ public class CreatingNewAccount extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, arraySpinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance();
     }
 
     public void goToWelcomeNewUser (View view) {
-        EditText firstNameEditText;
-        EditText lastNameEditText;
-        EditText passwordEditText;
-        EditText confirmPassEditText;
-        EditText role;
-
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
 
         Intent intent = new Intent(this, NewAccountWelcome.class);
 

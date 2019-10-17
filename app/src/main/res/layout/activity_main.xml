@@ -35,6 +35,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="goToSignUpPage"
-            android:text="Create new account" />
+            android:text="Sign Up" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
