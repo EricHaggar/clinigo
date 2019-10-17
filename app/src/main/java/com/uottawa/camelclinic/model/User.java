@@ -1,18 +1,20 @@
 package com.uottawa.camelclinic.model;
 
-public class Person {
+public class User {
 
     private String username;
     private String password;
+    private String firstName;
+    private String lastName;
     private String role;
-    private String id;
 
-    public Person() {}
+    public User() {}
 
-    public Person(String username, String password, String id) {
+    public User(String username, String password, String firstName, String lastName) {
         this.username = username;
         this.password = password;
-        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     /**
@@ -22,6 +24,8 @@ public class Person {
     public String getRole() {
         return role;
     }
+
+    public void setRole(String roleAssigned){role = roleAssigned;}
 
     /**
      * Getter for username
@@ -39,19 +43,4 @@ public class Person {
         return password;
     }
 
-    /**
-     * Setter for id
-     * @param id
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    /**
-     * Getter for id
-     * @return string id
-     */
-    public String getId() {
-        return id;
-    }
 }
