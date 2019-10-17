@@ -1,11 +1,11 @@
-package com.uottawa.camelclinic;
+package com.uottawa.camelclinic.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.content.Intent;
 
 import android.os.Bundle;
-
+import com.uottawa.camelclinic.R;
 import com.uottawa.camelclinic.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {

@@ -1,8 +1,8 @@
-package com.uottawa.camelclinic;
+package com.uottawa.camelclinic.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import com.uottawa.camelclinic.R;
 
 public class NewAccountWelcome extends AppCompatActivity {
 

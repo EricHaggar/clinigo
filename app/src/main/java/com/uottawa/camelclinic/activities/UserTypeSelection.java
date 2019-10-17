@@ -1,10 +1,10 @@
-package com.uottawa.camelclinic;
+package com.uottawa.camelclinic.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import com.uottawa.camelclinic.R;
 
 public class UserTypeSelection extends AppCompatActivity {
 
