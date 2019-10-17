@@ -6,7 +6,6 @@ import android.content.Intent;
 
 import android.os.Bundle;
 import com.uottawa.camelclinic.R;
-import com.uottawa.camelclinic.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToSignInPage (View view) {
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, NewLogIn.class);
 
         startActivity(intent);
     }
