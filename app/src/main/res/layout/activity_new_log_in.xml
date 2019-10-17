@@ -23,7 +23,7 @@
             android:textSize="36sp" />
 
         <EditText
-            android:id="@+id/editText5"
+            android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -31,7 +31,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editText6"
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -42,7 +42,7 @@
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="goToLoginSuccesful"
+            android:onClick="loginOnClick"
             android:text="SIGN IN" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

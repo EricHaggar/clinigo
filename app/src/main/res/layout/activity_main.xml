@@ -27,14 +27,14 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="goToSignInPage"
+            android:onClick="signInOnClick"
             android:text="Sign in" />
 
         <Button
             android:id="@+id/createNewAccountButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="goToSignUpPage"
+            android:onClick="signUpOnClick"
             android:text="Sign Up" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -41,7 +41,7 @@ public class CreatingNewAccount extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance();
     }
 
-    public void goToWelcomeNewUser (View view) {
+    public void  welcomeOnClick (View view) {
 
         Intent intent = new Intent(this, NewAccountWelcome.class);
 

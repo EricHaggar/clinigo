@@ -18,7 +18,7 @@ public class NewLogIn extends AppCompatActivity {
         setContentView(R.layout.activity_new_log_in);
     }
 
-    public void goToLoginSuccesful(View view) {
+    public void loginOnClick(View view) {
         Intent intent = new Intent(this, LoginSuccessful.class);
 
         startActivity(intent);
