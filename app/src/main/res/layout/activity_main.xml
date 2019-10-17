@@ -34,7 +34,7 @@
             android:id="@+id/createNewAccountButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="goToUserTypeSelectionScreen"
+            android:onClick="goToSignUpPage"
             android:text="Create new account" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

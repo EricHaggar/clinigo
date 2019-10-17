@@ -15,8 +15,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void goToUserTypeSelectionScreen (View view) {
-        Intent intent = new Intent(this, UserTypeSelection.class);
+    public void goToSignUpPage (View view) {
+        Intent intent = new Intent(this, CreatingNewAccount.class);
 
         startActivity(intent);
     }

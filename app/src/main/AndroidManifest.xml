@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.NewLogIn"></activity>
-        <activity android:name=".activities.UserTypeSelection" />
         <activity android:name=".activities.LoginSuccessful" />
         <activity
             android:name=".ui.login.LoginActivity"
