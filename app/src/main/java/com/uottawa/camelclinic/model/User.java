@@ -7,12 +7,34 @@ public class User {
     private String lastName;
     private String role;
 
-    public User() {}
-
     public User(String username, String firstName, String lastName) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    /**
+     * Getter for username attribute
+     * @return string username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * Getter for firstName attribute
+     * @return string firstName
+     */
+    public String getFirstName() {
+        return firstName;
+    }
+
+    /**
+     * Getter for lastName attribute
+     * @return string lastName
+     */
+    public String getLastName() {
+        return lastName;
     }
 
     /**
@@ -23,13 +45,9 @@ public class User {
         return role;
     }
 
-    public void setRole(String roleAssigned){role = roleAssigned;}
-
     /**
-     * Getter for username
-     * @return string username
+     * Setter for role attribute
+     * @param roleAssigned is the role to be set
      */
-    public String getUsername() {
-        return username;
-    }
+    public void setRole(String roleAssigned){role = roleAssigned;}
 }

@@ -48,8 +48,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public void loginOnClick(View view) {
 
-        final String username = usernameEditText.getText().toString();
-        final String password = passwordEditText.getText().toString();
+        final String username = usernameEditText.getText().toString().trim();
+        final String password = passwordEditText.getText().toString().trim();
 
         EditText[] fields = {usernameEditText, passwordEditText};
         String[] inputs = {username, password};
