@@ -16,14 +16,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void signUpOnClick (View view) {
-        Intent intent = new Intent(this, CreatingNewAccount.class);
-
+        Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }
 
     public void signInOnClick (View view) {
-        Intent intent = new Intent(this, NewLogIn.class);
-
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 }

@@ -18,16 +18,16 @@
             android:layout_width="match_parent"
             android:layout_height="172dp"
             android:gravity="center"
-            android:text="New Account Creation"
-            android:textAllCaps="true"
+            android:text="Camel Clinic Sign Up"
+            android:textAllCaps="false"
             android:textSize="30sp" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Type of User"
             android:gravity="center"
+            android:text="User Type"
             android:textSize="24sp" />
 
         <Spinner
@@ -52,7 +52,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/userName"
+            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -64,13 +64,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Password"
-            android:inputType="numberPassword"
+            android:hint="Password (Minimum 6 characters)"
+            android:inputType="textPassword"
             android:visibility="visible"
             tools:visibility="visible" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/createUserButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="welcomeOnClick"

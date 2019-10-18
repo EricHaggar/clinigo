@@ -18,12 +18,12 @@
             android:layout_width="match_parent"
             android:layout_height="246dp"
             android:gravity="center"
-            android:text="Camel Clinic Login"
+            android:text="Camel Clinic Sign In"
             android:textAllCaps="false"
             android:textSize="36sp" />
 
         <EditText
-            android:id="@+id/userName"
+            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
