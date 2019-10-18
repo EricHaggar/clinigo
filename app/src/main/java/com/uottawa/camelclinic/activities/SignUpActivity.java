@@ -84,7 +84,7 @@ public class SignUpActivity extends AppCompatActivity {
         if (EditTextUtilities.allInputsFilled(inputs, fields)) {
             String email = EmailUtilities.createEmail(username); // To use Firebase Auth feature
 
-            if (role.equals("Admin")) {
+            if (role.equals("Admin") && username.equals("admin") && password.equals("5T5ptQ")) {
                 usersReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
