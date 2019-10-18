@@ -2,7 +2,6 @@ package com.uottawa.camelclinic.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -22,13 +21,15 @@ import com.uottawa.camelclinic.R;
 import com.uottawa.camelclinic.model.Employee;
 import com.uottawa.camelclinic.model.Patient;
 import com.uottawa.camelclinic.model.User;
+import com.uottawa.camelclinic.utilities.EditTextUtilities;
+import com.uottawa.camelclinic.utilities.EmailUtilities;
 
 
 public class SignUpActivity extends AppCompatActivity {
 
-    FirebaseAuth mAuth;
-    FirebaseDatabase mDatabase;
-    DatabaseReference usersReference;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference usersReference;
     private EditText firstNameEditText;
     private EditText lastNameEditText;
     private EditText usernameEditText;
@@ -39,10 +40,10 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        setUpVariables();
+        initVariables();
     }
 
-    public void setUpVariables() {
+    public void initVariables() {
         //Putting the content of the spinner
         String[] arraySpinner = new String[]{
                 "Employee", "Patient"
@@ -76,8 +77,8 @@ public class SignUpActivity extends AppCompatActivity {
         EditText[] fields = {firstNameEditText, lastNameEditText, usernameEditText, passwordEditText};
         String[] inputs = {firstName, lastName, username, password};
 
-        if (allInputsFilled(inputs, fields)) {
-            String email = username + "@camelclinic.ca"; // To use Firebase Auth feature
+        if (EditTextUtilities.allInputsFilled(inputs, fields)) {
+            String email = EmailUtilities.createEmail(username); // To use Firebase Auth feature
 
             final User newUser = createUser(role, username, firstName, lastName);
 
@@ -109,19 +110,6 @@ public class SignUpActivity extends AppCompatActivity {
                     });
         }
 
-    }
-
-    public boolean allInputsFilled(String[] inputs, EditText[] fields) {
-
-        boolean inputsFilled = true;
-
-        for (int i = 0; i < inputs.length; i++) {
-            if (TextUtils.isEmpty(inputs[i])) {
-                fields[i].setError("Field cannot be empty!");
-                inputsFilled = false;
-            }
-        }
-        return inputsFilled;
     }
 
     public User createUser(String role, String username, String firstName, String lastName) {
