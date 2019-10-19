@@ -13,14 +13,16 @@
         tools:layout_editor_absoluteX="91dp"
         tools:layout_editor_absoluteY="222dp">
 
-        <TextView
-            android:id="@+id/textView7"
+        <ImageView
+            android:id="@+id/imageView5"
             android:layout_width="match_parent"
-            android:layout_height="246dp"
-            android:gravity="center"
-            android:text="Camel Clinic Sign In"
-            android:textAllCaps="false"
-            android:textSize="36sp" />
+            android:layout_height="147dp"
+            android:src="@drawable/login" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="43dp" />
 
         <EditText
             android:id="@+id/username"
@@ -44,5 +46,6 @@
             android:layout_height="wrap_content"
             android:onClick="loginOnClick"
             android:text="SIGN IN" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,15 +13,11 @@
         tools:layout_editor_absoluteX="138dp"
         tools:layout_editor_absoluteY="237dp">
 
-        <TextView
-            android:id="@+id/textView"
+        <ImageView
+            android:id="@+id/imageView3"
             android:layout_width="match_parent"
-            android:layout_height="331dp"
-            android:gravity="center"
-            android:text="CAMEL Clinic"
-            android:textAllCaps="true"
-            android:textSize="36sp"
-            android:textStyle="bold|italic" />
+            android:layout_height="407dp"
+            app:srcCompat="@drawable/camel_logopng" />
 
         <Button
             android:id="@+id/button"
@@ -36,5 +32,6 @@
             android:layout_height="wrap_content"
             android:onClick="signUpOnClick"
             android:text="Sign Up" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
