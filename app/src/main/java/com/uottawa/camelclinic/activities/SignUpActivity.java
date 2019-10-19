@@ -84,63 +84,68 @@ public class SignUpActivity extends AppCompatActivity {
         if (EditTextUtilities.allInputsFilled(inputs, fields)) {
             String email = EmailUtilities.createEmail(username); // To use Firebase Auth feature
 
-            if (role.equals("Admin") && username.equals("admin") && password.equals("5T5ptQ")) {
-                usersReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        int numOfAdmins = 0;
-                        for (DataSnapshot data : dataSnapshot.getChildren()) {
-                            if (data.child("role").getValue().toString().equals(role)) {
-                                numOfAdmins++;
-                            }
-                        }
-                        if (numOfAdmins >= 1) {
-                            Toast.makeText(getApplicationContext(), "Admin Account Already Exists!", Toast.LENGTH_SHORT).show();
-                        } else {
-                            String id = usersReference.push().getKey();
-                            usersReference.child(id).setValue(new Admin(username, firstName, lastName));
-                            Intent intent = new Intent(getApplicationContext(), SuccessfulLoginActivity.class);
-                            intent.putExtra("welcomeMessage", "Welcome " + username + "! You are logged in as " + role + ".");
-                            startActivity(intent);
-                            finish();
-                        }
-                    }
+            if (role.equals("Admin")){
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-            } else {
-
-                final User newUser = createUser(role, username, firstName, lastName);
-
-                mAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-
-                                    usersReference
-                                            .child(mAuth.getCurrentUser().getUid()).setValue(newUser)
-                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    if (task.isSuccessful()) {
-                                                        Intent intent = new Intent(getApplicationContext(), SuccessfulLoginActivity.class);
-                                                        intent.putExtra("welcomeMessage", "Welcome " + username + "! You are logged in as " + role + ".");
-                                                        startActivity(intent);
-                                                        finish();
-                                                    } else {
-                                                        Toast.makeText(getApplicationContext(), "Firebase Database Error!", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                }
-                                            });
-                                } else {
-                                    Toast.makeText(getApplicationContext(), "Firebase Authentication Error!", Toast.LENGTH_SHORT).show();
+                if(username.equals("admin") && password.equals("5T5ptQ")) {
+                    usersReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            int numOfAdmins = 0;
+                            for (DataSnapshot data : dataSnapshot.getChildren()) {
+                                if (data.child("role").getValue().toString().equals(role)) {
+                                    numOfAdmins++;
                                 }
                             }
-                        });
+                            if (numOfAdmins >= 1) {
+                                Toast.makeText(getApplicationContext(), "Admin Account Already Exists!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                String id = usersReference.push().getKey();
+                                usersReference.child(id).setValue(new Admin(username, firstName, lastName));
+                                Intent intent = new Intent(getApplicationContext(), SuccessfulLoginActivity.class);
+                                intent.putExtra("welcomeMessage", "Welcome " + username + "! You are logged in as " + role + ".");
+                                startActivity(intent);
+                                finish();
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Admin Username or Password Incorrect", Toast.LENGTH_SHORT).show();
+                }
+            }
+            else {
+            final User newUser = createUser(role, username, firstName, lastName);
+
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+
+                                usersReference
+                                        .child(mAuth.getCurrentUser().getUid()).setValue(newUser)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Intent intent = new Intent(getApplicationContext(), SuccessfulLoginActivity.class);
+                                                    intent.putExtra("welcomeMessage", "Welcome " + username + "! You are logged in as " + role + ".");
+                                                    startActivity(intent);
+                                                    finish();
+                                                } else {
+                                                    Toast.makeText(getApplicationContext(), "Firebase Database Error!", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Firebase Authentication Error!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
             }
 
         }
