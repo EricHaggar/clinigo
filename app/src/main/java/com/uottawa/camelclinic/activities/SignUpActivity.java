@@ -15,6 +15,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -84,9 +87,9 @@ public class SignUpActivity extends AppCompatActivity {
         if (EditTextUtilities.allInputsFilled(inputs, fields)) {
             String email = EmailUtilities.createEmail(username); // To use Firebase Auth feature
 
-            if (role.equals("Admin")){
+            if (role.equals("Admin")) {
 
-                if(username.equals("admin") && password.equals("5T5ptQ")) {
+                if (username.equals("admin") && password.equals("5T5ptQ")) {
                     usersReference.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -107,45 +110,54 @@ public class SignUpActivity extends AppCompatActivity {
                                 finish();
                             }
                         }
+
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
 
                         }
                     });
-                }
-                else{
+                } else {
                     Toast.makeText(getApplicationContext(), "Admin Username or Password Incorrect", Toast.LENGTH_SHORT).show();
                 }
-            }
-            else {
-            final User newUser = createUser(role, username, firstName, lastName);
+            } else {
+                final User newUser = createUser(role, username, firstName, lastName);
 
-            mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
+                mAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
 
-                                usersReference
-                                        .child(mAuth.getCurrentUser().getUid()).setValue(newUser)
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()) {
-                                                    Intent intent = new Intent(getApplicationContext(), SuccessfulLoginActivity.class);
-                                                    intent.putExtra("welcomeMessage", "Welcome " + username + "! You are logged in as " + role + ".");
-                                                    startActivity(intent);
-                                                    finish();
-                                                } else {
-                                                    Toast.makeText(getApplicationContext(), "Firebase Database Error!", Toast.LENGTH_SHORT).show();
+                                    usersReference
+                                            .child(mAuth.getCurrentUser().getUid()).setValue(newUser)
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()) {
+                                                        Intent intent = new Intent(getApplicationContext(), SuccessfulLoginActivity.class);
+                                                        intent.putExtra("welcomeMessage", "Welcome " + username + "! You are logged in as " + role + ".");
+                                                        startActivity(intent);
+                                                        finish();
+                                                    } else {
+                                                        Toast.makeText(getApplicationContext(), "Firebase Database Error!", Toast.LENGTH_SHORT).show();
+                                                    }
                                                 }
-                                            }
-                                        });
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Firebase Authentication Error!", Toast.LENGTH_SHORT).show();
+                                            });
+                                } else {
+
+                                    String message;
+                                    try{
+                                        throw task.getException();
+                                    }
+                                    catch(FirebaseAuthWeakPasswordException e){ message = e.getMessage();}
+                                    catch(FirebaseAuthInvalidCredentialsException e){ message = e.getMessage();}
+                                    catch(FirebaseAuthUserCollisionException e){ message = e.getMessage();}
+                                    catch (Exception e){ message = e.getMessage();}
+
+                                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                                }
                             }
-                        }
-                    });
+                        });
             }
 
         }
