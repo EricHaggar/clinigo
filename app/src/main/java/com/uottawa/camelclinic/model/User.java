@@ -2,23 +2,23 @@ package com.uottawa.camelclinic.model;
 
 public class User {
 
-    private String username;
+    private String email;
     private String firstName;
     private String lastName;
     private String role;
 
-    public User(String username, String firstName, String lastName) {
-        this.username = username;
+    public User(String email, String firstName, String lastName) {
+        this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
     /**
-     * Getter for username attribute
-     * @return string username
+     * Getter for email attribute
+     * @return string email
      */
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
     /**

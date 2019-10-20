@@ -3,7 +3,7 @@ package com.uottawa.camelclinic.utilities;
 import android.text.TextUtils;
 import android.widget.EditText;
 
-public class EditTextUtilities {
+public class ErrorUtilities {
 
     public static boolean allInputsFilled(String[] inputs, EditText[] fields) {
 
@@ -17,5 +17,4 @@ public class EditTextUtilities {
         }
         return inputsFilled;
     }
-
 }

@@ -2,8 +2,8 @@ package com.uottawa.camelclinic.model;
 
 public class Patient extends User {
 
-    public Patient(String username, String firstName, String lastName){
-        super(username, firstName, lastName);
+    public Patient(String email, String firstName, String lastName){
+        super(email, firstName, lastName);
         setRole("Patient");
     }
 }

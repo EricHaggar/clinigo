@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.CreatingNewAccount">
+    tools:context=".activities.SignUpActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,18 +30,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/rbutton_employee"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="@android:dimen/notification_large_icon_height"
                 android:text="@string/employee_role" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
 
             <RadioButton
                 android:id="@+id/rbutton_patient"
@@ -49,17 +46,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/patient_role" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <RadioButton
-                android:id="@+id/rbutton_admin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/admin_role" />
         </RadioGroup>
 
         <EditText
@@ -73,7 +59,7 @@
             tools:targetApi="o" />
 
         <EditText
-            android:id="@+id/lastName"
+            android:id="@+id/edit_last_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -82,13 +68,13 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/edit_username"
+            android:id="@+id/edit_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/prompt_username"
+            android:hint="@string/prompt_email"
             android:importantForAutofill="no"
-            android:inputType="textPersonName" />
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/edit_password"
@@ -105,7 +91,7 @@
             android:id="@+id/createUserButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="welcomeOnClick"
+            android:onClick="signUpOnClick"
             android:text="@string/action_sign_up" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
