@@ -16,7 +16,7 @@ The first deliverable concentrates on creating accounts and storing them into a 
 Only one admin account exists but many patient and employee accounts can be created at will.
 Each user has a first name, last name, email and password.
 
-**Please Note:** admin@admin.com is the sole admin email since Firebase authentication is used. Firebase requires an email to function.
+**Please Note:** admin@admin.com is the sole admin email since Firebase authentication is used. Firebase requires an email to function. The admin was hardcoded into the Firebase Authentication and Firebase Real-time database.
 
 ### UML Diagram
 
@@ -34,17 +34,23 @@ We took multiple screenshots to demonstrate the different features and their fun
     <img src="deliverable1_images/home.jpg" height="400" /> 
 </p>
 
-2. Sign Up Activity
+2. Sign Up Activities
    
 <p align="center">
     <img src="deliverable1_images/sign_up.jpg" height="400" /> 
     <img src="deliverable1_images/sign_up_welcome.jpg" height="400" /> 
 </p>
 
-3. Login Activity
+1. Login Activities
 
 <p align="center">
     <img src="deliverable1_images/login.jpg" height="400" />
     <img src="deliverable1_images/login_welcome.jpg" height="400" /> 
 </p>
 
+4. Admin Example 
+
+<p align="center">
+    <img src="deliverable1_images/admin_login.jpg" height="400" />
+    <img src="deliverable1_images/admin_welcome.jpg" height="400" /> 
+</p>
