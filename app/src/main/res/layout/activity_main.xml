@@ -14,24 +14,25 @@
         tools:layout_editor_absoluteY="237dp">
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/main_banner"
             android:layout_width="match_parent"
             android:layout_height="407dp"
+            android:contentDescription="@string/welcome"
             app:srcCompat="@drawable/camel_logopng" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_sign_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="signInOnClick"
-            android:text="Sign in" />
+            android:text="@string/action_sign_in_short" />
 
         <Button
-            android:id="@+id/createNewAccountButton"
+            android:id="@+id/button_sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="signUpOnClick"
-            android:text="Sign Up" />
+            android:text="@string/action_sign_up" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

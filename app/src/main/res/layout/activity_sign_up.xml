@@ -14,9 +14,10 @@
         tools:layout_editor_absoluteY="148dp">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/sign_up_banner"
             android:layout_width="match_parent"
             android:layout_height="147dp"
+            android:contentDescription="@string/action_sign_up"
             android:src="@drawable/signup" />
 
         <View
@@ -28,44 +29,48 @@
             android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="User Type"
+            android:text="@string/user_type"
             android:textSize="18sp" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/spinner_user_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/firstName"
+            android:id="@+id/edit_first_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="First Name"
-            android:inputType="textPersonName" />
+            android:hint="@string/prompt_first_name"
+            android:inputType="textPersonName"
+            android:autofillHints="" tools:targetApi="o" />
 
         <EditText
             android:id="@+id/lastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Last Name"
-            android:inputType="textPersonName" />
+            android:hint="@string/prompt_last_name"
+            android:inputType="textPersonName"
+            android:importantForAutofill="no" />
 
         <EditText
-            android:id="@+id/username"
+            android:id="@+id/edit_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Username"
-            android:inputType="textPersonName" />
+            android:hint="@string/prompt_username"
+            android:inputType="textPersonName"
+            android:importantForAutofill="no" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/edit_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Password (Minimum 6 characters)"
+            android:hint="@string/prompt_password"
+            android:importantForAutofill="no"
             android:inputType="textPassword"
             android:visibility="visible"
             tools:visibility="visible" />
@@ -75,6 +80,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="welcomeOnClick"
-            android:text="Sign Up" />
+            android:text="@string/action_sign_up" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

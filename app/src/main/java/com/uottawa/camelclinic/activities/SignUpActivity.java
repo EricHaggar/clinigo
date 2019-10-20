@@ -55,7 +55,7 @@ public class SignUpActivity extends AppCompatActivity {
         String[] arraySpinner = new String[]{
                 "Employee", "Patient", "Admin"
         };
-        roleSpinner = findViewById(R.id.spinner);
+        roleSpinner = findViewById(R.id.spinner_user_type);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, arraySpinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -65,10 +65,10 @@ public class SignUpActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance();
         usersReference = mDatabase.getReference("Users");
 
-        firstNameEditText = findViewById(R.id.firstName);
+        firstNameEditText = findViewById(R.id.edit_first_name);
         lastNameEditText = findViewById(R.id.lastName);
-        usernameEditText = findViewById(R.id.username);
-        passwordEditText = findViewById(R.id.password);
+        usernameEditText = findViewById(R.id.edit_username);
+        passwordEditText = findViewById(R.id.edit_password);
     }
 
     public void welcomeOnClick(View view) {
@@ -120,6 +120,12 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Admin Username or Password Incorrect", Toast.LENGTH_SHORT).show();
                 }
             } else {
+
+                if (username.equals("admin")) {
+                    usernameEditText.setError("Invalid Username For Non-Admin!");
+                    return;
+                }
+
                 final User newUser = createUser(role, username, firstName, lastName);
 
                 mAuth.createUserWithEmailAndPassword(email, password)
@@ -146,13 +152,17 @@ public class SignUpActivity extends AppCompatActivity {
                                 } else {
 
                                     String message;
-                                    try{
+                                    try {
                                         throw task.getException();
+                                    } catch (FirebaseAuthWeakPasswordException e) {
+                                        message = e.getMessage();
+                                    } catch (FirebaseAuthInvalidCredentialsException e) {
+                                        message = e.getMessage();
+                                    } catch (FirebaseAuthUserCollisionException e) {
+                                        message = e.getMessage();
+                                    } catch (Exception e) {
+                                        message = e.getMessage();
                                     }
-                                    catch(FirebaseAuthWeakPasswordException e){ message = e.getMessage();}
-                                    catch(FirebaseAuthInvalidCredentialsException e){ message = e.getMessage();}
-                                    catch(FirebaseAuthUserCollisionException e){ message = e.getMessage();}
-                                    catch (Exception e){ message = e.getMessage();}
 
                                     Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
                                 }
