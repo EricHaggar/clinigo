@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -42,6 +44,8 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText usernameEditText;
     private EditText passwordEditText;
     private Spinner roleSpinner;
+    private RadioGroup rolesRadioGroup;
+    private RadioButton roleRadioButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,20 +55,16 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public void initVariables() {
-        //Putting the content of the spinner
-        String[] arraySpinner = new String[]{
-                "Employee", "Patient", "Admin"
-        };
-        roleSpinner = findViewById(R.id.spinner_user_type);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, arraySpinner);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        roleSpinner.setAdapter(adapter);
+        // Roles Radio Buttons
+        rolesRadioGroup = findViewById(R.id.rb_group_user_types);
+        rolesRadioGroup.check(R.id.rbutton_employee); // Default user type is employee
 
+        // Firebase Authentication and Database
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance();
         usersReference = mDatabase.getReference("Users");
 
+        // Input Fields
         firstNameEditText = findViewById(R.id.edit_first_name);
         lastNameEditText = findViewById(R.id.lastName);
         usernameEditText = findViewById(R.id.edit_username);
@@ -78,8 +78,10 @@ public class SignUpActivity extends AppCompatActivity {
         final String lastName = lastNameEditText.getText().toString().trim();
         final String username = usernameEditText.getText().toString().trim();
         final String password = passwordEditText.getText().toString().trim();
-        final String role = roleSpinner.getSelectedItem().toString().trim();
 
+        int radioButtonId = rolesRadioGroup.getCheckedRadioButtonId();
+        roleRadioButton = findViewById(radioButtonId);
+        final String role = roleRadioButton.getText().toString();
 
         EditText[] fields = {firstNameEditText, lastNameEditText, usernameEditText, passwordEditText};
         String[] inputs = {firstName, lastName, username, password};

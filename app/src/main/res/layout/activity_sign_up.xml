@@ -25,26 +25,52 @@
             android:layout_width="match_parent"
             android:layout_height="39dp" />
 
-        <TextView
-            android:id="@+id/textView6"
+        <RadioGroup
+            android:id="@+id/rb_group_user_types"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/user_type"
-            android:textSize="18sp" />
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/spinner_user_type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <RadioButton
+                android:id="@+id/rbutton_employee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/employee_role" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <RadioButton
+                android:id="@+id/rbutton_patient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/patient_role" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <RadioButton
+                android:id="@+id/rbutton_admin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/admin_role" />
+        </RadioGroup>
 
         <EditText
             android:id="@+id/edit_first_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints=""
             android:ems="10"
             android:hint="@string/prompt_first_name"
             android:inputType="textPersonName"
-            android:autofillHints="" tools:targetApi="o" />
+            tools:targetApi="o" />
 
         <EditText
             android:id="@+id/lastName"
@@ -52,8 +78,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/prompt_last_name"
-            android:inputType="textPersonName"
-            android:importantForAutofill="no" />
+            android:importantForAutofill="no"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/edit_username"
@@ -61,8 +87,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/prompt_username"
-            android:inputType="textPersonName"
-            android:importantForAutofill="no" />
+            android:importantForAutofill="no"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/edit_password"

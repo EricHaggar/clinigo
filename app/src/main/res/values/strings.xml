@@ -15,6 +15,9 @@
     <string name="user_type">User Type</string>
     <string name="prompt_first_name">First Name</string>
     <string name="prompt_last_name">Last Name</string>
+    <string name="employee_role">Employee</string>
+    <string name="patient_role">Patient</string>
+    <string name="admin_role">Admin</string>
     />
     />
 </resources>
