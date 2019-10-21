@@ -1,5 +1,9 @@
 # Project-Camel
 
+## PLEASE NOTE PULL REQUEST ERROR
+
+**The team has made a big mistake and messed up the PR! Please be advised that Professor Andrew Forward gave us permission to merge to master and discard the other branches! Thank you for your understanding**
+
 ## Team Members
 
 | Name | Student Number |
