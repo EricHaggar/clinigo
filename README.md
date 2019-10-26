@@ -1,9 +1,5 @@
 # Project-Camel
 
-## PLEASE NOTE PULL REQUEST ERROR
-
-**The team has made a big mistake and messed up the PR! Please be advised that Professor Andrew Forward gave us permission to merge to master and discard the other branches! Thank you for your understanding**
-
 ## Team Members
 
 | Name | Student Number |
@@ -13,6 +9,16 @@
 | Mark Bastawros | 8123595 |
 | Lev Guzman Aparicio   |  300038033 |
 | Siraj Ghassel   |  8168653 |
+
+## Table Of Contents
+
+- [Project-Camel](#project-camel)
+  - [Team Members](#team-members)
+  - [Table Of Contents](#table-of-contents)
+  - [Deliverable 1](#deliverable-1)
+    - [UML Diagram](#uml-diagram)
+    - [Activities Screenshots](#activities-screenshots)
+  - [Deliverable 2](#deliverable-2)
 
 ## Deliverable 1
 
@@ -58,3 +64,5 @@ We took multiple screenshots to demonstrate the different features and their fun
     <img src="deliverable1_images/admin_login.jpg" height="400" />
     <img src="deliverable1_images/admin_welcome.jpg" height="400" /> 
 </p>
+
+## Deliverable 2
