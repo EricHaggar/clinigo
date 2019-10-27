@@ -53,44 +53,54 @@ public class LoginActivity extends AppCompatActivity {
         String[] inputs = {email, password};
 
         if (ErrorUtilities.allInputsFilled(inputs, fields)) {
-            mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                final String userId = task.getResult().getUser().getUid();
-                                usersReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        for (DataSnapshot data : dataSnapshot.getChildren()) {
-                                            if (data.getKey().equals(userId)) {
-                                                final String role = data.child("role").getValue().toString();
-                                                final String firstName = data.child("firstName").getValue().toString();
-                                                Intent intent = new Intent(getApplicationContext(), SuccessfulLoginActivity.class);
-                                                intent.putExtra("welcomeMessage", "Welcome " + firstName + "! You are logged in as " + role + ".");
-                                                startActivity(intent);
-                                                finish();
+            if (userIsAdmin(email, password)) {
+                Intent intent = new Intent(getApplicationContext(), AdminMainActivity.class);
+                startActivity(intent);
+                finish();
+            } else {
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    final String userId = task.getResult().getUser().getUid();
+                                    usersReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            for (DataSnapshot data : dataSnapshot.getChildren()) {
+                                                if (data.getKey().equals(userId)) {
+                                                    final String role = data.child("role").getValue().toString();
+                                                    final String firstName = data.child("firstName").getValue().toString();
+                                                    Intent intent = new Intent(getApplicationContext(), SuccessfulLoginActivity.class);
+                                                    intent.putExtra("welcomeMessage", "Welcome " + firstName + "! You are logged in as " + role + ".");
+                                                    startActivity(intent);
+                                                    finish();
+                                                }
                                             }
                                         }
-                                    }
 
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                                    }
-                                });
-                            } else {
+                                        }
+                                    });
+                                } else {
 
-                                if (!task.isSuccessful()) {
-                                    try {
-                                        throw task.getException();
-                                    } catch (Exception e) {
-                                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    if (!task.isSuccessful()) {
+                                        try {
+                                            throw task.getException();
+                                        } catch (Exception e) {
+                                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
                                     }
                                 }
                             }
-                        }
-                    });
+                        });
+            }
         }
+    }
+
+    public boolean userIsAdmin(String email, String password) {
+        return email.equals("admin@admin.com") && password.equals("5T5ptQ");
     }
 }

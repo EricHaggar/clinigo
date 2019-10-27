@@ -42,12 +42,14 @@
             android:autofillHints=""
             android:ems="10"
             android:hint="@string/prompt_password"
-            android:inputType="textPassword" tools:targetApi="o" />
+            android:inputType="textPassword"
+            tools:targetApi="o" />
 
         <Button
             android:id="@+id/button_sign_in"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:onClick="loginOnClick"
             android:text="@string/action_sign_in_short" />
 

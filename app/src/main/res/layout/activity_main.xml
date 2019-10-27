@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="237dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/main_banner"
@@ -22,15 +22,17 @@
 
         <Button
             android:id="@+id/button_sign_in"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:onClick="signInOnClick"
             android:text="@string/action_sign_in_short" />
 
         <Button
             android:id="@+id/button_sign_up"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:onClick="signUpOnClick"
             android:text="@string/action_sign_up" />
 

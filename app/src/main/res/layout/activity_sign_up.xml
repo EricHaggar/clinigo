@@ -89,8 +89,9 @@
 
         <Button
             android:id="@+id/createUserButton"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:onClick="signUpOnClick"
             android:text="@string/action_sign_up" />
     </LinearLayout>
