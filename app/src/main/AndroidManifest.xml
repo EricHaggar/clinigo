@@ -9,11 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.AdminMainActivity"></activity>
-        <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.SuccessfulLoginActivity" />
-        <activity android:name=".activities.SignUpActivity" />
-        <activity android:name=".activities.MainActivity">
+        <activity
+            android:name=".activities.AdminMainActivity"
+            android:screenOrientation="portrait"
+            android:label="Administrator" />
+        <activity
+            android:name=".activities.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.SuccessfulLoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.SignUpActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

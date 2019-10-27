@@ -18,6 +18,9 @@
     <string name="employee_role">Employee</string>
     <string name="patient_role">Patient</string>
     <string name="admin_role">Admin</string>
+    <string name="admin_welcome_message">welcome admin!</string>
+    <string name="users">Users</string>
+    <string name="services">Services</string>
     />
     />
 </resources>
