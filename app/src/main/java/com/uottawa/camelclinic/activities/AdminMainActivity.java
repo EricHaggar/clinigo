@@ -1,6 +1,8 @@
 package com.uottawa.camelclinic.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,4 +16,15 @@ public class AdminMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_main);
     }
+
+    public void manageUsersOnClick (View view) {
+        Intent intent = new Intent(this, AdminUsersActivity.class);
+        startActivity(intent);
+    }
+
+    public void manageServicesOnClick (View view) {
+        Intent intent = new Intent(this, AdminServicesActivity.class);
+        startActivity(intent);
+    }
 }
+

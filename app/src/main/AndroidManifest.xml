@@ -5,14 +5,22 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activities.AdminServicesActivity"
+            android:label="Services"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.AdminUsersActivity"
+            android:label="Users"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activities.AdminMainActivity"
-            android:screenOrientation="portrait"
-            android:label="Administrator Home" />
-
+            android:label="Administrator Home"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.LoginActivity"
             android:screenOrientation="portrait"
