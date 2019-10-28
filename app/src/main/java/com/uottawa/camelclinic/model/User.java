@@ -2,19 +2,31 @@ package com.uottawa.camelclinic.model;
 
 public class User {
 
+    private String id;
     private String email;
     private String firstName;
     private String lastName;
     private String role;
 
-    public User(String email, String firstName, String lastName) {
+    public User(String id, String email, String firstName, String lastName) {
+        this.id = id;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
     /**
+     * Getter for id attribute
+     *
+     * @return string id
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
      * Getter for email attribute
+     *
      * @return string email
      */
     public String getEmail() {
@@ -23,6 +35,7 @@ public class User {
 
     /**
      * Getter for firstName attribute
+     *
      * @return string firstName
      */
     public String getFirstName() {
@@ -31,6 +44,7 @@ public class User {
 
     /**
      * Getter for lastName attribute
+     *
      * @return string lastName
      */
     public String getLastName() {
@@ -39,6 +53,7 @@ public class User {
 
     /**
      * Getter for role attribute
+     *
      * @return string role
      */
     public String getRole() {
@@ -47,7 +62,10 @@ public class User {
 
     /**
      * Setter for role attribute
-     * @param roleAssigned is the role to be set
+     *
+     * @param role string to be assigned
      */
-    public void setRole(String roleAssigned){role = roleAssigned;}
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

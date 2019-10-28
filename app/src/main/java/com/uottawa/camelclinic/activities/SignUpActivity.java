@@ -81,13 +81,14 @@ public class SignUpActivity extends AppCompatActivity {
 
         if (ErrorUtilities.allInputsFilled(inputs, fields)) {
 
-            final User newUser = createUser(role, email, firstName, lastName);
-
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+
+                                final String id = mAuth.getCurrentUser().getUid();
+                                final User newUser = createUser(id, role, email, firstName, lastName);
 
                                 usersReference
                                         .child(mAuth.getCurrentUser().getUid()).setValue(newUser)
@@ -122,7 +123,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
-    public User createUser(String role, String email, String firstName, String lastName) {
-        return role.equals("Employee") ? new Employee(email, firstName, lastName) : new Patient(email, firstName, lastName);
+    public User createUser(String id, String role, String email, String firstName, String lastName) {
+        return role.equals("Employee") ? new Employee(id, email, firstName, lastName) : new Patient(id, email, firstName, lastName);
     }
 }

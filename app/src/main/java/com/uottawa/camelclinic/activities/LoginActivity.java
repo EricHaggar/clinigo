@@ -42,6 +42,8 @@ public class LoginActivity extends AppCompatActivity {
         usersReference = mDatabase.getReference("Users");
         emailEditText = findViewById(R.id.edit_email);
         passwordEditText = findViewById(R.id.edit_password);
+
+        emailEditText.requestFocus(); // Place cursor on email when activity is created
     }
 
     public void loginOnClick(View view) {
@@ -56,7 +58,6 @@ public class LoginActivity extends AppCompatActivity {
             if (userIsAdmin(email, password)) {
                 Intent intent = new Intent(getApplicationContext(), AdminMainActivity.class);
                 startActivity(intent);
-                finish();
             } else {
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -74,7 +75,6 @@ public class LoginActivity extends AppCompatActivity {
                                                     Intent intent = new Intent(getApplicationContext(), SuccessfulLoginActivity.class);
                                                     intent.putExtra("welcomeMessage", "Welcome " + firstName + "! You are logged in as " + role + ".");
                                                     startActivity(intent);
-                                                    finish();
                                                 }
                                             }
                                         }
@@ -85,13 +85,10 @@ public class LoginActivity extends AppCompatActivity {
                                         }
                                     });
                                 } else {
-
-                                    if (!task.isSuccessful()) {
-                                        try {
-                                            throw task.getException();
-                                        } catch (Exception e) {
-                                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                                        }
+                                    try {
+                                        throw task.getException();
+                                    } catch (Exception e) {
+                                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             }

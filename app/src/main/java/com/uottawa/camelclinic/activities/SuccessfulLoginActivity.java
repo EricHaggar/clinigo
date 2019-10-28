@@ -1,10 +1,10 @@
 package com.uottawa.camelclinic.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.uottawa.camelclinic.R;
 
@@ -18,7 +18,7 @@ public class SuccessfulLoginActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String message = intent.getStringExtra("welcomeMessage");
 
-        TextView welcomeMessage =  findViewById(R.id.text_welcome_message);
+        TextView welcomeMessage = findViewById(R.id.text_welcome_message);
         welcomeMessage.setText(message);
     }
 }

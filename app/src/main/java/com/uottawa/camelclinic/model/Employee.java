@@ -2,8 +2,8 @@ package com.uottawa.camelclinic.model;
 
 public class Employee extends User {
 
-    public Employee(String email, String firstName, String lastName){
-        super(email, firstName, lastName);
+    public Employee(String id, String email, String firstName, String lastName) {
+        super(id, email, firstName, lastName);
         setRole("Employee");
     }
 }

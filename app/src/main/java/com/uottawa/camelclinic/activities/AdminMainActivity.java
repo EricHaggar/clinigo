@@ -17,12 +17,12 @@ public class AdminMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_main);
     }
 
-    public void manageUsersOnClick (View view) {
+    public void manageUsersOnClick(View view) {
         Intent intent = new Intent(this, AdminUsersActivity.class);
         startActivity(intent);
     }
 
-    public void manageServicesOnClick (View view) {
+    public void manageServicesOnClick(View view) {
         Intent intent = new Intent(this, AdminServicesActivity.class);
         startActivity(intent);
     }
