@@ -20,14 +20,15 @@
 
         <ImageView
             android:id="@+id/login_banner"
-            android:layout_width="match_parent"
-            android:layout_height="147dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             android:contentDescription="@string/title_activity_login"
             android:cropToPadding="false"
             android:src="@drawable/login" />
 
         <View
-            android:id="@+id/view"
+            android:id="@+id/view_separator"
             android:layout_width="match_parent"
             android:layout_height="43dp" />
 
@@ -51,13 +52,20 @@
             android:inputType="textPassword"
             tools:targetApi="o" />
 
+        <View
+            android:id="@+id/view_separator2"
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
         <Button
             android:id="@+id/button_sign_in"
-            android:layout_width="@dimen/button_width"
+            android:layout_width="@dimen/standard_button_width"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:background="@drawable/standard_buttons"
             android:onClick="loginOnClick"
-            android:text="@string/action_sign_in_short" />
+            android:text="@string/action_sign_in_short"
+            android:textColor="@color/colorText" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

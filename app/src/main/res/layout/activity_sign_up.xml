@@ -17,13 +17,14 @@
 
         <ImageView
             android:id="@+id/sign_up_banner"
-            android:layout_width="match_parent"
-            android:layout_height="147dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             android:contentDescription="@string/action_sign_up"
             android:src="@drawable/signup" />
 
         <View
-            android:id="@+id/view2"
+            android:id="@+id/view_separator"
             android:layout_width="match_parent"
             android:layout_height="39dp" />
 
@@ -89,12 +90,19 @@
             android:visibility="visible"
             tools:visibility="visible" />
 
+        <View
+            android:id="@+id/view_separator2"
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
         <Button
             android:id="@+id/createUserButton"
-            android:layout_width="@dimen/button_width"
+            android:layout_width="@dimen/standard_button_width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="@drawable/standard_buttons"
             android:onClick="signUpOnClick"
-            android:text="@string/action_sign_up" />
+            android:text="@string/action_sign_up"
+            android:textColor="@color/colorText" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

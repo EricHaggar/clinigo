@@ -10,34 +10,42 @@
         android:id="@+id/text_welcome_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginBottom="64dp"
+        android:gravity="center"
         android:text="@string/admin_welcome_message"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button_users"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button_users"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/large_button_width"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/users"
-        app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/text_welcome_message" />
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/standard_buttons"
+        android:text="@string/manage_users"
+        android:textColor="@color/colorText"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button_services"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/large_button_width"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="@string/services"
-        app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
-        app:layout_constraintTop_toTopOf="@+id/button_users" />
+        android:layout_marginTop="8dp"
+        android:background="@drawable/standard_buttons"
+        android:text="@string/manage_services"
+        android:textColor="@color/colorText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vertical_guideline"
