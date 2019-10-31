@@ -113,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(password)) {
             passwordEditText.setError("Password field cannot be empty.");
             valid = false;
-        } else if (password.length() <= 6) {
+        } else if (password.length() < 6) {
             passwordEditText.setError("The given password is invalid. [Password should be at least 6 characters]");
             valid = false;
         }
