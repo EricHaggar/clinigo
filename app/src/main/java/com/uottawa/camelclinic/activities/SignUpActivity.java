@@ -2,6 +2,7 @@ package com.uottawa.camelclinic.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -23,7 +24,7 @@ import com.uottawa.camelclinic.R;
 import com.uottawa.camelclinic.model.Employee;
 import com.uottawa.camelclinic.model.Patient;
 import com.uottawa.camelclinic.model.User;
-import com.uottawa.camelclinic.utilities.ErrorUtilities;
+import com.uottawa.camelclinic.utilities.ValidationUtilities;
 
 
 public class SignUpActivity extends AppCompatActivity {
@@ -76,10 +77,7 @@ public class SignUpActivity extends AppCompatActivity {
         roleRadioButton = findViewById(radioButtonId);
         final String role = roleRadioButton.getText().toString();
 
-        EditText[] fields = {firstNameEditText, lastNameEditText, emailEditText, passwordEditText};
-        String[] inputs = {firstName, lastName, email, password};
-
-        if (ErrorUtilities.allInputsFilled(inputs, fields)) {
+        if (validSignUpForm()) {
 
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -126,4 +124,49 @@ public class SignUpActivity extends AppCompatActivity {
     public User createUser(String id, String role, String email, String firstName, String lastName) {
         return role.equals("Employee") ? new Employee(id, email, firstName, lastName) : new Patient(id, email, firstName, lastName);
     }
+
+    public boolean validSignUpForm() {
+        boolean valid = true;
+
+        String firstName = firstNameEditText.getText().toString().trim();
+        String lastName = lastNameEditText.getText().toString().trim();
+        String email = emailEditText.getText().toString().trim();
+        String password = passwordEditText.getText().toString().trim();
+
+        if (TextUtils.isEmpty(firstName)) {
+            firstNameEditText.setError("First Name field cannot be empty.");
+            valid = false;
+        } else if (!ValidationUtilities.isValidName(firstName)) {
+            firstNameEditText.setError("The given first name is invalid.");
+            valid = false;
+        }
+
+        if (TextUtils.isEmpty(lastName)) {
+            lastNameEditText.setError("Last Name field cannot be empty.");
+            valid = false;
+        } else if (!ValidationUtilities.isValidName(lastName)) {
+            lastNameEditText.setError("The given last name is invalid.");
+            valid = false;
+        }
+
+        if (TextUtils.isEmpty(email)) {
+            emailEditText.setError("Email field cannot be empty.");
+            valid = false;
+        } else if (!ValidationUtilities.isValidEmail(email)) {
+            emailEditText.setError("The given email is invalid.");
+            valid = false;
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            passwordEditText.setError("Password field cannot be empty.");
+            valid = false;
+        } else if (password.length() <= 6) {
+            passwordEditText.setError("The given password is invalid. [Password should be at least 6 characters]");
+            valid = false;
+        }
+
+        return valid;
+    }
+
+
 }

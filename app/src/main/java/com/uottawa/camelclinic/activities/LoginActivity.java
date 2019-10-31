@@ -2,6 +2,7 @@ package com.uottawa.camelclinic.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,7 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.uottawa.camelclinic.R;
-import com.uottawa.camelclinic.utilities.ErrorUtilities;
+import com.uottawa.camelclinic.utilities.ValidationUtilities;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -51,11 +52,8 @@ public class LoginActivity extends AppCompatActivity {
         final String email = emailEditText.getText().toString().trim();
         final String password = passwordEditText.getText().toString().trim();
 
-        EditText[] fields = {emailEditText, passwordEditText};
-        String[] inputs = {email, password};
-
-        if (ErrorUtilities.allInputsFilled(inputs, fields)) {
-            if (userIsAdmin(email, password)) {
+        if (validLoginForm()) {
+            if (ValidationUtilities.isValidAdmin(email, password)) {
                 Intent intent = new Intent(getApplicationContext(), AdminMainActivity.class);
                 startActivity(intent);
             } else {
@@ -97,7 +95,29 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public boolean userIsAdmin(String email, String password) {
-        return email.equals("admin@admin.com") && password.equals("5T5ptQ");
+    public boolean validLoginForm() {
+
+        boolean valid = true;
+
+        String email = emailEditText.getText().toString().trim();
+        String password = passwordEditText.getText().toString().trim();
+
+        if (TextUtils.isEmpty(email)) {
+            emailEditText.setError("Email field cannot be empty.");
+            valid = false;
+        } else if (!ValidationUtilities.isValidEmail(email)) {
+            emailEditText.setError("The given email is invalid.");
+            valid = false;
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            passwordEditText.setError("Password field cannot be empty.");
+            valid = false;
+        } else if (password.length() <= 6) {
+            passwordEditText.setError("The given password is invalid. [Password should be at least 6 characters]");
+            valid = false;
+        }
+
+        return valid;
     }
 }
