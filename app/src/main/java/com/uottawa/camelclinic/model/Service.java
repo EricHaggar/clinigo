@@ -4,12 +4,20 @@ public class Service {
 
     private String id;
     private String name;
-    private double hourlyRate;
+    private String role;
 
-    public Service (String id, String name, double hourlyRate) {
+    public Service() {
+    }
+
+    public Service (String id, String name, String role) {
         this.id = id;
         this.name = name;
-        this.hourlyRate = hourlyRate;
+        this.role = role;
+    }
+
+    public Service(String name, String role) {
+        this.name = name;
+        this.role = role;
     }
 
     /**
@@ -31,12 +39,12 @@ public class Service {
     }
 
     /**
-     * Getter for hourlyRate attribute
+     * Getter for role attribute
      *
-     * @return double hourlyRate
+     * @return string role
      */
-    public Double getHourlyRate() {
-        return this.hourlyRate;
+    public String getRole() {
+        return this.role;
     }
 
     /**
@@ -58,11 +66,11 @@ public class Service {
     }
 
     /**
-     * Setter for hourlyRate attribute
+     * Setter for role attribute
      *
-     * @param hourlyRate double to be assigned
+     * @param role string to be assigned
      */
-    public void setHourlyRate(double hourlyRate) {
-        this.hourlyRate = hourlyRate;
+    public void setRole(String role) {
+        this.role = role;
     }
 }

@@ -9,10 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".activities.AdminServicesActivity"
-            android:label="Services"
-            android:screenOrientation="portrait" />
+        <activity android:name=".activities.ServicesActivity"></activity>
+        <activity android:name=".activities.ServiceList" />
         <activity
             android:name=".activities.AdminUsersActivity"
             android:label="Users"
