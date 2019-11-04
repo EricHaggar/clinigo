@@ -169,7 +169,7 @@ public class AdminServicesActivity extends AppCompatActivity {
         DatabaseReference dR = FirebaseDatabase.getInstance().getReference("services").child(id);
 
         dR.removeValue();
-        Toast.makeText(getApplicationContext(), "Service Deleted", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Service Deleted", Toast.LENGTH_SHORT).show();
     }
 
     public void updateService(String id, String name, String role) {
@@ -179,7 +179,7 @@ public class AdminServicesActivity extends AppCompatActivity {
         Service service = new Service(id, name, role);
         dR.setValue(service);
 
-        Toast.makeText(getApplicationContext(), "Service Updated", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Service Updated", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -190,7 +190,7 @@ public class AdminServicesActivity extends AppCompatActivity {
 
         servicesReference.child(id).setValue(product);
 
-        Toast.makeText(this, "Service added", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Service added", Toast.LENGTH_SHORT).show();
     }
 
     public boolean validServiceForm(EditText serviceEditText, EditText roleEditText) {
