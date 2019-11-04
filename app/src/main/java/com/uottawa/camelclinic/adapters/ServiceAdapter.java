@@ -34,7 +34,7 @@ public class ServiceAdapter extends ArrayAdapter<Service> {
 
         Service service = services.get(position);
         textViewName.setText(service.getName());
-        textViewRole.setText(service.getRole());
+        textViewRole.setText("Provider: " + service.getRole());
         return listViewItem;
     }
 }

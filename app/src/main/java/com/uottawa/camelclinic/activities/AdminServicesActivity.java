@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -60,6 +61,9 @@ public class AdminServicesActivity extends AppCompatActivity {
                 showAddServiceDialog();
             }
         });
+
+        TextView emptyText = findViewById(R.id.text_empty_services);
+        servicesListView.setEmptyView(emptyText);
     }
 
     @Override
