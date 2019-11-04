@@ -11,9 +11,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,71 +25,58 @@ import com.uottawa.camelclinic.model.Service;
 import com.uottawa.camelclinic.utilities.ValidationUtilities;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class AdminServicesActivity extends AppCompatActivity {
 
-    EditText serviceEditText;
-    EditText roleEditText;
-    Button buttonAddService;
-    ListView listViewServices;
-
-    List<Service> services;
-    DatabaseReference databaseServices;
+    ListView servicesListView;
+    ArrayList<Service> services;
+    DatabaseReference servicesReference;
+    FloatingActionButton addServiceFab;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_services);
 
-        databaseServices = FirebaseDatabase.getInstance().getReference("services");
-
-
-        serviceEditText = (EditText) findViewById(R.id.edit_service);
-        roleEditText = (EditText) findViewById(R.id.edit_role);
-        listViewServices = (ListView) findViewById(R.id.listViewServices);
-        buttonAddService = (Button) findViewById(R.id.button_add);
-
+        servicesReference = FirebaseDatabase.getInstance().getReference("services");
+        servicesListView = findViewById(R.id.list_services);
         services = new ArrayList<>();
 
-        //adding an onclicklistener to button
-        buttonAddService.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addService();
-            }
-        });
-
-        listViewServices.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        servicesListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Service service = services.get(i);
-                showUpdateDeleteDialog(service.getId(), service.getName(), service.getRole());
+                showUpdateServiceDialog(service.getId(), service.getName(), service.getRole());
                 return true;
             }
         });
 
+        addServiceFab = findViewById(R.id.fab_add_service);
+        addServiceFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAddServiceDialog();
+            }
+        });
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        databaseServices.addValueEventListener(new ValueEventListener() {
+        servicesReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 services.clear();
-
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Service service = postSnapshot.getValue(Service.class);
                     services.add(service);
                 }
 
-                ServiceAdapter servicesAdaptor = new ServiceAdapter(AdminServicesActivity.this, services);
-                listViewServices.setAdapter(servicesAdaptor);
+                ServiceAdapter serviceAdapter = new ServiceAdapter(AdminServicesActivity.this, services);
+                servicesListView.setAdapter(serviceAdapter);
             }
 
             @Override
@@ -97,9 +84,42 @@ public class AdminServicesActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
-    private void showUpdateDeleteDialog(final String serviceId, String serviceName, String role) {
+    public void showAddServiceDialog() {
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.add_service_dialog, null);
+        dialogBuilder.setView(dialogView);
+
+        final EditText serviceEditText = (EditText) dialogView.findViewById(R.id.edit_service);
+        final EditText roleEditText = (EditText) dialogView.findViewById(R.id.edit_role);
+        final Button addButton = (Button) dialogView.findViewById(R.id.button_add_service);
+
+        dialogBuilder.setTitle("Add Service");
+
+        final AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = serviceEditText.getText().toString().trim();
+                String role = roleEditText.getText().toString().trim();
+
+                if (validServiceForm(serviceEditText, roleEditText)) {
+                    addService(name, role);
+                    alertDialog.dismiss();
+                }
+            }
+        });
+
+
+    }
+
+    public void showUpdateServiceDialog(final String serviceId, String serviceName, String role) {
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -114,6 +134,7 @@ public class AdminServicesActivity extends AppCompatActivity {
         dialogBuilder.setTitle("Edit Service");
         serviceEditText.setText(serviceName);
         roleEditText.setText(role);
+
         final AlertDialog b = dialogBuilder.create();
         b.show();
 
@@ -122,7 +143,8 @@ public class AdminServicesActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String name = serviceEditText.getText().toString().trim();
                 String role = roleEditText.getText().toString().trim();
-                if (!TextUtils.isEmpty(name)) {
+
+                if (validServiceForm(serviceEditText, roleEditText)) {
                     updateService(serviceId, name, role);
                     b.dismiss();
                 }
@@ -138,7 +160,7 @@ public class AdminServicesActivity extends AppCompatActivity {
         });
     }
 
-    private void deleteService(String id) {
+    public void deleteService(String id) {
 
         DatabaseReference dR = FirebaseDatabase.getInstance().getReference("services").child(id);
 
@@ -146,7 +168,7 @@ public class AdminServicesActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Service Deleted", Toast.LENGTH_LONG).show();
     }
 
-    private void updateService(String id, String name, String role) {
+    public void updateService(String id, String name, String role) {
 
         DatabaseReference dR = FirebaseDatabase.getInstance().getReference("services").child(id);
 
@@ -157,36 +179,27 @@ public class AdminServicesActivity extends AppCompatActivity {
 
     }
 
-    private void addService() {
+    public void addService(String serviceName, String role) {
 
-        String name = serviceEditText.getText().toString().trim();
-        String role = roleEditText.getText().toString().trim();
+        String id = servicesReference.push().getKey();
+        Service product = new Service(id, serviceName, role);
 
-        if (validServiceForm()) {
+        servicesReference.child(id).setValue(product);
 
-            String id = databaseServices.push().getKey();
-            Service product = new Service(id, name, role);
-
-            databaseServices.child(id).setValue(product);
-
-            serviceEditText.setText("");
-            roleEditText.setText("");
-
-            Toast.makeText(this, "Service added", Toast.LENGTH_LONG).show();
-        }
+        Toast.makeText(this, "Service added", Toast.LENGTH_LONG).show();
     }
 
-    public boolean validServiceForm() {
+    public boolean validServiceForm(EditText serviceEditText, EditText roleEditText) {
 
         boolean valid = true;
 
-        String name = serviceEditText.getText().toString().trim();
+        String serviceName = serviceEditText.getText().toString().trim();
         String role = roleEditText.getText().toString().trim();
 
-        if (TextUtils.isEmpty(name)) {
+        if (TextUtils.isEmpty(serviceName)) {
             serviceEditText.setError("Service field cannot be empty.");
             valid = false;
-        } else if (!ValidationUtilities.isValidName(name)) {
+        } else if (!ValidationUtilities.isValidName(serviceName)) {
             serviceEditText.setError("The given service name is invalid.");
             valid = false;
         }

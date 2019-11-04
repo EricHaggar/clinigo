@@ -25,6 +25,7 @@ public class ServiceAdapter extends ArrayAdapter<Service> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         LayoutInflater inflater = context.getLayoutInflater();
         View listViewItem = inflater.inflate(R.layout.admin_services_adapter, null, true);
 
