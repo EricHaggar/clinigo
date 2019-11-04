@@ -23,7 +23,7 @@ public class AdminMainActivity extends AppCompatActivity {
     }
 
     public void manageServicesOnClick(View view) {
-        Intent intent = new Intent(this, ServicesActivity.class);
+        Intent intent = new Intent(this, AdminServicesActivity.class);
         startActivity(intent);
     }
 }

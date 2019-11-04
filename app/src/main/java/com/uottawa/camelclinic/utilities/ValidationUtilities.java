@@ -16,3 +16,4 @@ public class ValidationUtilities {
         return name.matches("[A-Z][a-zA-Z]*") || name.matches("[a-zA-z]+([ '-][a-zA-Z]+)*");
     }
 }
+

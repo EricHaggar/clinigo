@@ -54,7 +54,7 @@ public class SignUpActivity extends AppCompatActivity {
         // Firebase Authentication and Database
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance();
-        usersReference = mDatabase.getReference("Users");
+        usersReference = mDatabase.getReference("users");
 
         // Input Fields
         firstNameEditText = findViewById(R.id.edit_first_name);

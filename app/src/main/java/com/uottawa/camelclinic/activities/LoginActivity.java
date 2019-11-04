@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     public void initVariables() {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance();
-        usersReference = mDatabase.getReference("Users");
+        usersReference = mDatabase.getReference("users");
         emailEditText = findViewById(R.id.edit_email);
         passwordEditText = findViewById(R.id.edit_password);
 
