@@ -27,6 +27,7 @@
     <string name="update">Update</string>
     <string name="delete">Delete</string>
     <string name="empty_service_list">There are currently no services provided.</string>
+    <string name="there_are_no_users_in_the_database">There are no users in the database.</string>
     />
     />
 </resources>
