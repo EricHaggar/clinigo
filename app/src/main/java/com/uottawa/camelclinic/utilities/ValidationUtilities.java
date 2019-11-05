@@ -1,6 +1,7 @@
 package com.uottawa.camelclinic.utilities;
 
 import android.util.Patterns;
+import androidx.core.util.PatternsCompat;
 
 public class ValidationUtilities {
 
@@ -9,7 +10,7 @@ public class ValidationUtilities {
     }
 
     public static boolean isValidEmail(String email) {
-        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        return PatternsCompat.EMAIL_ADDRESS.matcher(email).matches();
     }
 
     public static boolean isValidName(String name) {
