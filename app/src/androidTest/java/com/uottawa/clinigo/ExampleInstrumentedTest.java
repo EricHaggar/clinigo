@@ -1,4 +1,4 @@
-package com.uottawa.camelclinic;
+package com.uottawa.clinigo;
 
 import android.content.Context;
 

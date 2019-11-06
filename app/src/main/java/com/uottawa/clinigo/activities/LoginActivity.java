@@ -1,4 +1,4 @@
-package com.uottawa.camelclinic.activities;
+package com.uottawa.clinigo.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,8 +19,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.uottawa.camelclinic.R;
-import com.uottawa.camelclinic.utilities.ValidationUtilities;
+import com.uottawa.clinigo.R;
+import com.uottawa.clinigo.utilities.ValidationUtilities;
 
 public class LoginActivity extends AppCompatActivity {
 

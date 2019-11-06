@@ -1,4 +1,4 @@
-package com.uottawa.camelclinic.activities;
+package com.uottawa.clinigo.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,11 +20,11 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.uottawa.camelclinic.R;
-import com.uottawa.camelclinic.model.Employee;
-import com.uottawa.camelclinic.model.Patient;
-import com.uottawa.camelclinic.model.User;
-import com.uottawa.camelclinic.utilities.ValidationUtilities;
+import com.uottawa.clinigo.R;
+import com.uottawa.clinigo.model.Employee;
+import com.uottawa.clinigo.model.Patient;
+import com.uottawa.clinigo.model.User;
+import com.uottawa.clinigo.utilities.ValidationUtilities;
 
 
 public class SignUpActivity extends AppCompatActivity {

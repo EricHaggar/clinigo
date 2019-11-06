@@ -1,4 +1,4 @@
-package com.uottawa.camelclinic.activities;
+package com.uottawa.clinigo.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.uottawa.camelclinic.R;
+import com.uottawa.clinigo.R;
 
 public class SuccessfulLoginActivity extends AppCompatActivity {
 

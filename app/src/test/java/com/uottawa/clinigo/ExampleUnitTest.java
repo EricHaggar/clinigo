@@ -1,4 +1,4 @@
-package com.uottawa.camelclinic;
+package com.uottawa.clinigo;
 
 import org.junit.Test;
 import static org.junit.Assert.*;

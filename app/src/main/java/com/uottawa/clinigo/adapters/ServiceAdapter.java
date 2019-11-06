@@ -1,4 +1,4 @@
-package com.uottawa.camelclinic.adapters;
+package com.uottawa.clinigo.adapters;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.uottawa.camelclinic.R;
-import com.uottawa.camelclinic.model.Service;
+import com.uottawa.clinigo.R;
+import com.uottawa.clinigo.model.Service;
 
 import java.util.List;
 

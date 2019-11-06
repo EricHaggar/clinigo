@@ -1,4 +1,4 @@
-package com.uottawa.camelclinic.model;
+package com.uottawa.clinigo.model;
 
 public class Service {
 

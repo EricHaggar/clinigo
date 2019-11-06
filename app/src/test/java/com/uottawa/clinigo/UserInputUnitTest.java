@@ -1,6 +1,6 @@
-package com.uottawa.camelclinic;
+package com.uottawa.clinigo;
 import org.junit.Test;
-import com.uottawa.camelclinic.utilities.ValidationUtilities;
+import com.uottawa.clinigo.utilities.ValidationUtilities;
 import static org.junit.Assert.assertEquals;
 
 

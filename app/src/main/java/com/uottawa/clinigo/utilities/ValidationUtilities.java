@@ -1,6 +1,5 @@
-package com.uottawa.camelclinic.utilities;
+package com.uottawa.clinigo.utilities;
 
-import android.util.Patterns;
 import androidx.core.util.PatternsCompat;
 
 public class ValidationUtilities {

@@ -1,4 +1,4 @@
-package com.uottawa.camelclinic.activities;
+package com.uottawa.clinigo.activities;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
@@ -20,10 +20,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.uottawa.camelclinic.R;
-import com.uottawa.camelclinic.adapters.ServiceAdapter;
-import com.uottawa.camelclinic.model.Service;
-import com.uottawa.camelclinic.utilities.ValidationUtilities;
+import com.uottawa.clinigo.R;
+import com.uottawa.clinigo.adapters.ServiceAdapter;
+import com.uottawa.clinigo.model.Service;
+import com.uottawa.clinigo.utilities.ValidationUtilities;
 
 import java.util.ArrayList;
 
