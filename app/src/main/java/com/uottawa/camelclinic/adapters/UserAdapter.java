@@ -8,18 +8,17 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.uottawa.camelclinic.R;
-import com.uottawa.camelclinic.model.Service;
 import com.uottawa.camelclinic.model.User;
 import java.util.List;
 
 
-public class UserAdaptor extends ArrayAdapter<User> {
+public class UserAdapter extends ArrayAdapter<User> {
 
-    List<User> users; //
+    List<User> users;
     private Activity context;
 
-    public UserAdaptor(Activity context, List<User> users) {
-        super(context, R.layout.admin_services_adapter, users); // layout hasnt been done yet
+    public UserAdapter(Activity context, List<User> users) {
+        super(context, R.layout.admin_services_adapter, users);
         this.context = context;
         this.users = users;
     }
@@ -28,14 +27,14 @@ public class UserAdaptor extends ArrayAdapter<User> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = context.getLayoutInflater();
-        View listViewItem = inflater.inflate(R.layout.admin_user_adaptor, null, true);
+        View listViewItem = inflater.inflate(R.layout.admin_users_adapter, null, true);
 
-        TextView textViewName = (TextView) listViewItem.findViewById(R.id.text_name); //
-        TextView textViewRole = (TextView) listViewItem.findViewById(R.id.text_role); //
+        TextView textViewEmail = listViewItem.findViewById(R.id.text_email);
+        TextView textViewRole = listViewItem.findViewById(R.id.text_role);
 
         User user = users.get(position);
-        textViewName.setText(users.getFirstName());
-        textViewRole.setText("Provider: " + user.getRole());
+        textViewEmail.setText(user.getEmail());
+        textViewRole.setText("Role: " + user.getRole());
         return listViewItem;
     }
 

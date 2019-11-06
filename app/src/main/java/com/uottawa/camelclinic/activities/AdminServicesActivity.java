@@ -92,15 +92,14 @@ public class AdminServicesActivity extends AppCompatActivity {
     }
 
     public void showAddServiceDialog() {
-
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.add_service_dialog, null);
         dialogBuilder.setView(dialogView);
 
-        final EditText serviceEditText = (EditText) dialogView.findViewById(R.id.edit_service);
-        final EditText roleEditText = (EditText) dialogView.findViewById(R.id.edit_role);
-        final Button addButton = (Button) dialogView.findViewById(R.id.button_add_service);
+        final EditText serviceEditText = dialogView.findViewById(R.id.edit_service);
+        final EditText roleEditText = dialogView.findViewById(R.id.edit_role);
+        final Button addButton = dialogView.findViewById(R.id.button_add_service);
 
         dialogBuilder.setTitle("Add Service");
 
@@ -124,16 +123,15 @@ public class AdminServicesActivity extends AppCompatActivity {
     }
 
     public void showUpdateServiceDialog(final String serviceId, String serviceName, String role) {
-
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.update_service_dialog, null);
         dialogBuilder.setView(dialogView);
 
-        final EditText serviceEditText = (EditText) dialogView.findViewById(R.id.edit_service);
-        final EditText roleEditText = (EditText) dialogView.findViewById(R.id.edit_role);
-        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.button_update_service);
-        final Button buttonDelete = (Button) dialogView.findViewById(R.id.button_delete_service);
+        final EditText serviceEditText = dialogView.findViewById(R.id.edit_service);
+        final EditText roleEditText = dialogView.findViewById(R.id.edit_role);
+        final Button buttonUpdate = dialogView.findViewById(R.id.button_delete);
+        final Button buttonDelete = dialogView.findViewById(R.id.button_cancel);
 
         dialogBuilder.setTitle("Edit Service");
         serviceEditText.setText(serviceName);
@@ -165,31 +163,24 @@ public class AdminServicesActivity extends AppCompatActivity {
     }
 
     public void deleteService(String id) {
-
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("services").child(id);
-
+        DatabaseReference dR = servicesReference.child(id);
         dR.removeValue();
         Toast.makeText(getApplicationContext(), "Service Deleted", Toast.LENGTH_SHORT).show();
     }
 
     public void updateService(String id, String name, String role) {
-
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("services").child(id);
-
+        DatabaseReference dR = servicesReference.child(id);
         Service service = new Service(id, name, role);
         dR.setValue(service);
-
         Toast.makeText(getApplicationContext(), "Service Updated", Toast.LENGTH_SHORT).show();
-
     }
 
     public void addService(String serviceName, String role) {
-
         serviceName = serviceName.substring(0, 1).toUpperCase() + serviceName.substring(1);
 
         boolean serviceExists = isServiceAvailable(serviceName);
 
-        if(serviceExists){
+        if (serviceExists) {
 
             Toast.makeText(this, "Service already exists!", Toast.LENGTH_SHORT).show();
             return;
@@ -203,11 +194,11 @@ public class AdminServicesActivity extends AppCompatActivity {
         Toast.makeText(this, "Service added", Toast.LENGTH_SHORT).show();
     }
 
-    public boolean isServiceAvailable(String serviceName){
+    public boolean isServiceAvailable(String serviceName) {
 
-        for(Service service: services){
+        for (Service service : services) {
 
-            if(serviceName.equals(service.getName())){
+            if (serviceName.equals(service.getName())) {
                 return true;
             }
         }
@@ -215,7 +206,6 @@ public class AdminServicesActivity extends AppCompatActivity {
     }
 
     public boolean validServiceForm(EditText serviceEditText, EditText roleEditText) {
-
         boolean valid = true;
 
         String serviceName = serviceEditText.getText().toString().trim();

@@ -29,8 +29,8 @@ public class ServiceAdapter extends ArrayAdapter<Service> {
         LayoutInflater inflater = context.getLayoutInflater();
         View listViewItem = inflater.inflate(R.layout.admin_services_adapter, null, true);
 
-        TextView textViewName = (TextView) listViewItem.findViewById(R.id.text_name);
-        TextView textViewRole = (TextView) listViewItem.findViewById(R.id.text_role);
+        TextView textViewName = listViewItem.findViewById(R.id.text_email);
+        TextView textViewRole = listViewItem.findViewById(R.id.text_role);
 
         Service service = services.get(position);
         textViewName.setText(service.getName());
