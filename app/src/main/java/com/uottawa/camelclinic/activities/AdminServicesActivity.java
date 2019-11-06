@@ -176,28 +176,14 @@ public class AdminServicesActivity extends AppCompatActivity {
     }
 
     public void addService(String serviceName, String role) {
-        serviceName = serviceName.substring(0, 1).toUpperCase() + serviceName.substring(1);
-
-        boolean serviceExists = isServiceAvailable(serviceName);
-
-        if (serviceExists) {
-
-            Toast.makeText(this, "Service already exists!", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
         String id = servicesReference.push().getKey();
         Service product = new Service(id, serviceName, role);
-
         servicesReference.child(id).setValue(product);
-
         Toast.makeText(this, "Service added", Toast.LENGTH_SHORT).show();
     }
 
     public boolean isServiceAvailable(String serviceName) {
-
         for (Service service : services) {
-
             if (serviceName.equals(service.getName())) {
                 return true;
             }
@@ -217,6 +203,9 @@ public class AdminServicesActivity extends AppCompatActivity {
         } else if (!ValidationUtilities.isValidName(serviceName)) {
             serviceEditText.setError("The given service name is invalid.");
             valid = false;
+        } else if (isServiceAvailable(serviceName)) {
+            serviceEditText.setError("The given service already exists.");
+            valid = false;
         }
 
         if (TextUtils.isEmpty(role)) {
@@ -226,7 +215,6 @@ public class AdminServicesActivity extends AppCompatActivity {
             roleEditText.setError("The given role name is invalid.");
             valid = false;
         }
-
         return valid;
     }
 
