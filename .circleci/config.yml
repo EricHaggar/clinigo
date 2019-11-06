@@ -21,5 +21,5 @@ jobs:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
-          name: Run All Unit Tests
-          command: ./gradlew test
+          name: Run User Input Unit Tests
+          command: ./gradlew UserInputUnitTest
