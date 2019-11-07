@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:contentDescription="@string/welcome"
-        android:src="@drawable/camel_logopng" />
+        android:src="@drawable/clinigo_logopng" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
