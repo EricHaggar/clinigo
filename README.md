@@ -1,5 +1,13 @@
 # Project-Camel
 
+Our team developed an app to address the need for people to know waiting times at nearby walk-in clinics without having to leave their home. It also allows users to know the services offered by nearby walk-in clinics and allow them to check-in/book appointments at the clinic of their choice. 
+
+We present to you: `Clinigo`
+
+<p align="center">
+    <img src="assets/clinigo_logo.png" height="400" /> 
+</p>
+
 ## Team Members
 
 | Name | Student Number |
@@ -32,7 +40,7 @@ Each user has a first name, last name, email and password.
 
 The UML diagram for this deliverable is shown below:
 
-![UML](deliverable1_images/UML.png)
+![UML](screenshots/UML.png)
 
 ### Activities Screenshots
 
@@ -41,28 +49,27 @@ We took multiple screenshots to demonstrate the different features and their fun
 1. Home Activity
 
 <p align="center">
-    <img src="deliverable1_images/home.jpg" height="400" /> 
+    <img src="screenshots/home.png" height="400" /> 
 </p>
 
 2. Sign Up Activities
    
 <p align="center">
-    <img src="deliverable1_images/sign_up.jpg" height="400" /> 
-    <img src="deliverable1_images/sign_up_welcome.jpg" height="400" /> 
+    <img src="screenshots/sign_up.png" height="400" /> 
+    <img src="screenshots/sign_up_welcome.png" height="400" /> 
 </p>
 
 1. Login Activities
 
 <p align="center">
-    <img src="deliverable1_images/login.jpg" height="400" />
-    <img src="deliverable1_images/login_welcome.jpg" height="400" /> 
+    <img src="screenshots/login.png" height="400" />
+    <img src="screenshots/login_welcome.png" height="400" /> 
 </p>
 
 4. Admin Example 
 
 <p align="center">
-    <img src="deliverable1_images/admin_login.jpg" height="400" />
-    <img src="deliverable1_images/admin_welcome.jpg" height="400" /> 
+    <img src="screenshots/admin_login.png" height="400" />
 </p>
 
 ## Deliverable 2
