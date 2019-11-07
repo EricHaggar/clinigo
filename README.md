@@ -27,6 +27,8 @@ We present to you: `Clinigo`
     - [UML Diagram](#uml-diagram)
     - [Activities Screenshots](#activities-screenshots)
   - [Deliverable 2](#deliverable-2)
+    - [UML Diagram](#uml-diagram-1)
+    - [Activities Screenshots](#activities-screenshots-1)
 
 ## Deliverable 1
 
@@ -34,7 +36,7 @@ The first deliverable concentrates on creating accounts and storing them into a 
 Only one admin account exists but many patient and employee accounts can be created at will.
 Each user has a first name, last name, email and password.
 
-**Please Note:** admin@admin.com is the sole admin email since Firebase authentication is used. Firebase requires an email to function. The admin was hardcoded into the Firebase Authentication and Firebase Real-time database.
+**Please Note:** Emails were used for login to work with Firebase Authentication.
 
 ### UML Diagram
 
@@ -79,6 +81,14 @@ Only one admin account exists but many patient and employee accounts can be crea
 Each user has a first name, last name, email and password. 
 CircleCI was utilized to build and test the app. 
 
+### UML Diagram
+
+The UML diagram for this deliverable is shown below:
+
+![UML](screenshots/UML_Deliverable02.png)
+
+### Activities Screenshots
+
 1. Admin Homepage 
 
     <p align="center">
@@ -99,8 +109,3 @@ CircleCI was utilized to build and test the app.
         <img src="screenshots/users_list.png" height="400" /> 
         <img src="screenshots/services_delete.png" height="400" />
     </p>
-
-### UML Diagram
-
-![UML](screenshots/UML_Deliverable02.png)
-

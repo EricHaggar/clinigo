@@ -20,6 +20,3 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      - run:
-          name: UnitTest
-          command: cd app/src/test/java/com.uottawa.clinigo && javac *.java && java UserInputUnitTest
