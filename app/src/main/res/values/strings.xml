@@ -19,7 +19,6 @@
     <string name="patient_role">Patient</string>
     <string name="admin_role">Admin</string>
     <string name="admin_welcome_message">Welcome admin!</string>
-    <string name="manage_users">Manage Users</string>
     <string name="manage_services">Manage Services</string>
     <string name="prompt_service">Service</string>
     <string name="prompt_role">Role</string>
@@ -32,6 +31,7 @@
     <string name="empty_user_list">There are currently no users.</string>
     <string name="delete_user">Are you sure you want to delete this user?</string>
     <string name="cancel">Cancel</string>
+    <string name="manage_accounts">Manage Accounts</string>
     />
     />
 </resources>

@@ -16,19 +16,19 @@
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button_users"
+        app:layout_constraintBottom_toTopOf="@+id/button_accounts"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button_users"
+        android:id="@+id/button_accounts"
         android:layout_width="@dimen/large_button_width"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:background="@drawable/standard_buttons"
-        android:onClick="manageUsersOnClick"
-        android:text="@string/manage_users"
+        android:onClick="manageAccountsOnClick"
+        android:text="@string/manage_accounts"
         android:textColor="@color/colorText"
         app:layout_constraintBottom_toTopOf="@+id/horizontal_guideline"
         app:layout_constraintEnd_toEndOf="parent"
