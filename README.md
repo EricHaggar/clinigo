@@ -73,3 +73,7 @@ We took multiple screenshots to demonstrate the different features and their fun
 </p>
 
 ## Deliverable 2
+
+1. Service Activities
+
+2. User Activities 
