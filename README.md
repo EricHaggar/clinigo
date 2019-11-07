@@ -74,6 +74,11 @@ We took multiple screenshots to demonstrate the different features and their fun
 
 ## Deliverable 2
 
+The second deliverable concentrates on creating and editing services whilst storing them into a database (Firebase).
+Only one admin account exists but many patient and employee accounts can be created and deleted at will.
+Each user has a first name, last name, email and password. 
+CircleCI was utilized to build and test the app. 
+
 1. Admin Homepage 
 
 2. Manage Service Activities
