@@ -1,4 +1,4 @@
-# Project-Camel
+# Project-Clinigo
 
 Our team developed an app to address the need for people to know waiting times at nearby walk-in clinics without having to leave their home. It also allows users to know the services offered by nearby walk-in clinics and allow them to check-in/book appointments at the clinic of their choice. 
 
