@@ -40,7 +40,7 @@ Each user has a first name, last name, email and password.
 
 The UML diagram for this deliverable is shown below:
 
-![UML](screenshots/UML.png)
+![UML](screenshots/UML_Deliverable01.png)
 
 ### Activities Screenshots
 
@@ -99,3 +99,8 @@ CircleCI was utilized to build and test the app.
         <img src="screenshots/users_list" height="400" /> 
         <img src="screenshots/services_delete" height="400" />
     </p>
+
+### UML Diagram
+
+![UML](screenshots/UML_Deliverable02.png)
+
