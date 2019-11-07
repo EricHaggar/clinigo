@@ -74,6 +74,8 @@ We took multiple screenshots to demonstrate the different features and their fun
 
 ## Deliverable 2
 
-1. Service Activities
+1. Admin Homepage 
 
-2. User Activities 
+2. Manage Service Activities
+
+3. Manage User Activities 
