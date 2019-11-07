@@ -81,6 +81,21 @@ CircleCI was utilized to build and test the app.
 
 1. Admin Homepage 
 
+    <p align="center">
+        <img src="screenshots/admin_home_page" height="400" /> 
+    </p>
+    
 2. Manage Service Activities
 
-3. Manage User Activities 
+    <p align="center">
+        <img src="screenshots/services_list" height="400" /> 
+        <img src="screenshots/services_add" height="400" />
+        <img src="screenshots/services_edit" height="400" /> 
+    </p>
+
+3. Manage User Activities
+
+    <p align="center">
+        <img src="screenshots/users_list" height="400" /> 
+        <img src="screenshots/services_delete" height="400" />
+    </p>
