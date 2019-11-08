@@ -16,7 +16,7 @@
             android:name="com.uottawa.clinigo.adapters.ServiceAdapter" />
         <activity
             android:name="com.uottawa.clinigo.activities.AdminUsersActivity"
-            android:label="Users"
+            android:label="Accounts"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.uottawa.clinigo.activities.AdminMainActivity"
