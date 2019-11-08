@@ -92,7 +92,7 @@ The UML diagram for this deliverable is shown below:
 1. Admin Homepage 
 
     <p align="center">
-        <img src="screenshots/admin_home_page" height="400" /> 
+        <img src="screenshots/admin_home_page.png" height="400" /> 
     </p>
     
 2. Manage Service Activities
