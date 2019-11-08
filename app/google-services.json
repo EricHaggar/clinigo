@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "439742054053",
+    "firebase_url": "https://clinigo-bbe49.firebaseio.com",
+    "project_id": "clinigo-bbe49",
+    "storage_bucket": "clinigo-bbe49.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:439742054053:android:39acc7f61535ab855c974c",
+        "android_client_info": {
+          "package_name": "com.uottawa.clinigo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "439742054053-9qcdhpg310der6v4er910qi5nrfhpiqr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbKSejFOJ0HTOKtoRVyFFWLfLQ3B2ILgA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "439742054053-9qcdhpg310der6v4er910qi5nrfhpiqr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
