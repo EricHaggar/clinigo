@@ -4,6 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="standard_button_width">142dp</dimen>
-    <dimen name="large_button_width">165dp</dimen>
+    <dimen name="large_button_width">170dp</dimen>
     <dimen name="small_button_width">100dp</dimen>
 </resources>
