@@ -92,20 +92,20 @@ The UML diagram for this deliverable is shown below:
 1. Admin Homepage 
 
     <p align="center">
-        <img src="screenshots/admin_home_page.png" height="400" /> 
+        <img src="screenshots/admin_home_page" height="400" /> 
     </p>
     
 2. Manage Service Activities
 
     <p align="center">
-        <img src="screenshots/services_list.png" height="400" /> 
-        <img src="screenshots/services_add.png" height="400" />
-        <img src="screenshots/services_edit.png" height="400" /> 
+        <img src="screenshots/list_service.png" height="400" /> 
+        <img src="screenshots/add_services.png" height="400" />
+        <img src="screenshots/delete_service.png" height="400" /> 
     </p>
 
 3. Manage User Activities
 
     <p align="center">
-        <img src="screenshots/users_list.png" height="400" /> 
-        <img src="screenshots/services_delete.png" height="400" />
+        <img src="screenshots/list_users.png" height="400" />
+        <img src="screenshots/delete_user.png" height="400" /> 
     </p>
