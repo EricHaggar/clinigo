@@ -31,6 +31,7 @@ We present to you: `Clinigo`
     - [Circle CI](#circle-ci)
     - [UML Diagram](#uml-diagram-1)
     - [Activities Screenshots](#activities-screenshots-1)
+  - [Deliverable 3](#deliverable-3)
 
 ## Deliverable 1
 
@@ -129,3 +130,5 @@ The UML diagram for this deliverable is shown below:
     <img src="screenshots/list_accounts.png" height="400" />
     <img src="screenshots/delete_account.png" height="400" /> 
 </p>
+
+## Deliverable 3
