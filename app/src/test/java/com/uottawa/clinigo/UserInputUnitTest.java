@@ -53,4 +53,16 @@ public class UserInputUnitTest {
         boolean valid = ValidationUtilities.isValidAdmin("admin@gmail.com", "5T5ptQ");
         assertEquals("check invalid admin credentials", false, valid);
     }
+
+    @Test
+    public void checkValidService() {
+        boolean valid = ValidationUtilities.isValidName("Physiotherapy");
+        assertEquals("check valid service name", true, valid);
+    }
+
+    @Test
+    public void checkInvalidService() {
+        boolean valid = ValidationUtilities.isValidName("Physiotherapy2go");
+        assertEquals("check invalid service name", false, valid);
+    }
 }
