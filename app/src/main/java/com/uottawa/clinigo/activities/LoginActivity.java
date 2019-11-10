@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -66,8 +67,10 @@ public class LoginActivity extends AppCompatActivity {
                                     usersReference.addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            boolean userWasDeleted = true; //To solve not being able to delete user from admin account
                                             for (DataSnapshot data : dataSnapshot.getChildren()) {
                                                 if (data.getKey().equals(userId)) {
+                                                    userWasDeleted = false;
                                                     final String role = data.child("role").getValue().toString();
                                                     final String firstName = data.child("firstName").getValue().toString();
                                                     Intent intent = new Intent(getApplicationContext(), SuccessfulLoginActivity.class);
@@ -75,11 +78,23 @@ public class LoginActivity extends AppCompatActivity {
                                                     startActivity(intent);
                                                 }
                                             }
+                                            if (userWasDeleted) {
+                                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                                user.delete()
+                                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<Void> task) {
+                                                                if (task.isSuccessful()) {
+                                                                    Toast.makeText(getApplicationContext(), "This user does not exist anymore.", Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            }
+                                                        });
+                                            }
                                         }
 
                                         @Override
                                         public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                                            Toast.makeText(getApplicationContext(), "Firebase Database Error.", Toast.LENGTH_SHORT).show();
                                         }
                                     });
                                 } else {

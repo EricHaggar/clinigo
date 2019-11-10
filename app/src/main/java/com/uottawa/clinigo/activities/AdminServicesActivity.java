@@ -88,7 +88,6 @@ public class AdminServicesActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     public void showAddServiceDialog() {
@@ -113,13 +112,15 @@ public class AdminServicesActivity extends AppCompatActivity {
                 String role = roleEditText.getText().toString().trim();
 
                 if (validServiceForm(serviceEditText, roleEditText)) {
-                    addService(name, role);
-                    alertDialog.dismiss();
+                    if (serviceExists(name)) {
+                        serviceEditText.setError("The given service already exists.");
+                    } else {
+                        addService(name, role);
+                        alertDialog.dismiss();
+                    }
                 }
             }
         });
-
-
     }
 
     public void showUpdateServiceDialog(final String serviceId, String serviceName, String role) {
@@ -182,7 +183,7 @@ public class AdminServicesActivity extends AppCompatActivity {
         Toast.makeText(this, "Service added", Toast.LENGTH_SHORT).show();
     }
 
-    public boolean isServiceAvailable(String serviceName) {
+    public boolean serviceExists(String serviceName) {
         for (Service service : services) {
             if (serviceName.equals(service.getName())) {
                 return true;
@@ -202,9 +203,6 @@ public class AdminServicesActivity extends AppCompatActivity {
             valid = false;
         } else if (!ValidationUtilities.isValidName(serviceName)) {
             serviceEditText.setError("The given service name is invalid.");
-            valid = false;
-        } else if (isServiceAvailable(serviceName)) {
-            serviceEditText.setError("The given service already exists.");
             valid = false;
         }
 
