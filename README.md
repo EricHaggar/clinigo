@@ -96,7 +96,7 @@ Password: 5T5ptQ
 Circle CI was used to run unit tests. The builds can be found [here](https://circleci.com/gh/professor-forward). The last few builds failed since there are not enough credits for the professor forward account as shown below:
 
 <p align="center">
-    <img src="screenshots/circle-ci.png" />
+    <img src="screenshots/circle-ci.PNG" />
 </p>
 
 ### UML Diagram
