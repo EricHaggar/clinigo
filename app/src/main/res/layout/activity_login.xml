@@ -25,7 +25,7 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/title_activity_login"
             android:cropToPadding="false"
-            android:src="@drawable/login" />
+            android:src="@drawable/sign_in_banner" />
 
         <View
             android:id="@+id/view_separator"

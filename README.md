@@ -28,6 +28,7 @@ We present to you: `Clinigo`
     - [Activities Screenshots](#activities-screenshots)
   - [Deliverable 2](#deliverable-2)
     - [Admin Account](#admin-account)
+    - [Circle CI](#circle-ci)
     - [UML Diagram](#uml-diagram-1)
     - [Activities Screenshots](#activities-screenshots-1)
 
@@ -81,8 +82,6 @@ We took multiple screenshots to demonstrate the different features and their fun
 
 The second deliverable concentrates on the admin features. The admin can create and edit services as well as delete accounts (walk-in clinic employees and patients).
 
-Circle CI was used to run unit tests. The builds can be found [here](https://circleci.com/gh/professor-forward)
-
 ### Admin Account
 
 There is only 1 admin account and the credentials are:
@@ -91,6 +90,14 @@ There is only 1 admin account and the credentials are:
 Email: admin@admin.com
 Password: 5T5ptQ
 ```
+
+### Circle CI
+
+Circle CI was used to run unit tests. The builds can be found [here](https://circleci.com/gh/professor-forward). The last few builds failed since there are not enough credits for the professor forward account as shown below:
+
+<p align="center">
+    <img src="screenshots/circle-ci.png" />
+</p>
 
 ### UML Diagram
 
