@@ -32,6 +32,9 @@
     <string name="delete_user">Are you sure you want to delete this user?</string>
     <string name="cancel">Cancel</string>
     <string name="manage_accounts">Manage Accounts</string>
+    <string name="employee_welcome_message">Welcome Employee!</string>
+    <string name="manage_working_hours">Working Hours</string>
+    <string name="choose_clinic_services">Clinic Services</string>
     />
     />
 </resources>

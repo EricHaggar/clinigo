@@ -9,33 +9,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activities.EmployeeServicesActivity"></activity>
+        <activity android:name=".activities.EmployeeWorkingHoursActivity" />
+        <activity android:name=".activities.EmployeePage" />
         <activity
-            android:name="com.uottawa.clinigo.activities.AdminServicesActivity"
-            android:label="Services"/>
+            android:name=".activities.AdminServicesActivity"
+            android:label="Services" />
+        <activity android:name=".adapters.ServiceAdapter" />
         <activity
-            android:name="com.uottawa.clinigo.adapters.ServiceAdapter" />
-        <activity
-            android:name="com.uottawa.clinigo.activities.AdminUsersActivity"
+            android:name=".activities.AdminUsersActivity"
             android:label="Accounts"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.uottawa.clinigo.activities.AdminMainActivity"
+            android:name=".activities.AdminMainActivity"
             android:label="Administrator Home"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.uottawa.clinigo.activities.LoginActivity"
+            android:name=".activities.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.uottawa.clinigo.activities.SuccessfulLoginActivity"
+            android:name=".activities.SuccessfulLoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.uottawa.clinigo.activities.SignUpActivity"
+            android:name=".activities.SignUpActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.uottawa.clinigo.activities.MainActivity"
+            android:name=".activities.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

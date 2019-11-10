@@ -73,8 +73,15 @@ public class LoginActivity extends AppCompatActivity {
                                                     userWasDeleted = false;
                                                     final String role = data.child("role").getValue().toString();
                                                     final String firstName = data.child("firstName").getValue().toString();
-                                                    Intent intent = new Intent(getApplicationContext(), SuccessfulLoginActivity.class);
-                                                    intent.putExtra("welcomeMessage", "Welcome " + firstName + "! You are logged in as " + role + ".");
+                                                    Intent intent;
+                                                    if (!role.equals("Employee")) {
+                                                        intent = new Intent(getApplicationContext(), SuccessfulLoginActivity.class);
+                                                        intent.putExtra("welcomeMessage", "Welcome " + firstName + "! You are logged in as " + role + ".");
+                                                    } else {
+                                                        intent = new Intent(getApplicationContext(), EmployeePage.class);
+                                                        intent.putExtra("welcomeMessage", "Welcome " + firstName + "! You are logged in as " + role + "." + " Manage your services and working hours below.");
+                                                    }
+
                                                     startActivity(intent);
                                                 }
                                             }
