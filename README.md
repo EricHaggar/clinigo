@@ -5,7 +5,7 @@ Our team developed an app to address the need for people to know wait times at n
 We present to you: `Clinigo`
 
 <p align="center">
-    <img src="assets/clinigo_logo_slogan.PNG" height="400" /> 
+    <img src="assets/clinigo_logo_slogan.png" height="400" /> 
 </p>
 
 ## Team Members
