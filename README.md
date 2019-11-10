@@ -1,16 +1,14 @@
-# Project-Camel
+# Clinigo
 
 Our team developed an app to address the need for people to know wait times at nearby walk-in clinics without having to leave their home. It also allows users to know the services offered by nearby walk-in clinics and allow them to check-in/book appointments at the clinic of their choice. 
 
 We present to you: `Clinigo`
 
 <p align="center">
-    <img src="assets/clinigo_logo.PNG" height="400" /> 
+    <img src="assets/clinigo_logo_slogan.PNG" height="400" /> 
 </p>
 
 ## Team Members
-
-<center>
 
 | Name | Student Number |
 | --- | --- |
@@ -20,11 +18,9 @@ We present to you: `Clinigo`
 | Lev Guzman Aparicio   |  300038033 |
 | Siraj Ghassel   |  8168653 |
 
-</center>
-
 ## Table Of Contents
 
-- [Project-Camel](#project-camel)
+- [Clinigo](#clinigo)
   - [Team Members](#team-members)
   - [Table Of Contents](#table-of-contents)
   - [Deliverable 1](#deliverable-1)
@@ -83,9 +79,9 @@ We took multiple screenshots to demonstrate the different features and their fun
 
 ## Deliverable 2
 
-The second deliverable concentrates on the admin features. The admin can create and edit services as well as delete accounts (walk-in clinic employees and patients). 
+The second deliverable concentrates on the admin features. The admin can create and edit services as well as delete accounts (walk-in clinic employees and patients).
 
-`CircleCI` was utilized to run unit tests and builds can be found [here](https://circleci.com/gh/professor-forward)
+Circle CI was used to run unit tests. The builds can be found [here](https://circleci.com/gh/professor-forward)
 
 ### Admin Account
 
