@@ -10,18 +10,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="119dp"
-        tools:layout_editor_absoluteY="148dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/sign_up_banner"
             android:layout_width="match_parent"
-            android:layout_height="147dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             android:contentDescription="@string/action_sign_up"
-            android:src="@drawable/signup" />
+            android:src="@drawable/signup_banner" />
 
         <View
-            android:id="@+id/view2"
+            android:id="@+id/view_separator"
             android:layout_width="match_parent"
             android:layout_height="39dp" />
 
@@ -52,6 +55,8 @@
             android:id="@+id/edit_first_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:autofillHints=""
             android:ems="10"
             android:hint="@string/prompt_first_name"
@@ -62,6 +67,8 @@
             android:id="@+id/edit_last_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:ems="10"
             android:hint="@string/prompt_last_name"
             android:importantForAutofill="no"
@@ -71,6 +78,8 @@
             android:id="@+id/edit_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:ems="10"
             android:hint="@string/prompt_email"
             android:importantForAutofill="no"
@@ -80,6 +89,8 @@
             android:id="@+id/edit_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:ems="10"
             android:hint="@string/prompt_password"
             android:importantForAutofill="no"
@@ -87,11 +98,19 @@
             android:visibility="visible"
             tools:visibility="visible" />
 
+        <View
+            android:id="@+id/view_separator2"
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
         <Button
             android:id="@+id/createUserButton"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/standard_button_width"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/standard_buttons"
             android:onClick="signUpOnClick"
-            android:text="@string/action_sign_up" />
+            android:text="@string/action_sign_up"
+            android:textColor="@color/colorText" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

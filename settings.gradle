@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name='CamelClinic'
+rootProject.name='Clinigo'

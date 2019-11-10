@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.uottawa.camelclinic">
+    package="com.uottawa.clinigo">
 
     <application
         android:allowBackup="true"
@@ -9,10 +9,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.LoginActivity"></activity>
-        <activity android:name=".activities.SuccessfulLoginActivity" />
-        <activity android:name=".activities.SignUpActivity" />
-        <activity android:name=".activities.MainActivity">
+        <activity
+            android:name="com.uottawa.clinigo.activities.AdminServicesActivity"
+            android:label="Services"/>
+        <activity
+            android:name="com.uottawa.clinigo.adapters.ServiceAdapter" />
+        <activity
+            android:name="com.uottawa.clinigo.activities.AdminUsersActivity"
+            android:label="Accounts"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.uottawa.clinigo.activities.AdminMainActivity"
+            android:label="Administrator Home"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.uottawa.clinigo.activities.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.uottawa.clinigo.activities.SuccessfulLoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.uottawa.clinigo.activities.SignUpActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.uottawa.clinigo.activities.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
