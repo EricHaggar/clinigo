@@ -11,6 +11,8 @@ import com.uottawa.clinigo.R;
 
 public class EmployeePage extends AppCompatActivity {
 
+    String userId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,15 +23,28 @@ public class EmployeePage extends AppCompatActivity {
 
         TextView welcomeMessage = findViewById(R.id.text_welcome_message);
         welcomeMessage.setText(message);
+
+
+        userId=intent.getStringExtra("userId");
+
+
     }
 
     public void manageWorkingHoursOnClick(View view) {
         Intent intent = new Intent(this, EmployeeWorkingHoursActivity.class);
+
+        //Pass the user to the next Activity
+        intent.putExtra("userId",userId);
+
         startActivity(intent);
     }
 
     public void manageEmployeeServiceOnClick(View view) {
         Intent intent = new Intent(this, EmployeeServicesActivity.class);
+
+        //Pass the user to the next Activity
+        intent.putExtra("userId",userId);
+
         startActivity(intent);
     }
 }

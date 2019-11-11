@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
+                            public void onComplete(@NonNull final Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     final String userId = task.getResult().getUser().getUid();
                                     usersReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -78,8 +78,12 @@ public class LoginActivity extends AppCompatActivity {
                                                         intent = new Intent(getApplicationContext(), SuccessfulLoginActivity.class);
                                                         intent.putExtra("welcomeMessage", "Welcome " + firstName + "! You are logged in as " + role + ".");
                                                     } else {
-                                                        intent = new Intent(getApplicationContext(), EmployeePage.class);
+                                                        intent = new Intent(getApplicationContext(), ClinicInfoActivity.class);
                                                         intent.putExtra("welcomeMessage", "Welcome " + firstName + "! You are logged in as " + role + "." + " Manage your services and working hours below.");
+
+                                                        //Pass the user to the next Activity
+                                                        intent.putExtra("userId",userId);
+
                                                     }
 
                                                     startActivity(intent);

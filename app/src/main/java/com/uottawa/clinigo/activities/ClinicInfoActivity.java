@@ -8,24 +8,21 @@ import android.view.View;
 
 import com.uottawa.clinigo.R;
 
-public class EmployeeServicesActivity extends AppCompatActivity {
+public class ClinicInfoActivity extends AppCompatActivity {
 
     String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_employee_services);
+        setContentView(R.layout.activity_clinic_info);
 
-        Intent intent = getIntent();
-        userId = intent.getStringExtra("userId");
-        System.out.println("AdelHI");
-        System.out.println(userId);
+        userId = getIntent().getStringExtra("userId");
     }
 
-
-    public void goToAddNewServicesPageOnClick(View view) {
-        Intent intent = new Intent(this, AvailableServicesActivity.class);
+    //Method to go to Employee manage Working hours/services.. page
+    public void goToEmployeePageOnClick(View view) {
+        Intent intent = new Intent(this, EmployeePage.class);
 
         //Pass the user to the next Activity
         intent.putExtra("userId",userId);
