@@ -12,10 +12,10 @@
         <activity android:name=".activities.ClinicInfoActivity"></activity>
         <activity
             android:name=".activities.AvailableServicesActivity"
-            android:label="Services To Choose From" />
+            android:label="Available Services To Choose From" />
         <activity
             android:name=".activities.EmployeeServicesActivity"
-            android:label="Available Services" />
+            android:label="Clinic Services" />
         <activity android:name=".activities.EmployeeWorkingHoursActivity" />
         <activity android:name=".activities.EmployeePage" />
         <activity

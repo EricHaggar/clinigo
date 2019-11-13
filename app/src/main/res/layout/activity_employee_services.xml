@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,10 +16,14 @@
     </ListView>
 
     <TextView
-        android:id="@+id/Services"
+        android:id="@+id/text_empty_services"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Services" />
+        android:layout_centerInParent="true"
+        android:text="@string/empty_service_list"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        tools:visibility="invisible" />
 
     <Button
         android:id="@+id/button_services"
@@ -28,12 +32,14 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/standard_buttons"
         android:onClick="goToAddNewServicesPageOnClick"
+        android:layout_centerHorizontal="true"
         android:text="Add Service"
         android:textColor="@color/colorText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Services"
+        app:layout_constraintTop_toBottomOf="@id/list_services"
+        android:layout_alignParentBottom="true"
          />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
