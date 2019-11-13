@@ -15,28 +15,182 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    <View
-        android:id="@+id/view_separator"
-        android:layout_width="match_parent"
-        android:layout_height="39dp" />
+        <View
+            android:id="@+id/view_separator"
+            android:layout_width="match_parent"
+            android:layout_height="39dp" />
 
-    <EditText
-        android:id="@+id/edit_clinic_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="Clinic Name"
-        android:inputType="textPersonName"
-        tools:targetApi="o" />
+        <EditText
+            android:id="@+id/edit_clinic_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/prompt_clinic_name"
+            android:inputType="textPersonName"
+            tools:targetApi="o" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Go to Employee Page"
-        android:onClick="goToEmployeePageOnClick"/>
+        <EditText
+            android:id="@+id/edit_clinic_phoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/prompt_phone_number"
+            android:inputType="phone"
+            android:maxLength="13"
+            tools:targetApi="o" />
+
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:maxHeight="120dp"
+            android:ems="10"
+            android:hint="@string/prompt_description"
+            android:inputType="textCapSentences|textMultiLine"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textColor="@android:color/black"
+            android:textSize="22sp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="5dp" />
+
+        <EditText
+            android:id="@+id/StreetName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:ems="10"
+            android:hint="@string/prompt_street_name"
+            android:inputType="textCapWords"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+            
+            <EditText
+                android:id="@+id/City"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:ems="10"
+                android:hint="@string/prompt_city"
+                android:inputType="textCapWords"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_toLeftOf="@id/PostalCode"
+                app:layout_constraintStart_toStartOf="parent" />
+            
+            <EditText
+                android:id="@+id/PostalCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPostalAddress"
+                android:maxLength="6"
+                android:layout_marginRight="20dp"
+                android:hint="Postal Code"
+                android:layout_toRightOf="@id/City"
+                android:layout_alignParentRight="true"
+                app:layout_constraintEnd_toStartOf="parent"/>
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/ProvinceName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:ems="10"
+            android:hint="@string/prompt_province"
+            android:inputType="textCapWords"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toStartOf="@id/licensedTitle">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:text="Country"
+                android:textSize="20sp"/>
+
+            <Spinner
+                android:id="@+id/spinner_country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintEnd_toStartOf="@id/goToEmployeeMain">
+
+            <TextView
+            android:id="@+id/licensedTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="23dp"
+            android:layout_marginEnd="15dp"
+            android:text="Licensed ?"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/description" />
+
+            <CheckBox
+                android:id="@+id/licensedCheckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/licensedTitle"
+                app:layout_constraintTop_toTopOf="@id/licensedTitle" />
+        </LinearLayout>
+
+
+
+        <Button
+            android:id="@+id/createClinicProfile"
+            android:layout_width="@dimen/standard_button_width"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/standard_buttons"
+            android:text="Create Profile"
+            android:textColor="@color/colorText" />
+
+        <Button
+            android:id="@+id/goToEmployeeMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go to Employee Page"
+            android:onClick="goToEmployeePageOnClick"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,6 +35,30 @@
     <string name="employee_welcome_message">Welcome Employee!</string>
     <string name="manage_working_hours">Working Hours</string>
     <string name="choose_clinic_services">Clinic Services</string>
+    <string name="clininc_name">Clinic Name</string>
+    <string name="clinic_phone_number">Phone Number</string>
+    <string name="prompt_clinic_name">Clinic Name</string>
+    <string name="prompt_description">Description</string>
+    <string name="prompt_street_name">Street Name</string>
+    <string name="prompt_city">City</string>
+    <string name="prompt_province">Province/State</string>
+    <string name="prompt_phone_number">Phone Number</string>
+    <string-array name="countries">
+        <item> </item>
+        <item>Argentina</item>
+        <item>Australia</item>
+        <item>Austria</item>
+        <item>Canada</item>
+        <item>China</item>
+        <item>Denmark</item>
+        <item>Egypt</item>
+        <item>France</item>
+        <item>Greece</item>
+        <item>Morocco</item>
+        <item>Ukraine</item>
+        <item>United Kingdom</item>
+        <item>Zambia</item>
+    </string-array>
     />
     />
 </resources>

@@ -5,12 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.uottawa.clinigo.R;
 
-public class ClinicInfoActivity extends AppCompatActivity {
+public class ClinicInfoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     String userId;
+    private String selectedCountry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +23,12 @@ public class ClinicInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_clinic_info);
 
         userId = getIntent().getStringExtra("userId");
+
+        Spinner spinner = findViewById(R.id.spinner_country);
+        ArrayAdapter<CharSequence> spinner_adapter = ArrayAdapter.createFromResource(this, R.array.countries, android.R.layout.simple_spinner_item);
+        spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(spinner_adapter);
+        spinner.setOnItemSelectedListener(this);
     }
 
     //Method to go to Employee manage Working hours/services.. page
@@ -29,4 +40,14 @@ public class ClinicInfoActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        String country = parent.getItemAtPosition(position).toString();
+        this.selectedCountry = country;
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {}
 }
