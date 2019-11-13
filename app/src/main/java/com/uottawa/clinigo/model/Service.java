@@ -40,7 +40,13 @@ public class Service {
      * */
     public void addEmployee(String employeeId) {
         this.employees.add(employeeId);
-        System.out.println(employees);
+    }
+
+    /**
+     * Function that initializes an empty array
+     * */
+    public void initializeEmptyEmployeeArray() {
+        this.employees = new ArrayList<String>();
     }
 
     /**

@@ -45,7 +45,10 @@ public class AvailableServicesActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Service service = services.get(i);
-                showUpdateServiceDialog(service.getId(), service.getName(), service.getRole());
+                if (service.getEmployees() == null) {
+                    service.initializeEmptyEmployeeArray();
+                }
+                showUpdateServiceDialog(service);//Adding employee Id to the service
                 return true;
             }
         });
@@ -82,7 +85,7 @@ public class AvailableServicesActivity extends AppCompatActivity {
 
 
 
-    public void showUpdateServiceDialog(final String serviceId, final String serviceName, final String role) {
+    public void showUpdateServiceDialog(final Service service) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.add_service_to_clinic_dialog, null);
@@ -92,7 +95,6 @@ public class AvailableServicesActivity extends AppCompatActivity {
         final Button buttonAdd = dialogView.findViewById(R.id.button_add_service);
         final Button buttonCancel = dialogView.findViewById(R.id.button_cancel);
 
-        //dialogBuilder.setTitle("Add Service");
 
         final AlertDialog b = dialogBuilder.create();
         b.show();
@@ -101,7 +103,8 @@ public class AvailableServicesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //ADD Service HERE!!!!!
-                addService(serviceId, serviceName, role, userId);
+                addService(service, userId);
+                b.dismiss();
 
             }
         });
@@ -115,23 +118,13 @@ public class AvailableServicesActivity extends AppCompatActivity {
 
     }
 
-    public void addService(String serviceId, String name, String role, String userId) {
+    public void addService(Service service, String userId) {
 
-        DatabaseReference dR = servicesReference.child(serviceId);
+        DatabaseReference dR = servicesReference.child(service.getId());
 
-        Service service = new Service(serviceId, name, role);
         service.addEmployee(userId);
         dR.setValue(service);
         Toast.makeText(getApplicationContext(), "Service Added", Toast.LENGTH_SHORT).show();
 
-        System.out.println("ADEL-DEBUG");
-        System.out.println(service.getEmployees());
-
-        //Adding a new service as a test
-//        String id = servicesReference.push().getKey();
-//        Service product = new Service(id, "TESTING TESTING", role);
-//        product.addEmployee(userId);//Crashes HERE
-//        servicesReference.child(id).setValue(product);
-//        Toast.makeText(this, "Service added", Toast.LENGTH_SHORT).show();
     }
 }
