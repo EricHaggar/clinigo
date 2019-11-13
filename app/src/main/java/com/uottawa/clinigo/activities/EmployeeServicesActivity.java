@@ -2,12 +2,16 @@ package com.uottawa.clinigo.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,17 +45,15 @@ public class EmployeeServicesActivity extends AppCompatActivity {
 
         //TODO: Below is to be overwritten when implementing the option for the user to delete the service
 
-//        servicesListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Service service = services.get(i);
-//                if (service.getEmployees() == null) {
-//                    service.initializeEmptyEmployeeArray();
-//                }
-//                showUpdateServiceDialog(service);//Adding employee Id to the service
-//                return true;
-//            }
-//        });
+        servicesListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Service service = services.get(i);
+
+                showDeleteServiceDialog(service);//Deleting service from the Clinc
+                return true;
+            }
+        });
 
         TextView emptyText = findViewById(R.id.text_empty_services);
         servicesListView.setEmptyView(emptyText);
@@ -105,5 +107,47 @@ public class EmployeeServicesActivity extends AppCompatActivity {
         }
 
         return returnValue;
+    }
+
+    public void deleteService(Service service, String userId) {
+        DatabaseReference dR = servicesReference.child(service.getId());
+        service.removeEmployee(userId);
+
+        dR.setValue(service);
+        Toast.makeText(getApplicationContext(), "Service Deleted", Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void showDeleteServiceDialog(final Service service) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.delete_service_from_clinic, null);
+        dialogBuilder.setView(dialogView);
+
+
+        final Button buttonDelete = dialogView.findViewById(R.id.button_delete_service);
+        final Button buttonCancel = dialogView.findViewById(R.id.button_cancel);
+
+
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Delete Service HERE!!!!!
+                deleteService(service, userId);
+                b.dismiss();
+
+            }
+        });
+
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.dismiss();
+            }
+        });
+
     }
 }

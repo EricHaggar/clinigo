@@ -69,7 +69,9 @@ public class AvailableServicesActivity extends AppCompatActivity {
                 services.clear();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Service service = postSnapshot.getValue(Service.class);
-                    services.add(service);
+
+                    if ((service.getEmployees() == null) ||(!clinicHasThisService(service.getEmployees())))
+                        services.add(service);
                 }
 
                 ServiceAdapter serviceAdapter = new ServiceAdapter(AvailableServicesActivity.this, services);
@@ -126,5 +128,16 @@ public class AvailableServicesActivity extends AppCompatActivity {
         dR.setValue(service);
         Toast.makeText(getApplicationContext(), "Service Added", Toast.LENGTH_SHORT).show();
 
+    }
+
+    public boolean clinicHasThisService (ArrayList<String> employees) {
+        boolean returnValue = false;
+
+        for (int i =0; i < employees.size(); i++) {
+            if (employees.get(i).equals(userId))
+                returnValue = true;
+        }
+
+        return returnValue;
     }
 }
