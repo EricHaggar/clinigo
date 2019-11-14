@@ -18,7 +18,7 @@
         <View
             android:id="@+id/view_separator"
             android:layout_width="match_parent"
-            android:layout_height="39dp" />
+            android:layout_height="30dp" />
 
         <EditText
             android:id="@+id/edit_clinic_name"
@@ -46,7 +46,7 @@
             tools:targetApi="o" />
 
         <EditText
-            android:id="@+id/description"
+            android:id="@+id/edit_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -67,7 +67,7 @@
             android:layout_marginTop="5dp" />
 
         <EditText
-            android:id="@+id/StreetName"
+            android:id="@+id/edit_street_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -85,35 +85,34 @@
             android:orientation="horizontal">
             
             <EditText
-                android:id="@+id/City"
+                android:id="@+id/edit_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="30dp"
                 android:ems="10"
                 android:hint="@string/prompt_city"
                 android:inputType="textCapWords"
                 android:textColor="@android:color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_toLeftOf="@id/PostalCode"
+                android:layout_toLeftOf="@id/edit_postal_code"
                 app:layout_constraintStart_toStartOf="parent" />
             
             <EditText
-                android:id="@+id/PostalCode"
+                android:id="@+id/edit_postal_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPostalAddress"
                 android:maxLength="6"
                 android:layout_marginRight="20dp"
                 android:hint="Postal Code"
-                android:layout_toRightOf="@id/City"
+                android:layout_toRightOf="@id/edit_city"
                 android:layout_alignParentRight="true"
                 app:layout_constraintEnd_toStartOf="parent"/>
         </LinearLayout>
 
 
         <EditText
-            android:id="@+id/ProvinceName"
+            android:id="@+id/edit_province_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -164,10 +163,10 @@
             android:text="Licensed ?"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/description" />
+            app:layout_constraintTop_toBottomOf="@id/spinner_country" />
 
             <CheckBox
-                android:id="@+id/licensedCheckbox"
+                android:id="@+id/checkbox_licensed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toEndOf="@id/licensedTitle"
@@ -183,7 +182,8 @@
             android:layout_gravity="center"
             android:background="@drawable/standard_buttons"
             android:text="Create Profile"
-            android:textColor="@color/colorText" />
+            android:textColor="@color/colorText"
+            android:onClick="createProfileOnClick"/>
 
         <Button
             android:id="@+id/goToEmployeeMain"

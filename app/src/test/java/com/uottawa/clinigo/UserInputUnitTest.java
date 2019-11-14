@@ -65,4 +65,22 @@ public class UserInputUnitTest {
         boolean valid = ValidationUtilities.isValidName("Physiotherapy2go");
         assertEquals("check invalid service name", false, valid);
     }
+
+    @Test
+    public void checkInvalidPostalCode(){
+        boolean valid = ValidationUtilities.isValidPostalCode("k4a005");
+        assertEquals("check invalid postalcode", false, valid);
+    }
+
+    @Test
+    public void checkValidPostalCode(){
+        boolean valid = ValidationUtilities.isValidPostalCode("k4a0s5");
+        assertEquals("check valid postalcoed", true, valid);
+    }
+
+    @Test
+    public void checkValidPhoneNumber(){
+        boolean valid = ValidationUtilities.isValidPhoneNumber("123-456-4954");
+        assertEquals("check valid phone number", true, valid);
+    }
 }
