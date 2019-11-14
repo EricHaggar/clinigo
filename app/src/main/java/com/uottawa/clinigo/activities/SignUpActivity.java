@@ -94,8 +94,7 @@ public class SignUpActivity extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-                                                    Intent intent = new Intent(getApplicationContext(), SuccessfulLoginActivity.class);
-                                                    intent.putExtra("welcomeMessage", "Welcome " + firstName + "! You are logged in as " + role + ".");
+                                                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                                                     startActivity(intent);
                                                     finish();
                                                 } else {

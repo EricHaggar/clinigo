@@ -22,7 +22,7 @@ public class AdminMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_main);
     }
 
-    public void manageAccountsOnClick(View view) {
+    public void manageUsersOnClick(View view) {
         Intent intent = new Intent(this, AdminUsersActivity.class);
         startActivity(intent);
     }

@@ -22,11 +22,12 @@
                   android:label="Employee Home" />
         <activity
             android:name=".activities.AdminServicesActivity"
+            android:label="Services"
              />
         <activity android:name=".adapters.ServiceAdapter" />
         <activity
             android:name=".activities.AdminUsersActivity"
-            android:label="Accounts"
+            android:label="Users"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.AdminMainActivity"
