@@ -35,7 +35,7 @@
     <string name="employee_welcome_message">Welcome Employee!</string>
     <string name="manage_working_hours">Working Hours</string>
     <string name="choose_clinic_services">Clinic Services</string>
-    <string name="clininc_name">Clinic Name</string>
+    <string name="clinic_name">Clinic Name</string>
     <string name="clinic_phone_number">Phone Number</string>
     <string name="prompt_clinic_name">Clinic Name</string>
     <string name="prompt_description">Description</string>
@@ -43,6 +43,8 @@
     <string name="prompt_city">City</string>
     <string name="prompt_province">Province/State</string>
     <string name="prompt_phone_number">Phone Number</string>
+    <string name="delete_service">Are you sure you want to delete this service?</string>
+    <string name="add_clinic_service">Are you sure you want to offer this service to your patients?</string>
     <string-array name="countries">
         <item>Argentina</item>
         <item>Australia</item>

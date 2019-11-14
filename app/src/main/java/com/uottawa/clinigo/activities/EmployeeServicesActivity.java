@@ -1,7 +1,5 @@
 package com.uottawa.clinigo.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +10,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -50,7 +50,7 @@ public class EmployeeServicesActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Service service = services.get(i);
 
-                showDeleteServiceDialog(service);//Deleting service from the Clinc
+                showDeleteServiceDialog(service); //Deleting service from the Clinic
                 return true;
             }
         });
@@ -89,19 +89,19 @@ public class EmployeeServicesActivity extends AppCompatActivity {
     }
 
 
-    public void goToAddNewServicesPageOnClick(View view) {
-        Intent intent = new Intent(this, AvailableServicesActivity.class);
+    public void addServiceOnClick(View view) {
+        Intent intent = new Intent(this, EmployeeAvailableServicesActivity.class);
 
         //Pass the user to the next Activity
-        intent.putExtra("userId",userId);
+        intent.putExtra("userId", userId);
 
         startActivity(intent);
     }
 
-    public boolean clinicHasThisService (ArrayList<String> employees) {
+    public boolean clinicHasThisService(ArrayList<String> employees) {
         boolean returnValue = false;
 
-        for (int i =0; i < employees.size(); i++) {
+        for (int i = 0; i < employees.size(); i++) {
             if (employees.get(i).equals(userId))
                 returnValue = true;
         }
@@ -115,7 +115,6 @@ public class EmployeeServicesActivity extends AppCompatActivity {
 
         dR.setValue(service);
         Toast.makeText(getApplicationContext(), "Service Deleted", Toast.LENGTH_SHORT).show();
-
     }
 
     public void showDeleteServiceDialog(final Service service) {
@@ -125,7 +124,7 @@ public class EmployeeServicesActivity extends AppCompatActivity {
         dialogBuilder.setView(dialogView);
 
 
-        final Button buttonDelete = dialogView.findViewById(R.id.button_delete_service);
+        final Button buttonDelete = dialogView.findViewById(R.id.button_add);
         final Button buttonCancel = dialogView.findViewById(R.id.button_cancel);
 
 
@@ -135,7 +134,6 @@ public class EmployeeServicesActivity extends AppCompatActivity {
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Delete Service HERE!!!!!
                 deleteService(service, userId);
                 b.dismiss();
 

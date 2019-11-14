@@ -11,16 +11,17 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activities.ClinicInfoActivity"></activity>
         <activity
-            android:name=".activities.AvailableServicesActivity"
-            android:label="Available Services To Choose From" />
+            android:name=".activities.EmployeeAvailableServicesActivity"
+            android:label="Add From Available Services" />
         <activity
             android:name=".activities.EmployeeServicesActivity"
             android:label="Clinic Services" />
         <activity android:name=".activities.EmployeeWorkingHoursActivity" />
-        <activity android:name=".activities.EmployeePage" />
+        <activity android:name=".activities.EmployeeMainActivity"
+                  android:label="Employee Home" />
         <activity
             android:name=".activities.AdminServicesActivity"
-            android:label="Services" />
+             />
         <activity android:name=".adapters.ServiceAdapter" />
         <activity
             android:name=".activities.AdminUsersActivity"

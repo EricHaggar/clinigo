@@ -19,13 +19,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.uottawa.clinigo.R;
 import com.uottawa.clinigo.adapters.ServiceAdapter;
-import com.uottawa.clinigo.adapters.UserAdapter;
 import com.uottawa.clinigo.model.Service;
-import com.uottawa.clinigo.model.User;
 
 import java.util.ArrayList;
 
-public class AvailableServicesActivity extends AppCompatActivity {
+public class EmployeeAvailableServicesActivity extends AppCompatActivity {
 
     ListView servicesListView;
     ArrayList<Service> services;
@@ -74,7 +72,7 @@ public class AvailableServicesActivity extends AppCompatActivity {
                         services.add(service);
                 }
 
-                ServiceAdapter serviceAdapter = new ServiceAdapter(AvailableServicesActivity.this, services);
+                ServiceAdapter serviceAdapter = new ServiceAdapter(EmployeeAvailableServicesActivity.this, services);
                 servicesListView.setAdapter(serviceAdapter);
             }
 
@@ -94,7 +92,7 @@ public class AvailableServicesActivity extends AppCompatActivity {
         dialogBuilder.setView(dialogView);
 
 
-        final Button buttonAdd = dialogView.findViewById(R.id.button_add_service);
+        final Button buttonAdd = dialogView.findViewById(R.id.button_add);
         final Button buttonCancel = dialogView.findViewById(R.id.button_cancel);
 
 
