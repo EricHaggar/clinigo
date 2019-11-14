@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.uottawa.clinigo.R;
 
@@ -33,7 +32,7 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
 
     //Method to go to Employee manage Working hours/services.. page
     public void goToEmployeePageOnClick(View view) {
-        Intent intent = new Intent(this, EmployeePage.class);
+        Intent intent = new Intent(this, EmployeeMainActivity.class);
 
         //Pass the user to the next Activity
         intent.putExtra("userId",userId);

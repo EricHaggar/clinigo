@@ -9,14 +9,14 @@ import android.widget.TextView;
 
 import com.uottawa.clinigo.R;
 
-public class EmployeePage extends AppCompatActivity {
+public class EmployeeMainActivity extends AppCompatActivity {
 
     String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_employee_page);
+        setContentView(R.layout.activity_employee_main);
 
         Intent intent = getIntent();
         String message = intent.getStringExtra("welcomeMessage");

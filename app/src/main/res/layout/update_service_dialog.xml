@@ -30,7 +30,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button_delete"
+            android:id="@+id/button_add"
             style="@android:style/Widget.DeviceDefault.Light.Button.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
