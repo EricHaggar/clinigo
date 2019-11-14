@@ -1,5 +1,6 @@
 package com.uottawa.clinigo.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,6 +14,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.uottawa.clinigo.model.Address;
+import com.uottawa.clinigo.model.Employee;
+import com.uottawa.clinigo.model.ClinicInfo;
+
+
 import com.uottawa.clinigo.utilities.ValidationUtilities;
 
 import com.uottawa.clinigo.R;
@@ -20,6 +31,8 @@ import com.uottawa.clinigo.R;
 public class ClinicInfoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     String userId;
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference usersReference;
     private String selectedCountry;
     private EditText postalCodeEditText;
     private EditText clinicNameEditText;
@@ -29,6 +42,9 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
     private EditText cityEditText;
     private EditText provinceEditText;
     private CheckBox licensedCheckbox;
+    private ClinicInfo clinicInfo;
+    private Employee employee;
+    private Address address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +65,10 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
     }
 
     public void initVariables(){
+
+        // Database entry point
+        mDatabase = FirebaseDatabase.getInstance();
+        usersReference = mDatabase.getReference("users");
 
         clinicNameEditText = findViewById(R.id.edit_clinic_name);
         phoneNumberEditText = findViewById(R.id.edit_clinic_phoneNumber);
@@ -91,9 +111,15 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
         final String country = selectedCountry;
         final boolean licensed = licensedCheckbox.isChecked();
 
+        DatabaseReference userRef = usersReference.child(userId);
+
         if(validProfileForm(clinicName, phoneNumber, description, streetName, city, postalCode, province)){
 
-            Toast.makeText(getApplicationContext(), "Valid Form", Toast.LENGTH_SHORT).show();
+            address = new Address(streetName, city, postalCode, province, country);
+            clinicInfo = new ClinicInfo(clinicName, phoneNumber,address, description, licensed);
+
+            Toast.makeText(getApplicationContext(), "Valid form!", Toast.LENGTH_SHORT).show();
+            userRef.setValue(clinicInfo);
         }
 
     }
