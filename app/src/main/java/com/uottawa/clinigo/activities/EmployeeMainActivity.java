@@ -31,7 +31,7 @@ public class EmployeeMainActivity extends AppCompatActivity {
     }
 
     public void manageWorkingHoursOnClick(View view) {
-        Intent intent = new Intent(this, EmployeeWorkingHoursActivity.class);
+        Intent intent = new Intent(this, WorkingHoursActivity.class);
 
         //Pass the user to the next Activity
         intent.putExtra("userId",userId);

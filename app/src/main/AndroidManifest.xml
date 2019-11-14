@@ -9,14 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.ClinicInfoActivity"></activity>
+        <activity android:name=".activities.WorkingHoursActivity"
+            android:label="Clinic Working Hours" ></activity>
+        <activity android:name=".activities.ClinicInfoActivity" />
         <activity
             android:name=".activities.EmployeeAvailableServicesActivity"
             android:label="Add From Available Services" />
         <activity
             android:name=".activities.EmployeeServicesActivity"
             android:label="Clinic Services" />
-        <activity android:name=".activities.EmployeeWorkingHoursActivity" />
         <activity android:name=".activities.EmployeeMainActivity"
                   android:label="Employee Home" />
         <activity

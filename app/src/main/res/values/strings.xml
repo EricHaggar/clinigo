@@ -61,6 +61,15 @@
         <item>United Kingdom</item>
         <item>Zambia</item>
     </string-array>
+    <string-array name="daysOfTheWeek">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
     />
     />
 </resources>
