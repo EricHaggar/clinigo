@@ -67,20 +67,26 @@ public class UserInputUnitTest {
     }
 
     @Test
-    public void checkInvalidPostalCode(){
-        boolean valid = ValidationUtilities.isValidPostalCode("k4a005");
-        assertEquals("check invalid postalcode", false, valid);
+    public void checkValidPostalCode(){
+        boolean valid = ValidationUtilities.isValidPostalCode("k4a0s5");
+        assertEquals("check valid postal code", true, valid);
     }
 
     @Test
-    public void checkValidPostalCode(){
-        boolean valid = ValidationUtilities.isValidPostalCode("k4a0s5");
-        assertEquals("check valid postalcoed", true, valid);
+    public void checkInvalidPostalCode(){
+        boolean valid = ValidationUtilities.isValidPostalCode("k4a005");
+        assertEquals("check invalid postal code", false, valid);
     }
 
     @Test
     public void checkValidPhoneNumber(){
         boolean valid = ValidationUtilities.isValidPhoneNumber("123-456-4954");
         assertEquals("check valid phone number", true, valid);
+    }
+
+    @Test
+    public void checkInvalidPhoneNumber(){
+        boolean valid = ValidationUtilities.isValidPhoneNumber("123456495");
+        assertEquals("check invalid phone number", false, valid);
     }
 }
