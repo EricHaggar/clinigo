@@ -30,7 +30,7 @@ import com.uottawa.clinigo.R;
 
 public class ClinicInfoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    String userId;
+    String userId, userEmail, userFirstName, userLastName, userRole;
     private FirebaseDatabase mDatabase;
     private DatabaseReference usersReference;
     private String selectedCountry;
@@ -68,7 +68,7 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
 
         // Database entry point
         mDatabase = FirebaseDatabase.getInstance();
-        usersReference = mDatabase.getReference("users");
+        usersReference = mDatabase.getReference().child("users");
 
         clinicNameEditText = findViewById(R.id.edit_clinic_name);
         phoneNumberEditText = findViewById(R.id.edit_clinic_phoneNumber);
@@ -111,71 +111,75 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
         final String country = selectedCountry;
         final boolean licensed = licensedCheckbox.isChecked();
 
-        DatabaseReference userRef = usersReference.child(userId);
-
+        final DatabaseReference userRef = usersReference.child(userId).child("clinicInfo");
         if(validProfileForm(clinicName, phoneNumber, description, streetName, city, postalCode, province)){
 
             address = new Address(streetName, city, postalCode, province, country);
             clinicInfo = new ClinicInfo(clinicName, phoneNumber,address, description, licensed);
-
-            Toast.makeText(getApplicationContext(), "Valid form!", Toast.LENGTH_SHORT).show();
-            userRef.setValue(clinicInfo);
+            try {
+                userRef.setValue(clinicInfo);
+                Intent intent = new Intent(getApplicationContext(), EmployeeMainActivity.class);
+                intent.putExtra("userId",userId);
+                startActivity(intent);
+                finish();
+            }
+            catch (Exception e){
+                Toast.makeText(getApplicationContext(), "Error,"+e, Toast.LENGTH_SHORT).show();
+            }
         }
 
     }
 
     public boolean validProfileForm(String clinicName, String phoneNumber, String description,String streetName, String city, String postalCode, String province){
 
+        boolean error = true;
         if(TextUtils.isEmpty(clinicName)){
             clinicNameEditText.setError("Clinic Name cannot be empty.");
-            return false;
-        }
-        if(clinicName.length() < 2){
+            error = false;
+        }else if(clinicName.length() < 2){
             clinicNameEditText.setError("Invalid Clinic Name.");
         }
         if(TextUtils.isEmpty(phoneNumber)){
             postalCodeEditText.setError("Phone Number cannpt be empty.");
-            return false;
-        }
-        if(!ValidationUtilities.isValidPhoneNumber(phoneNumber)){
+            error = false;
+        }else if(!ValidationUtilities.isValidPhoneNumber(phoneNumber)){
             phoneNumberEditText.setError("Invalid Phone Number.");
-            return false;
+            error = false;
         }
         if(TextUtils.isEmpty(description)){
             descriptionEditText.setError("Please provide a simple description.");
-            return false;
-        }
-        if(TextUtils.isEmpty(streetName)){
+            error = false;
+        }else if(TextUtils.isEmpty(streetName)){
             streetNameEditText.setError("Street Name cannot be empty.");
-            return false;
+            error = false;
         }
         if(streetName.length() < 4){
             streetNameEditText.setError("Invalid Street Name.");
-            return false;
+            error = false;
         }
         if(TextUtils.isEmpty(city)){
             cityEditText.setError("City cannot be empty.");
-            return false;
+            error = false;
         }
-        if(city.length() < 2){
+        else if(city.length() < 2){
             cityEditText.setError("Invalid City Name.");
-            return false;
+            error = false;
         }
         if(TextUtils.isEmpty(postalCode)){
             postalCodeEditText.setError("PostalCode cannot be empty.");
-        }
-        if(!ValidationUtilities.isValidPostalCode(postalCode)){
+        }else if(!ValidationUtilities.isValidPostalCode(postalCode)){
             postalCodeEditText.setError("Invalid PostalCode.");
-            return false;
+            error = false;
         }
         if(TextUtils.isEmpty(province)){
             provinceEditText.setError("Province cannot be empty.");
-            return false;
+            error = false;
         }
         if(province.length() < 2){
             provinceEditText.setError("Invalid Province.");
+            error = false;
         }
-        return true;
+        return error;
 
     }
 }

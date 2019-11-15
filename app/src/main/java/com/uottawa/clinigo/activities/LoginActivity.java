@@ -83,7 +83,6 @@ public class LoginActivity extends AppCompatActivity {
 
                                                         //Pass the user to the next Activity
                                                         intent.putExtra("userId",userId);
-
                                                     }
 
                                                     startActivity(intent);
