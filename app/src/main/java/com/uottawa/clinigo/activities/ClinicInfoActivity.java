@@ -1,8 +1,5 @@
 package com.uottawa.clinigo.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -14,19 +11,14 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.uottawa.clinigo.model.Address;
-import com.uottawa.clinigo.model.Employee;
-import com.uottawa.clinigo.model.ClinicInfo;
-
-
-import com.uottawa.clinigo.utilities.ValidationUtilities;
-
 import com.uottawa.clinigo.R;
+import com.uottawa.clinigo.model.Address;
+import com.uottawa.clinigo.model.ClinicInfo;
+import com.uottawa.clinigo.utilities.ValidationUtilities;
 
 public class ClinicInfoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -43,7 +35,6 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
     private EditText provinceEditText;
     private CheckBox licensedCheckbox;
     private ClinicInfo clinicInfo;
-    private Employee employee;
     private Address address;
 
     @Override
@@ -64,7 +55,7 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
 
     }
 
-    public void initVariables(){
+    public void initVariables() {
 
         // Database entry point
         mDatabase = FirebaseDatabase.getInstance();
@@ -80,16 +71,6 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
         licensedCheckbox = findViewById(R.id.checkbox_licensed);
     }
 
-    //Method to go to Employee manage Working hours/services.. page
-    public void goToEmployeePageOnClick(View view) {
-        Intent intent = new Intent(this, EmployeeMainActivity.class);
-
-        //Pass the user to the next Activity
-        intent.putExtra("userId",userId);
-
-        startActivity(intent);
-    }
-
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String country = parent.getItemAtPosition(position).toString();
@@ -97,9 +78,10 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> parent) {}
+    public void onNothingSelected(AdapterView<?> parent) {
+    }
 
-    public void createProfileOnClick(View view){
+    public void createProfileOnClick(View view) {
 
         final String clinicName = clinicNameEditText.getText().toString().trim();
         final String phoneNumber = phoneNumberEditText.getText().toString().trim();
@@ -112,71 +94,71 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
         final boolean licensed = licensedCheckbox.isChecked();
 
         final DatabaseReference userRef = usersReference.child(userId).child("clinicInfo");
-        if(validProfileForm(clinicName, phoneNumber, description, streetName, city, postalCode, province)){
+        if (validProfileForm(clinicName, phoneNumber, description, streetName, city, postalCode, province)) {
 
             address = new Address(streetName, city, postalCode, province, country);
-            clinicInfo = new ClinicInfo(clinicName, phoneNumber,address, description, licensed);
+            clinicInfo = new ClinicInfo(clinicName, phoneNumber, address, description, licensed);
             try {
                 userRef.setValue(clinicInfo);
                 Intent intent = new Intent(getApplicationContext(), EmployeeMainActivity.class);
-                intent.putExtra("userId",userId);
+                intent.putExtra("userId", userId);
                 startActivity(intent);
                 finish();
-            }
-            catch (Exception e){
-                Toast.makeText(getApplicationContext(), "Error,"+e, Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "Error," + e, Toast.LENGTH_SHORT).show();
             }
         }
 
     }
 
-    public boolean validProfileForm(String clinicName, String phoneNumber, String description,String streetName, String city, String postalCode, String province){
+    public boolean validProfileForm(String clinicName, String phoneNumber, String description, String streetName, String city, String postalCode, String province) {
 
         boolean error = true;
-        if(TextUtils.isEmpty(clinicName)){
+
+        if (TextUtils.isEmpty(clinicName)) {
             clinicNameEditText.setError("Clinic Name cannot be empty.");
             error = false;
-        }else if(clinicName.length() < 2){
-            clinicNameEditText.setError("Invalid Clinic Name.");
-        }
-        if(TextUtils.isEmpty(phoneNumber)){
-            postalCodeEditText.setError("Phone Number cannpt be empty.");
+        } else if (clinicName.length() < 2) {
+            clinicNameEditText.setError("Invalid Clinic Name. [Clinic name should be at least 2 characters]");
             error = false;
-        }else if(!ValidationUtilities.isValidPhoneNumber(phoneNumber)){
+        }
+        if (TextUtils.isEmpty(phoneNumber)) {
+            phoneNumberEditText.setError("Phone Number cannot be empty.");
+            error = false;
+        } else if (!ValidationUtilities.isValidPhoneNumber(phoneNumber)) {
             phoneNumberEditText.setError("Invalid Phone Number.");
             error = false;
         }
-        if(TextUtils.isEmpty(description)){
+        if (TextUtils.isEmpty(description)) {
             descriptionEditText.setError("Please provide a simple description.");
             error = false;
-        }else if(TextUtils.isEmpty(streetName)){
+        } else if (TextUtils.isEmpty(streetName)) {
             streetNameEditText.setError("Street Name cannot be empty.");
             error = false;
         }
-        if(streetName.length() < 4){
-            streetNameEditText.setError("Invalid Street Name.");
+        if (streetName.length() < 4) {
+            streetNameEditText.setError("Invalid Street Name. [Street name should be at least 4 characters]");
             error = false;
         }
-        if(TextUtils.isEmpty(city)){
+        if (TextUtils.isEmpty(city)) {
             cityEditText.setError("City cannot be empty.");
             error = false;
-        }
-        else if(city.length() < 2){
-            cityEditText.setError("Invalid City Name.");
+        } else if (city.length() < 2) {
+            cityEditText.setError("Invalid City Name. [City should be at least 2 characters]");
             error = false;
         }
-        if(TextUtils.isEmpty(postalCode)){
+        if (TextUtils.isEmpty(postalCode)) {
             postalCodeEditText.setError("PostalCode cannot be empty.");
-        }else if(!ValidationUtilities.isValidPostalCode(postalCode)){
+            error = false;
+        } else if (!ValidationUtilities.isValidPostalCode(postalCode)) {
             postalCodeEditText.setError("Invalid PostalCode.");
             error = false;
         }
-        if(TextUtils.isEmpty(province)){
+        if (TextUtils.isEmpty(province)) {
             provinceEditText.setError("Province cannot be empty.");
             error = false;
-        }
-        if(province.length() < 2){
-            provinceEditText.setError("Invalid Province.");
+        } else if (province.length() < 2) {
+            provinceEditText.setError("Invalid Province. [Province should be at least 2 characters]");
             error = false;
         }
         return error;

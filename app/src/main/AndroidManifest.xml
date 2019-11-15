@@ -11,7 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activities.WorkingHoursActivity"
             android:label="Clinic Working Hours" ></activity>
-        <activity android:name=".activities.ClinicInfoActivity" />
+        <activity android:name=".activities.ClinicInfoActivity"
+                  android:label="Create Clinic Profile"/>
         <activity
             android:name=".activities.EmployeeAvailableServicesActivity"
             android:label="Add From Available Services" />
