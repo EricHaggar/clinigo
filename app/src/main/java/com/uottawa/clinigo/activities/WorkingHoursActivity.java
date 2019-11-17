@@ -30,10 +30,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.view.View;
+import android.widget.TextView;
 
 public class WorkingHoursActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private String selectedDay;
+    private boolean isStartTimeSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +53,13 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
     }
 
     public void showTimePickerDialog(View v) {
-        DialogFragment newFragment = new TimePickerFragment();
+        DialogFragment newFragment = new TimePickerFragment(this);
         newFragment.show(getSupportFragmentManager(), "timePicker");
+
+        if (v.getId() == R.id.startTime)
+            isStartTimeSelected = true;
+        else
+            isStartTimeSelected = false;
     }
 
     @Override
@@ -63,4 +70,37 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {}
+
+    private boolean isTimeInAm(int hours) {
+        if (hours <= 12)
+            return true;
+        else
+            return false;
+    }
+    private  int convertHourToAmPmFormat(int hours) {
+        if(isTimeInAm(hours))
+            return hours;
+        else
+            return (hours-12);
+    }
+
+    public void changeTime (int hours, int minutes) {
+        TextView textChange;
+        if (isStartTimeSelected)
+            textChange = (TextView)findViewById(R.id.startTime);
+        else
+            textChange = (TextView)findViewById(R.id.endTime);
+
+        String morningNightFormat;
+
+        if (isTimeInAm(hours))
+            morningNightFormat = "AM";
+        else
+            morningNightFormat = "PM";
+
+
+        textChange.setText(convertHourToAmPmFormat(hours) + ":" + minutes + " " + morningNightFormat);
+    }
 }
+
+
