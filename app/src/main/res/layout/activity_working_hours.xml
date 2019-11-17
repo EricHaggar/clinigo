@@ -332,7 +332,8 @@
             android:id="@+id/button"
             android:layout_marginBottom="8dp"
             android:background="@drawable/standard_buttons"
-            android:textColor="@color/colorText" />
+            android:textColor="@color/colorText"
+            android:onClick="updateTime"/>
 
 
 </TableLayout>
