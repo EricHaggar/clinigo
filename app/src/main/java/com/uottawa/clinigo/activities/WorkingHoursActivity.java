@@ -9,6 +9,7 @@ import com.uottawa.clinigo.adapters.ServiceAdapter;
 import com.uottawa.clinigo.model.Service;
 import com.uottawa.clinigo.model.WorkingHours;
 import com.uottawa.clinigo.utilities.ValidationUtilities;
+import android.widget.Switch;
 
 import com.uottawa.clinigo.R;
 
@@ -205,6 +206,22 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
 
 
         textChange.setText(convertHourToAmPmFormat(hours) + ":" + minutesString + " " + morningNightFormat);
+    }
+
+    public void handleSwitchOnClick (View view) {
+        TextView startTime;
+        TextView endTime;
+
+        startTime = (TextView)findViewById(R.id.startTime);
+        endTime = (TextView)findViewById(R.id.endTime);
+
+
+        Switch simpleSwitch = (Switch) findViewById(R.id.closedSwitch);
+
+        if (simpleSwitch.isChecked()) {
+            startTime.setText("--");
+            endTime.setText("--");
+        }
     }
 }
 

@@ -319,6 +319,40 @@
 
     </TableRow>
 
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:height="100px"
+            android:gravity="center"
+            android:text="CLOSED"
+            android:textStyle="bold" />
+
+        <Switch
+            android:id="@+id/closedSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:onClick="handleSwitchOnClick"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="300px"
+            android:gravity="center"
+            android:text=""
+            android:textStyle="bold" />
+
+
+
+    </TableRow>
+
+
+
 
     <TextView
         android:width="300px"
