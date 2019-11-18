@@ -1,14 +1,16 @@
-package com.uottawa.clinigo.activities;
+package com.uottawa.clinigo.fragments;
 
-import androidx.fragment.app.DialogFragment;
-import android.app.TimePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
-import java.util.Calendar;
 import android.text.format.DateFormat;
 import android.widget.TimePicker;
-import android.widget.TextView;
-import com.uottawa.clinigo.R;
+
+import androidx.fragment.app.DialogFragment;
+
+import com.uottawa.clinigo.activities.WorkingHoursActivity;
+
+import java.util.Calendar;
 
 public class TimePickerFragment extends DialogFragment
         implements TimePickerDialog.OnTimeSetListener {

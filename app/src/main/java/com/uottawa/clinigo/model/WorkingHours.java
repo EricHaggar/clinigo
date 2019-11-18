@@ -13,8 +13,8 @@ public class WorkingHours {
 
         //Default Working hours
         for (int i=0; i<7; i++) {
-            this.startTime.add("8:00 AM");
-            this.endTime.add("4:00 PM");
+            this.startTime.add("9:00 AM");
+            this.endTime.add("5:00 PM");
         }
 
     }
