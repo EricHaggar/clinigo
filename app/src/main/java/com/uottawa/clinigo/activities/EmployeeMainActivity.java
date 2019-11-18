@@ -47,4 +47,11 @@ public class EmployeeMainActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
+
+    public void manageProfileInformation(View view){
+
+        Intent intent = new Intent(this, EditClinicInfoActivity.class);
+        intent.putExtra("userId", userId);
+        startActivity(intent);
+    }
 }

@@ -50,6 +50,12 @@
     <string name="country">Country</string>
     <string name="licensed">Licensed?</string>
     <string name="create_profile">Create Profile</string>
+    <string name="edit_clinic_profile">Edit Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="edit_profile_welcome_message">Edit Profile</string>
+    <string name="updated_profile_infromation">Save Changes</string>
+    <string name="prompt_address">Address</string>
+    <string name="update_clinic_information">SAVE</string>
     <string-array name="countries">
         <item>Argentina</item>
         <item>Australia</item>
@@ -64,6 +70,7 @@
         <item>Italy</item>
         <item>Ukraine</item>
         <item>United Kingdom</item>
+        <item>United States</item>
         <item>Zambia</item>
     </string-array>
     <string-array name="daysOfTheWeek">

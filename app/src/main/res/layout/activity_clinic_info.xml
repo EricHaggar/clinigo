@@ -50,25 +50,17 @@
             android:textColor="@android:color/black"
             android:importantForAutofill="no" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/address"
-            android:textColor="@android:color/black"
-            android:textSize="22sp" />
-
         <EditText
             android:id="@+id/edit_street_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/prompt_street_name"
+            android:hint="@string/prompt_address"
+            android:importantForAutofill="no"
             android:inputType="textCapWords"
             android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:importantForAutofill="no" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
             android:layout_width="match_parent"
