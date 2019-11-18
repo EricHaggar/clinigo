@@ -183,28 +183,6 @@ public class EditClinicInfoActivity extends AppCompatActivity implements Adapter
             });
 
         }
-
-
-//        if (validProfileForm()) {
-//            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-//            alertDialogBuilder.setMessage("Are you sure you want to update your Clinic Information?");
-//            alertDialogBuilder.setPositiveButton("Save Changes", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which) {
-//                    if (updateProfileInformation(view)) {
-//                        Toast.makeText(getApplicationContext(), "Your changes have been saved.", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//            });
-//            alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which) {
-//                    dialog.dismiss();
-//                }
-//            });
-//            AlertDialog alertDialog = alertDialogBuilder.create();
-//            alertDialog.show();
-//        }
     }
 
     public boolean validProfileForm() {
