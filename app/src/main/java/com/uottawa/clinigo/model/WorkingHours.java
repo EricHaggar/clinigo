@@ -8,15 +8,14 @@ public class WorkingHours {
     private ArrayList<String> endTime;
 
     public WorkingHours() {
-        this.startTime = new ArrayList<String>();
-        this.endTime = new ArrayList<String>();
+        this.startTime = new ArrayList<>();
+        this.endTime = new ArrayList<>();
 
         //Default Working hours
-        for (int i=0; i<7; i++) {
-            this.startTime.add("9:00 AM");
-            this.endTime.add("5:00 PM");
+        for (int i = 0; i < 7; i++) {
+            this.startTime.add("--");
+            this.endTime.add("--");
         }
-
     }
 
     public WorkingHours(ArrayList<String> startTime, ArrayList<String> endTime) {
@@ -34,21 +33,21 @@ public class WorkingHours {
     }
 
     /**
-     * Getter for endTime attribute
-     *
-     * @return ArrayList<String> endTime
-     */
-    public ArrayList<String> getEndTime() {
-        return this.endTime;
-    }
-
-    /**
      * Setter for role startTime
      *
      * @param startTime ArrayList<String> to be assigned
      */
     public void setStartTime(ArrayList<String> startTime) {
         this.startTime = startTime;
+    }
+
+    /**
+     * Getter for endTime attribute
+     *
+     * @return ArrayList<String> endTime
+     */
+    public ArrayList<String> getEndTime() {
+        return this.endTime;
     }
 
     /**

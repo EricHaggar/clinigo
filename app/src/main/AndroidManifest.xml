@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activities.EditClinicInfoActivity"
-            android:label="Edit Profile Information"/>
+            android:label="Edit Profile Information" />
         <activity
             android:name=".activities.WorkingHoursActivity"
             android:label="Clinic Working Hours" />

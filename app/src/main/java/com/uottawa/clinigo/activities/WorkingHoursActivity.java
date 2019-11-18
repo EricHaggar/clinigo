@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
@@ -31,6 +32,7 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
     private String selectedDay;
     private boolean isStartTimeSelected;
     private WorkingHours workingHours;
+    Switch closedSwitch = findViewById(R.id.switch_closed);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
         userId = intent.getStringExtra("userId");
 
         // should be moved to adapters later.
-        Spinner spinner = findViewById(R.id.spinner_daysOfTheWeek);
+        Spinner spinner = findViewById(R.id.spinner_days_of_week);
         ArrayAdapter<CharSequence> spinner_adapter = ArrayAdapter.createFromResource(this, R.array.daysOfTheWeek, android.R.layout.simple_spinner_item);
         spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinner_adapter);
@@ -51,8 +53,6 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
 
         usersReference = FirebaseDatabase.getInstance().getReference("users");
         workingHoursReference = usersReference.child(userId).child("workingHours");
-
-
     }
 
     @Override
@@ -75,6 +75,7 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
             public void onCancelled(DatabaseError databaseError) {
 
             }
+
         });
     }
 
@@ -82,7 +83,7 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
         DialogFragment newFragment = new TimePickerFragment(this);
         newFragment.show(getSupportFragmentManager(), "timePicker");
 
-        if (v.getId() == R.id.startTime)
+        if (v.getId() == R.id.text_update_start_time)
             isStartTimeSelected = true;
         else
             isStartTimeSelected = false;
@@ -138,8 +139,8 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
     }
 
     public void updateTime(View view) {
-        TextView startTime = (TextView) findViewById(R.id.startTime);
-        TextView endTime = (TextView) findViewById(R.id.endTime);
+        TextView startTime = findViewById(R.id.text_update_start_time);
+        TextView endTime = findViewById(R.id.text_update_end_time);
 
         ArrayList<String> newStartTime = workingHours.getStartTime();
         ArrayList<String> newEndTime = workingHours.getEndTime();
@@ -151,6 +152,9 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
         workingHours.setEndTime(newEndTime);
 
         pushToFirebase(workingHours);
+
+        Toast.makeText(getApplicationContext(), "Working Hours updated", Toast.LENGTH_SHORT).show();
+
     }
 
     private void populateTimeInTable(WorkingHours workingHours) {
@@ -167,11 +171,12 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
     }
 
     public void changeTime(int hours, int minutes) {
+
         TextView textChange;
         if (isStartTimeSelected)
-            textChange = (TextView) findViewById(R.id.startTime);
+            textChange = findViewById(R.id.text_update_start_time);
         else
-            textChange = (TextView) findViewById(R.id.endTime);
+            textChange = findViewById(R.id.text_update_end_time);
 
         String morningNightFormat;
 
@@ -194,15 +199,17 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
         TextView startTime;
         TextView endTime;
 
-        startTime = (TextView) findViewById(R.id.startTime);
-        endTime = (TextView) findViewById(R.id.endTime);
+        startTime = findViewById(R.id.text_update_start_time);
+        endTime = findViewById(R.id.text_update_end_time);
 
-
-        Switch simpleSwitch = (Switch) findViewById(R.id.switch_closed);
-
-        if (simpleSwitch.isChecked()) {
+        if (closedSwitch.isChecked()) {
             startTime.setText("--");
             endTime.setText("--");
+            startTime.setEnabled(false);
+            endTime.setEnabled(false);
+        } else {
+            startTime.setEnabled(true);
+            endTime.setEnabled(true);
         }
     }
 }

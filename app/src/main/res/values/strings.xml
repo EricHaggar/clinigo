@@ -61,7 +61,7 @@
     <string name="end">End</string>
     <string name="monday">Monday</string>
     <string name="default_start_time">9:00 AM</string>
-    <string name="default_end_time" >5:00 PM</string>
+    <string name="default_end_time">5:00 PM</string>
     <string name="tuesday">Tuesday</string>
     <string name="wednesday">Wednesday</string>
     <string name="thursday">Thursday</string>
@@ -71,6 +71,7 @@
     <string name="sunday">Sunday</string>
     <string name="update_time">Update Time</string>
     <string name="edit_profile_info">Are you sure you want to update your clinic information?</string>
+    <string name="empty_availability_list">There are currently no availabilities provided.</string>
     <string-array name="countries">
         <item>Argentina</item>
         <item>Australia</item>

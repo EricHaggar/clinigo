@@ -97,6 +97,7 @@ public class SignUpActivity extends AppCompatActivity {
                                                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                                                     startActivity(intent);
                                                     finish();
+                                                    Toast.makeText(getApplicationContext(), "Successfully registered account!", Toast.LENGTH_SHORT).show();
                                                 } else {
                                                     Toast.makeText(getApplicationContext(), "Firebase Database Error!", Toast.LENGTH_SHORT).show();
                                                 }

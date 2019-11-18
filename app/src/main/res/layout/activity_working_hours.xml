@@ -61,7 +61,8 @@
             android:height="35dp"
             android:gravity="center"
             android:text="@string/monday"
-            android:textAlignment="gravity" />
+            android:textAlignment="gravity"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/text_monday_start"
@@ -89,7 +90,8 @@
             android:layout_column="1"
             android:height="35dp"
             android:gravity="center"
-            android:text="@string/tuesday" />
+            android:text="@string/tuesday"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/text_tuesday_start"
@@ -116,7 +118,8 @@
             android:layout_column="1"
             android:height="35dp"
             android:gravity="center"
-            android:text="@string/wednesday" />
+            android:text="@string/wednesday"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/text_wednesday_start"
@@ -143,7 +146,8 @@
             android:layout_column="1"
             android:height="35dp"
             android:gravity="center"
-            android:text="@string/thursday" />
+            android:text="@string/thursday"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/text_thursday_start"
@@ -170,7 +174,8 @@
             android:layout_column="1"
             android:height="35dp"
             android:gravity="center"
-            android:text="@string/friday" />
+            android:text="@string/friday"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/text_friday_start"
@@ -197,7 +202,8 @@
             android:layout_column="1"
             android:height="35dp"
             android:gravity="center"
-            android:text="@string/saturday" />
+            android:text="@string/saturday"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/text_saturday_start"
@@ -224,7 +230,8 @@
             android:layout_column="1"
             android:height="35dp"
             android:gravity="center"
-            android:text="@string/sunday" />
+            android:text="@string/sunday"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/text_sunday_start"
@@ -292,30 +299,33 @@
         android:layout_marginBottom="5dp">
 
         <Spinner
-            android:id="@+id/spinner_daysOfTheWeek"
+            android:id="@+id/spinner_days_of_week"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="1"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="10dp"
             android:textAlignment="viewEnd" />
 
         <TextView
-            android:id="@+id/startTime"
+            android:id="@+id/text_update_start_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             android:gravity="center"
             android:onClick="showTimePickerDialog"
             android:text="@string/default_start_time"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/endTime"
+            android:id="@+id/text_update_end_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:onClick="showTimePickerDialog"
             android:text="@string/default_end_time"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold" />
 
 
     </TableRow>
