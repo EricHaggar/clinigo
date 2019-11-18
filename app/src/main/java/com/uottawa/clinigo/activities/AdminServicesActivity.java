@@ -131,7 +131,7 @@ public class AdminServicesActivity extends AppCompatActivity {
 
         final EditText serviceEditText = dialogView.findViewById(R.id.edit_service);
         final EditText roleEditText = dialogView.findViewById(R.id.edit_role);
-        final Button buttonUpdate = dialogView.findViewById(R.id.button_add);
+        final Button buttonUpdate = dialogView.findViewById(R.id.button_update);
         final Button buttonDelete = dialogView.findViewById(R.id.button_cancel);
 
         dialogBuilder.setTitle("Edit Service");

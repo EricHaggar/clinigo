@@ -121,7 +121,11 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
         } else if (clinicName.length() < 2) {
             clinicNameEditText.setError("Invalid Clinic Name. [Clinic name should be at least 2 characters]");
             error = false;
+        } else if (!ValidationUtilities.isValidName(clinicName)) {
+            clinicNameEditText.setError("Invalid Clinic Name.");
+            error = false;
         }
+
         if (TextUtils.isEmpty(phoneNumber)) {
             phoneNumberEditText.setError("Phone Number cannot be empty.");
             error = false;

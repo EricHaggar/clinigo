@@ -9,7 +9,7 @@
     android:paddingBottom="20dp">
 
     <TextView
-        android:id="@+id/text_delete_message"
+        android:id="@+id/text_edit_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -22,7 +22,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button_add"
+            android:id="@+id/button_update"
             style="@android:style/Widget.DeviceDefault.Light.Button.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

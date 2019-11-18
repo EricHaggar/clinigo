@@ -1,20 +1,21 @@
 package com.uottawa.clinigo.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.DialogInterface;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -61,7 +62,7 @@ public class EditClinicInfoActivity extends AppCompatActivity implements Adapter
         initVariables();
     }
 
-    public void initVariables(){
+    public void initVariables() {
 
         mDatabase = FirebaseDatabase.getInstance();
         usersReference = mDatabase.getReference().child("users").child(userId);
@@ -78,8 +79,8 @@ public class EditClinicInfoActivity extends AppCompatActivity implements Adapter
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                for(DataSnapshot data: dataSnapshot.getChildren()){
-                    if(data.getKey().equals("clinicInfo")) {
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    if (data.getKey().equals("clinicInfo")) {
                         clinicNameEditText.setText(data.child("name").getValue().toString());
                         phoneNumberEditText.setText(data.child("phoneNumber").getValue().toString());
                         descriptionEditText.setText(data.child("description").getValue().toString());
@@ -91,17 +92,20 @@ public class EditClinicInfoActivity extends AppCompatActivity implements Adapter
                         int default_position = spinner_adapter.getPosition(selectedCountry);
                         spinner.setSelection(default_position);
                         String isPreviouslyLicensed = data.child("license").getValue().toString();
-                        if(isPreviouslyLicensed.equals("true")){
+                        if (isPreviouslyLicensed.equals("true")) {
                             licensedCheckbox.setChecked(true);
                         }
                     }
                 }
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {}
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
         });
 
     }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String country = parent.getItemAtPosition(position).toString();
@@ -109,9 +113,11 @@ public class EditClinicInfoActivity extends AppCompatActivity implements Adapter
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> parent) {}
+    public void onNothingSelected(AdapterView<?> parent) {
+    }
+
     // update database information if all data is valid
-    public boolean updateProfileInformation(View view){
+    public boolean updateProfileInformation(View view) {
 
         final String clinicName = clinicNameEditText.getText().toString().trim();
         final String phoneNumber = phoneNumberEditText.getText().toString().trim();
@@ -125,51 +131,94 @@ public class EditClinicInfoActivity extends AppCompatActivity implements Adapter
 
 
         final DatabaseReference userRef = usersReference.child("clinicInfo");
-        if (validProfileForm(clinicName, phoneNumber, description, address, city, postalCode, province)) {
 
-            Address newAddress = new Address(address, city, postalCode, province, country);
-            clinicInfo = new ClinicInfo(clinicName, phoneNumber, newAddress, description, licensed);
-            try {
-                userRef.setValue(clinicInfo);
-                Intent intent = new Intent(getApplicationContext(), EmployeeMainActivity.class);
-                intent.putExtra("userId", userId);
-                startActivity(intent);
-                finish();
-                return true;
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), "Error," + e, Toast.LENGTH_SHORT).show();
-                return false;
-            }
+        Address newAddress = new Address(address, city, postalCode, province, country);
+        clinicInfo = new ClinicInfo(clinicName, phoneNumber, newAddress, description, licensed);
+        try {
+            userRef.setValue(clinicInfo);
+            Intent intent = new Intent(getApplicationContext(), EmployeeMainActivity.class);
+            intent.putExtra("userId", userId);
+            startActivity(intent);
+            finish();
+            return true;
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Error" + e, Toast.LENGTH_LONG).show();
+            return false;
         }
-        return false;
     }
 
 
-    public void saveChanges(final View view){
+    public void saveOnClick(View view) {
 
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setMessage("Are you sure you want to update your Clinic Information ?");
-        alertDialogBuilder.setPositiveButton("Save Changes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if(updateProfileInformation(view)) {
-                    Toast.makeText(getApplicationContext(), "Your Changes have been saved !", Toast.LENGTH_SHORT).show();
+        if (validProfileForm()) {
+            android.app.AlertDialog.Builder dialogBuilder = new android.app.AlertDialog.Builder(this);
+            LayoutInflater inflater = getLayoutInflater();
+            final View dialogView = inflater.inflate(R.layout.update_profile_info_dialog, null);
+            dialogBuilder.setView(dialogView);
+
+            final Button updateButton = dialogView.findViewById(R.id.button_update);
+            final Button cancelButton = dialogView.findViewById(R.id.button_cancel);
+
+            dialogBuilder.setTitle("Save Profile Changes");
+            final AlertDialog b = dialogBuilder.create();
+            b.show();
+
+            updateButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (updateProfileInformation(view)) {
+                        b.dismiss();
+                        Toast.makeText(getApplicationContext(), "Profile successfully updated.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Could not save profile changes.", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
-        alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-            }
-        });
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
+            });
+
+            cancelButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    b.dismiss();
+                }
+            });
+
+        }
+
+
+//        if (validProfileForm()) {
+//            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+//            alertDialogBuilder.setMessage("Are you sure you want to update your Clinic Information?");
+//            alertDialogBuilder.setPositiveButton("Save Changes", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                    if (updateProfileInformation(view)) {
+//                        Toast.makeText(getApplicationContext(), "Your changes have been saved.", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            });
+//            alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                    dialog.dismiss();
+//                }
+//            });
+//            AlertDialog alertDialog = alertDialogBuilder.create();
+//            alertDialog.show();
+//        }
     }
 
-    public boolean validProfileForm(String clinicName, String phoneNumber, String description, String streetName, String city, String postalCode, String province) {
+    public boolean validProfileForm() {
 
         boolean error = true;
+
+        String clinicName = clinicNameEditText.getText().toString().trim();
+        String phoneNumber = phoneNumberEditText.getText().toString().trim();
+        String description = descriptionEditText.getText().toString().trim();
+        String address = addressEditText.getText().toString().trim();
+        String city = cityEditText.getText().toString().trim();
+        String postalCode = postalCodeEditText.getText().toString().trim();
+        String province = provinceEditText.getText().toString();
+
 
         if (TextUtils.isEmpty(clinicName)) {
             clinicNameEditText.setError("Clinic Name cannot be empty.");
@@ -177,7 +226,11 @@ public class EditClinicInfoActivity extends AppCompatActivity implements Adapter
         } else if (clinicName.length() < 2) {
             clinicNameEditText.setError("Invalid Clinic Name. [Clinic name should be at least 2 characters]");
             error = false;
+        } else if (!ValidationUtilities.isValidName(clinicName)) {
+            clinicNameEditText.setError("Invalid Clinic Name.");
+            error = false;
         }
+
         if (TextUtils.isEmpty(phoneNumber)) {
             phoneNumberEditText.setError("Phone Number cannot be empty.");
             error = false;
@@ -188,11 +241,11 @@ public class EditClinicInfoActivity extends AppCompatActivity implements Adapter
         if (TextUtils.isEmpty(description)) {
             descriptionEditText.setError("Please provide a simple description.");
             error = false;
-        } else if (TextUtils.isEmpty(streetName)) {
+        } else if (TextUtils.isEmpty(address)) {
             addressEditText.setError("Street Name cannot be empty.");
             error = false;
         }
-        if (streetName.length() < 4) {
+        if (address.length() < 4) {
             addressEditText.setError("Invalid Street Name. [Street name should be at least 4 characters]");
             error = false;
         }

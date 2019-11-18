@@ -70,6 +70,7 @@
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
     <string name="update_time">Update Time</string>
+    <string name="edit_profile_info">Are you sure you want to update your clinic information?</string>
     <string-array name="countries">
         <item>Argentina</item>
         <item>Australia</item>

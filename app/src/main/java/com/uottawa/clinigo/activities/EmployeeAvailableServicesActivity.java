@@ -92,7 +92,7 @@ public class EmployeeAvailableServicesActivity extends AppCompatActivity {
         dialogBuilder.setView(dialogView);
 
 
-        final Button buttonAdd = dialogView.findViewById(R.id.button_add);
+        final Button buttonAdd = dialogView.findViewById(R.id.button_update);
         final Button buttonCancel = dialogView.findViewById(R.id.button_cancel);
 
 

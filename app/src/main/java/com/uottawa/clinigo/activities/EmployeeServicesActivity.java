@@ -124,7 +124,7 @@ public class EmployeeServicesActivity extends AppCompatActivity {
         dialogBuilder.setView(dialogView);
 
 
-        final Button buttonDelete = dialogView.findViewById(R.id.button_add);
+        final Button buttonDelete = dialogView.findViewById(R.id.button_update);
         final Button buttonCancel = dialogView.findViewById(R.id.button_cancel);
 
 
