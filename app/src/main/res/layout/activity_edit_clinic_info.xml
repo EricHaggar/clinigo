@@ -9,10 +9,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:paddingStart="16dp"
         android:paddingTop="5dp"
-        android:paddingEnd="16dp"
-        android:orientation="vertical">
+        android:paddingEnd="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,19 +21,19 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:textSize="16dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="5dp"
-                android:text="@string/clinic_name" />
-            
+                android:text="@string/clinic_name"
+                android:textSize="16dp" />
+
             <EditText
                 android:id="@+id/update_clinic_name_"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:ellipsize="end"
-                android:gravity="right|left"
-                android:layout_weight="1"/>
+                android:gravity="right|left" />
 
         </LinearLayout>
 
@@ -47,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="5dp"
+                android:textSize="16dp"
                 android:text="@string/clinic_phone_number" />
 
             <EditText
@@ -54,7 +55,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="right|left"/>
+                android:gravity="right|left" />
         </LinearLayout>
 
         <LinearLayout
@@ -67,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="5dp"
+                android:textSize="16dp"
                 android:text="@string/prompt_description" />
 
             <EditText
@@ -74,7 +76,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="right|left"/>
+                android:gravity="right|left" />
         </LinearLayout>
 
         <LinearLayout
@@ -87,6 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="5dp"
+                android:textSize="16dp"
                 android:text="@string/prompt_address" />
 
             <EditText
@@ -94,7 +97,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="right|left"/>
+                android:gravity="right|left" />
         </LinearLayout>
 
         <LinearLayout
@@ -107,6 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="5dp"
+                android:textSize="16dp"
                 android:text="@string/prompt_city" />
 
             <EditText
@@ -114,7 +118,28 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="right|left"/>
+                android:gravity="right|left" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="16dp"
+                android:padding="5dp"
+                android:text="@string/postal_code" />
+
+            <EditText
+                android:id="@+id/update_clinic_postal_code"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right|left" />
         </LinearLayout>
 
         <LinearLayout
@@ -127,14 +152,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="5dp"
-                android:text="@string/update_clinic_information" />
+                android:textSize="16dp"
+                android:text="@string/prompt_province" />
 
             <EditText
                 android:id="@+id/update_clinic_province"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="right|left"/>
+                android:gravity="right|left" />
         </LinearLayout>
 
         <LinearLayout
@@ -148,6 +174,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="5dp"
+                android:textSize="16dp"
                 android:text="@string/country" />
 
             <Spinner
@@ -158,19 +185,42 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/licensedTitle"
+                android:layout_width="196dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_weight="1"
+                android:textSize="16dp"
+                android:padding="5dp"
+                android:text="@string/licensed" />
+
+            <CheckBox
+                android:id="@+id/update_clinic_license"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/licensedTitle" />
+        </LinearLayout>
+
         <Button
             android:id="@+id/button_update_clinic_profile"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="15dp"
+            android:layout_gravity="center"
             android:layout_marginTop="8dp"
             android:background="@drawable/standard_buttons"
+            android:gravity="center|center_horizontal|center_vertical"
             android:onClick="saveChanges"
             android:text="@string/update_clinic_information"
             android:textColor="@color/colorText"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/horizontal_layout_country" />
+            app:layout_constraintTop_toBottomOf="@+id/licensedTitle" />
 
     </LinearLayout>
 
