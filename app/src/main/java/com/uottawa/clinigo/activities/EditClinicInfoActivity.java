@@ -226,6 +226,9 @@ public class EditClinicInfoActivity extends AppCompatActivity implements Adapter
         if (address.length() < 4) {
             addressEditText.setError("Invalid Street Name. [Street name should be at least 4 characters]");
             error = false;
+        }else if (!ValidationUtilities.isValidAddress(address)){
+            addressEditText.setError("Invalid address.");
+            error = false;
         }
         if (TextUtils.isEmpty(city)) {
             cityEditText.setError("City cannot be empty.");

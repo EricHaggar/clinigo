@@ -1,6 +1,7 @@
 package com.uottawa.clinigo.utilities;
 
 import androidx.core.util.PatternsCompat;
+import java.util.regex.Matcher;
 
 public class ValidationUtilities {
 
@@ -15,7 +16,33 @@ public class ValidationUtilities {
     public static boolean isValidName(String name) {
         return name.matches("[A-Z][a-zA-Z]*") || name.matches("[a-zA-z]+([ '-][a-zA-Z]+)*");
     }
-
+    public static boolean isInteger(String s) {
+        boolean isValidInteger = false;
+        try
+        {
+            Integer.parseInt(s);
+            isValidInteger = true;
+        }
+        catch (NumberFormatException ex)
+        {
+            isValidInteger = false;
+        }
+        return isValidInteger;
+    }
+    public static boolean isValidAddress( String address )
+    {
+        address = address.replace(",","");
+        String[] arrOfStr = address.split("\\s+");
+        if(arrOfStr.length == 1){return false;}
+        if(!isInteger(arrOfStr[0])){return false;}
+        if(arrOfStr.length > 5){return false;}
+        for(int i =1; i < arrOfStr.length; i ++){
+            if(!isValidName(arrOfStr[i])){
+                return false;
+            }
+        }
+        return true;
+    }
     public static  boolean isValidPostalCode(String postalCode){
         if(postalCode.length() < 6){return false;}
         for(int i = 0; i < postalCode.length(); i++) {

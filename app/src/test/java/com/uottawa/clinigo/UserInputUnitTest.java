@@ -89,4 +89,26 @@ public class UserInputUnitTest {
         boolean valid = ValidationUtilities.isValidPhoneNumber("123456495");
         assertEquals("check invalid phone number", false, valid);
     }
+
+    @Test
+    public void checkValidAddress(){
+        boolean valid = false;
+        String[] addresses = new String[]{"1234, Queen Street Ouest", "123 Queen Street", "1420 Winterspring"};
+        for(int i =0; i < addresses.length; i++){
+            valid = ValidationUtilities.isValidAddress(addresses[i]);
+            if(valid == false){break;}
+        }
+        assertEquals("check valid address", true, valid);
+    }
+
+    @Test
+    public void checkInvalidAddress(){
+        boolean valid = true;
+        String[] addresses = new String[]{"Street", "Queen West","Street NY 12"};
+        for(int i =0; i < addresses.length; i++) {
+            valid = ValidationUtilities.isValidAddress(addresses[i]);
+            if(valid == true){break;}
+        }
+        assertEquals("check invalid address", false, valid);
+    }
 }
