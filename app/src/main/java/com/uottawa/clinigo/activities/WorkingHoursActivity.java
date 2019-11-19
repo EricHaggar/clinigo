@@ -29,10 +29,15 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
     DatabaseReference usersReference;
     DatabaseReference workingHoursReference;
     String userId;
+    TextView[] startTimeTextViews;
+    TextView[] endTimeTextViews;
+    TextView updateStartTimeTextView;
+    TextView updateEndTimeTextView;
+    Switch closedSwitch;
+    Spinner spinner;
     private String selectedDay;
     private boolean isStartTimeSelected;
     private WorkingHours workingHours;
-    Switch closedSwitch = findViewById(R.id.switch_closed);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +48,7 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
         userId = intent.getStringExtra("userId");
 
         // should be moved to adapters later.
-        Spinner spinner = findViewById(R.id.spinner_days_of_week);
+        spinner = findViewById(R.id.spinner_days_of_week);
         ArrayAdapter<CharSequence> spinner_adapter = ArrayAdapter.createFromResource(this, R.array.daysOfTheWeek, android.R.layout.simple_spinner_item);
         spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinner_adapter);
@@ -53,6 +58,12 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
 
         usersReference = FirebaseDatabase.getInstance().getReference("users");
         workingHoursReference = usersReference.child(userId).child("workingHours");
+
+        startTimeTextViews = new TextView[]{findViewById(R.id.text_monday_start), findViewById(R.id.text_tuesday_start), findViewById(R.id.text_wednesday_start), findViewById(R.id.text_thursday_start), findViewById(R.id.text_friday_start), findViewById(R.id.text_saturday_start), findViewById(R.id.text_sunday_start)};
+        endTimeTextViews = new TextView[]{findViewById(R.id.text_monday_end), findViewById(R.id.text_tuesday_end), findViewById(R.id.text_wednesday_end), findViewById(R.id.text_thursday_end), findViewById(R.id.text_friday_end), findViewById(R.id.text_saturday_end), findViewById(R.id.text_sunday_end)};
+        updateStartTimeTextView = findViewById(R.id.text_update_start_time);
+        updateEndTimeTextView = findViewById(R.id.text_update_end_time);
+        closedSwitch = findViewById(R.id.switch_closed);
     }
 
     @Override
@@ -80,37 +91,27 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
     }
 
     public void showTimePickerDialog(View v) {
-        DialogFragment newFragment = new TimePickerFragment(this);
-        newFragment.show(getSupportFragmentManager(), "timePicker");
 
-        if (v.getId() == R.id.text_update_start_time)
-            isStartTimeSelected = true;
-        else
-            isStartTimeSelected = false;
+        if (!closedSwitch.isChecked()) {
+            DialogFragment newFragment = new TimePickerFragment(this);
+            newFragment.show(getSupportFragmentManager(), "timePicker");
+
+            if (v.getId() == R.id.text_update_start_time)
+                isStartTimeSelected = true;
+            else
+                isStartTimeSelected = false;
+        }
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String day = parent.getItemAtPosition(position).toString();
-        this.selectedDay = day;
+        selectedDay = day;
+        updateTextViewsFromWidget();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-    }
-
-    private boolean isTimeInAm(int hours) {
-        if (hours <= 12)
-            return true;
-        else
-            return false;
-    }
-
-    private int convertHourToAmPmFormat(int hours) {
-        if (isTimeInAm(hours))
-            return hours;
-        else
-            return (hours - 12);
     }
 
     private void pushToFirebase(WorkingHours wh) {
@@ -138,80 +139,115 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
             return 0;
     }
 
-    public void updateTime(View view) {
-        TextView startTime = findViewById(R.id.text_update_start_time);
-        TextView endTime = findViewById(R.id.text_update_end_time);
+    public void updateTimeOnClick(View view) {
 
-        ArrayList<String> newStartTime = workingHours.getStartTime();
-        ArrayList<String> newEndTime = workingHours.getEndTime();
+        if (validateUpdate()) {
 
-        newStartTime.set(getIndexForSelectedDay(this.selectedDay), startTime.getText().toString());
-        newEndTime.set(getIndexForSelectedDay(this.selectedDay), endTime.getText().toString());
+            ArrayList<String> newStartTime = workingHours.getStartTime();
+            ArrayList<String> newEndTime = workingHours.getEndTime();
 
-        workingHours.setStartTime(newStartTime);
-        workingHours.setEndTime(newEndTime);
+            newStartTime.set(getIndexForSelectedDay(selectedDay), updateStartTimeTextView.getText().toString());
+            newEndTime.set(getIndexForSelectedDay(selectedDay), updateEndTimeTextView.getText().toString());
 
-        pushToFirebase(workingHours);
+            workingHours.setStartTime(newStartTime);
+            workingHours.setEndTime(newEndTime);
 
-        Toast.makeText(getApplicationContext(), "Working Hours updated", Toast.LENGTH_SHORT).show();
+            pushToFirebase(workingHours);
 
+            Toast.makeText(getApplicationContext(), "Working Hours updated", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void updateTextViewFromTimePicker(int hours, int minutes) {
+
+        TextView textChange;
+
+        if (isStartTimeSelected)
+            textChange = updateStartTimeTextView;
+        else
+            textChange = updateEndTimeTextView;
+
+        textChange.setText(String.format("%02d:%02d", hours, minutes));
+    }
+
+    public void updateTextViewsFromWidget() {
+
+        if (!closedSwitch.isChecked()) {
+            int index = getIndexForSelectedDay(selectedDay);
+
+            String startTime = workingHours.getStartTime().get(index);
+            String endTime = workingHours.getEndTime().get(index);
+
+            updateStartTimeTextView.setText(startTime);
+            updateEndTimeTextView.setText(endTime);
+        }
     }
 
     private void populateTimeInTable(WorkingHours workingHours) {
-        //Text Views
-        TextView[] startTime = {findViewById(R.id.text_monday_start), findViewById(R.id.text_tuesday_start), findViewById(R.id.text_wednesday_start), findViewById(R.id.text_thursday_start), findViewById(R.id.text_friday_start), findViewById(R.id.text_saturday_start), findViewById(R.id.text_sunday_start)};
-
-        TextView[] endTime = {findViewById(R.id.text_monday_end), findViewById(R.id.text_tuesday_end), findViewById(R.id.text_wednesday_end), findViewById(R.id.text_thursday_end), findViewById(R.id.text_friday_end), findViewById(R.id.text_saturday_end), findViewById(R.id.text_sunday_end)};
-
-
         for (int i = 0; i < 7; i++) {
-            startTime[i].setText(workingHours.getStartTime().get(i));
-            endTime[i].setText(workingHours.getEndTime().get(i));
+            startTimeTextViews[i].setText(workingHours.getStartTime().get(i));
+            endTimeTextViews[i].setText(workingHours.getEndTime().get(i));
         }
-    }
-
-    public void changeTime(int hours, int minutes) {
-
-        TextView textChange;
-        if (isStartTimeSelected)
-            textChange = findViewById(R.id.text_update_start_time);
-        else
-            textChange = findViewById(R.id.text_update_end_time);
-
-        String morningNightFormat;
-
-        if (isTimeInAm(hours))
-            morningNightFormat = "AM";
-        else
-            morningNightFormat = "PM";
-
-        String minutesString;
-        minutesString = Integer.toString(minutes);
-
-        if (minutes < 10)
-            minutesString = "0" + minutesString;
-
-
-        textChange.setText(convertHourToAmPmFormat(hours) + ":" + minutesString + " " + morningNightFormat);
     }
 
     public void handleSwitchOnClick(View view) {
-        TextView startTime;
-        TextView endTime;
-
-        startTime = findViewById(R.id.text_update_start_time);
-        endTime = findViewById(R.id.text_update_end_time);
 
         if (closedSwitch.isChecked()) {
-            startTime.setText("--");
-            endTime.setText("--");
-            startTime.setEnabled(false);
-            endTime.setEnabled(false);
+            updateStartTimeTextView.setText("--");
+            updateEndTimeTextView.setText("--");
+            updateStartTimeTextView.setEnabled(false);
+            updateEndTimeTextView.setEnabled(false);
         } else {
-            startTime.setEnabled(true);
-            endTime.setEnabled(true);
+            updateStartTimeTextView.setEnabled(true);
+            updateEndTimeTextView.setEnabled(true);
         }
+
+        updateTextViewsFromWidget();
+    }
+
+    public boolean validateUpdate() {
+
+        boolean valid = true;
+
+        String startTime = updateStartTimeTextView.getText().toString();
+        String endTime = updateEndTimeTextView.getText().toString();
+
+        if (closedSwitch.isChecked()) {
+            if (!startTime.equals("--") && !endTime.equals("--")) {
+                valid = false;
+            }
+        } else if (startTime.equals("--") || endTime.equals("--")) {
+            Toast.makeText(getApplicationContext(), "Both start time and end time need to be filled!", Toast.LENGTH_SHORT).show();
+            valid = false;
+        } else {
+            valid = validTimeRange(startTime, endTime);
+        }
+        return valid;
+    }
+
+    public boolean validTimeRange(String startTime, String endTime) {
+
+        int convertedStartTime = convertToMinutes(startTime);
+        int convertedEndTime = convertToMinutes(endTime);
+        int difference = convertedEndTime - convertedStartTime;
+
+        if (difference < 0) {
+            Toast.makeText(getApplicationContext(), "Invalid time range.", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (difference < 30) {
+            Toast.makeText(getApplicationContext(), "Time range is too short (Minimum: 30 minutes).", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
+    }
+
+    public int convertToMinutes(String time) {
+        String[] hourMin = time.split(":");
+        int hours = Integer.parseInt(hourMin[0]);
+        int minutes = Integer.parseInt(hourMin[1]);
+        int hoursInMinutes = hours * 60;
+        return hoursInMinutes + minutes;
     }
 }
-
 

@@ -25,15 +25,15 @@ public class TimePickerFragment extends DialogFragment
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the current time as the default values for the picker
         final Calendar c = Calendar.getInstance();
-        int hour = c.get(Calendar.HOUR_OF_DAY);
-        int minute = c.get(Calendar.MINUTE);
+        int hours = c.get(Calendar.HOUR_OF_DAY);
+        int minutes = c.get(Calendar.MINUTE);
 
         // Create a new instance of TimePickerDialog and return it
-        return new TimePickerDialog(getActivity(), this, hour, minute,
+        return new TimePickerDialog(getActivity(), this, hours, minutes,
                 DateFormat.is24HourFormat(getActivity()));
     }
 
-    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        this.workHours.changeTime(hourOfDay, minute);
+    public void onTimeSet(TimePicker view, int hours, int minutes) {
+        this.workHours.updateTextViewFromTimePicker(hours, minutes);
     }
 }

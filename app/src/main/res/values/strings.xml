@@ -60,8 +60,8 @@
     <string name="start">Start</string>
     <string name="end">End</string>
     <string name="monday">Monday</string>
-    <string name="default_start_time">9:00 AM</string>
-    <string name="default_end_time">5:00 PM</string>
+    <string name="default_start_time">--</string>
+    <string name="default_end_time">--</string>
     <string name="tuesday">Tuesday</string>
     <string name="wednesday">Wednesday</string>
     <string name="thursday">Thursday</string>

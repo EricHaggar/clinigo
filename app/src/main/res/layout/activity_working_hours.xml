@@ -366,7 +366,7 @@
         android:layout_marginEnd="120dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/standard_buttons"
-        android:onClick="updateTime"
+        android:onClick="updateTimeOnClick"
         android:text="@string/update_time"
         android:textColor="@color/colorText" />
 
