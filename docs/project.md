@@ -19,7 +19,7 @@ copying whole blocks of code from the internet to implement features. Should a g
 
 ---
 
-The app will be conceived with three different types of users in mind. The administrator, the walk-in clinics employees, and the patients. The administrator manages all the possible services that can be offered to patients by walk-in clinics. The walk-in clinic employee creates a profile for the clinic and selects the services offered by the walk-in clinic and the working hours. The patients can search for a walk-in clinic by address/type of service provided or by working hours.
+The app will be conceived with three different types of users in mind. The administrator, the walk-in clinics employees, and the patients. The administrator manages all the possible services that can be offered to patients by walk-in clinics. The walk-in clinic employee creates a profile for the clinic and selects the services offered by the walk-in clinic and the working hours. The patients can search for a walk-in clinic by location/type of service provided or by working hours.
 
 The features that should be available to each type of user are given below. Note that those are the minimum required features, and you are free to add more features you think might enrich your application.
 
@@ -34,7 +34,7 @@ The features that should be available to each type of user are given below. Note
 
 ### The patient can:
 1. Create an account
-2. Search for a walk in clinic by address/type of service provided/working hours
+2. Search for a walk in clinic by location/type of service provided/working hours
 3. Check in/book an appointment
 4. Rate his/her experience at the walk in clinic
 

@@ -4,15 +4,15 @@ public class ClinicInfo {
 
     private String name;
     private String phoneNumber;
-    private Address address;
+    private Location location;
     private String description;
     private boolean licensed;
 
-    public ClinicInfo(String name, String phoneNumber, Address address, String description, boolean licensed){
+    public ClinicInfo(String name, String phoneNumber, Location location, String description, boolean licensed){
 
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.address = address;
+        this.location = location;
         this.description = description;
         this.licensed = licensed;
     }
@@ -21,7 +21,7 @@ public class ClinicInfo {
 
     public void setPhoneNumber(String phoneNumber){this.phoneNumber = phoneNumber;}
 
-    public void setAddress(Address address){this.address = address;}
+    public void setLocation(Location location){this.location = location;}
 
     public void setDescription(String description){this.description = description;}
 
@@ -31,7 +31,7 @@ public class ClinicInfo {
 
     public String getPhoneNumber(){return this.phoneNumber;}
 
-    public Address getAddress(){return this.address;}
+    public Location getLocation(){return this.location;}
 
     public String getDescription(){return this.description;}
 

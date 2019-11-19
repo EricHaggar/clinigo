@@ -96,6 +96,7 @@ public class EmployeeServicesActivity extends AppCompatActivity {
         intent.putExtra("userId", userId);
 
         startActivity(intent);
+        finish();
     }
 
     public boolean clinicHasThisService(ArrayList<String> employees) {

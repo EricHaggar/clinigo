@@ -1,23 +1,23 @@
 package com.uottawa.clinigo.model;
 
-public class Address {
+public class Location {
 
-    private String streetName;
+    private String address;
     private String city;
     private String postalCode;
     private String province;
     private String country;
 
-    public Address(String streetName, String city, String postalCode, String province, String country){
+    public Location(String address, String city, String postalCode, String province, String country){
 
-        this.streetName = streetName;
+        this.address = address;
         this.city = city;
         this.postalCode = postalCode;
         this.province = province;
         this.country = country;
     }
 
-    public void setStreetName(String streetName){this.streetName = streetName;}
+    public void setAddress(String address){this.address = address;}
 
     public void setCity(String city){this.city = city;}
 
@@ -27,7 +27,7 @@ public class Address {
 
     public void setCountry(String country){this.country = country;}
 
-    public String getStreetName(){return this.streetName;}
+    public String getAddress(){return this.address;}
 
     public String getCity(){return  this.city;}
 

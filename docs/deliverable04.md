@@ -147,7 +147,7 @@ You will upload this file to BrightSpace before the deadline.
 | Can book a service by selecting a preferred timeslot | 20 |
 | Can rate a service by providing a comment and a rate from 1 to 5 | 15 |
 | CircleCI - Build button needs to appear in the Github (see instructions above). | 10 |
-| All fields are validated. For instance, you should not be able to select a<br>date in the past when creating a timeslot or entering an invalid address.<br>This should be implemented along with valid error messages.<br>(-1 for each field in which the user input is not validated) | 10 |
+| All fields are validated. For instance, you should not be able to select a<br>date in the past when creating a timeslot or entering an invalid location.<br>This should be implemented along with valid error messages.<br>(-1 for each field in which the user input is not validated) | 10 |
 
 
 ## Notes

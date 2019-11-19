@@ -44,7 +44,7 @@ The following features outlined below and in the marking scheme should only be p
 
 The process of completing the service provider's profile information includes:
 
-* Enter address (mandatory field) and phone number (mandatory field)
+* Enter location (mandatory field) and phone number (mandatory field)
 * Name of the company (mandatory field)
 * General description (e.g. I have 20 years of experience fixing washer and dryers)
 * Licensed (Yes/No).
@@ -134,7 +134,7 @@ You will upload this file to BrightSpace before the deadline.
 | Can delete services from their profile | 10 |
 | Can specify their own availabilities<br>Refer to `Managing Serivce Provider Availability` above | 20 |
 | Can see the list of their own availability times.<br>Refer to `Managing Serivce Provider Availability` above  | 10 |
-| All fields are validated.<br>For instance, you should not be able to select<br>a date in the past when creating a timeslot or entering an invalid address.<br>This should be implemented along with valid error messages.<br>(-1 for each field in which the user input is not validated) | 10 |
+| All fields are validated.<br>For instance, you should not be able to select<br>a date in the past when creating a timeslot or entering an invalid location.<br>This should be implemented along with valid error messages.<br>(-1 for each field in which the user input is not validated) | 10 |
 | OPTIONAL – Can edit the availabilities | +10 |
 
 ## Notes

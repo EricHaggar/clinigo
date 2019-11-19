@@ -23,8 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.uottawa.clinigo.R;
-import com.uottawa.clinigo.model.Address;
 import com.uottawa.clinigo.model.ClinicInfo;
+import com.uottawa.clinigo.model.Location;
 import com.uottawa.clinigo.utilities.ValidationUtilities;
 
 public class EditClinicInfoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -84,11 +84,11 @@ public class EditClinicInfoActivity extends AppCompatActivity implements Adapter
                         clinicNameEditText.setText(data.child("name").getValue().toString());
                         phoneNumberEditText.setText(data.child("phoneNumber").getValue().toString());
                         descriptionEditText.setText(data.child("description").getValue().toString());
-                        addressEditText.setText(data.child("address").child("streetName").getValue().toString());
-                        cityEditText.setText(data.child("address").child("city").getValue().toString());
-                        postalCodeEditText.setText(data.child("address").child("postalCode").getValue().toString());
-                        provinceEditText.setText(data.child("address").child("province").getValue().toString());
-                        selectedCountry = data.child("address").child("country").getValue().toString();
+                        addressEditText.setText(data.child("location").child("address").getValue().toString());
+                        cityEditText.setText(data.child("location").child("city").getValue().toString());
+                        postalCodeEditText.setText(data.child("location").child("postalCode").getValue().toString());
+                        provinceEditText.setText(data.child("location").child("province").getValue().toString());
+                        selectedCountry = data.child("location").child("country").getValue().toString();
                         int default_position = spinner_adapter.getPosition(selectedCountry);
                         spinner.setSelection(default_position);
                         String isPreviouslyLicensed = data.child("license").getValue().toString();
@@ -132,8 +132,8 @@ public class EditClinicInfoActivity extends AppCompatActivity implements Adapter
 
         final DatabaseReference userRef = usersReference.child("clinicInfo");
 
-        Address newAddress = new Address(address, city, postalCode, province, country);
-        clinicInfo = new ClinicInfo(clinicName, phoneNumber, newAddress, description, licensed);
+        Location newLocation = new Location(address, city, postalCode, province, country);
+        clinicInfo = new ClinicInfo(clinicName, phoneNumber, newLocation, description, licensed);
         try {
             userRef.setValue(clinicInfo);
             Intent intent = new Intent(getApplicationContext(), EmployeeMainActivity.class);
@@ -216,20 +216,21 @@ public class EditClinicInfoActivity extends AppCompatActivity implements Adapter
             phoneNumberEditText.setError("Invalid Phone Number.");
             error = false;
         }
+
         if (TextUtils.isEmpty(description)) {
             descriptionEditText.setError("Please provide a simple description.");
             error = false;
-        } else if (TextUtils.isEmpty(address)) {
-            addressEditText.setError("Street Name cannot be empty.");
-            error = false;
         }
-        if (address.length() < 4) {
-            addressEditText.setError("Invalid Street Name. [Street name should be at least 4 characters]");
+
+
+        if (TextUtils.isEmpty(address)) {
+            addressEditText.setError("Please provide an address.");
             error = false;
-        }else if (!ValidationUtilities.isValidAddress(address)){
+        } else if (!ValidationUtilities.isValidAddress(address)) {
             addressEditText.setError("Invalid address.");
             error = false;
         }
+
         if (TextUtils.isEmpty(city)) {
             cityEditText.setError("City cannot be empty.");
             error = false;
@@ -237,6 +238,7 @@ public class EditClinicInfoActivity extends AppCompatActivity implements Adapter
             cityEditText.setError("Invalid City Name. [City should be at least 2 characters]");
             error = false;
         }
+
         if (TextUtils.isEmpty(postalCode)) {
             postalCodeEditText.setError("PostalCode cannot be empty.");
             error = false;
@@ -244,6 +246,7 @@ public class EditClinicInfoActivity extends AppCompatActivity implements Adapter
             postalCodeEditText.setError("Invalid PostalCode.");
             error = false;
         }
+
         if (TextUtils.isEmpty(province)) {
             provinceEditText.setError("Province cannot be empty.");
             error = false;

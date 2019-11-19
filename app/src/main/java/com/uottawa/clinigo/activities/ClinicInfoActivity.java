@@ -16,8 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.uottawa.clinigo.R;
-import com.uottawa.clinigo.model.Address;
 import com.uottawa.clinigo.model.ClinicInfo;
+import com.uottawa.clinigo.model.Location;
 import com.uottawa.clinigo.utilities.ValidationUtilities;
 
 public class ClinicInfoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -30,12 +30,12 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
     private EditText clinicNameEditText;
     private EditText phoneNumberEditText;
     private EditText descriptionEditText;
-    private EditText streetNameEditText;
+    private EditText addressEditText;
     private EditText cityEditText;
     private EditText provinceEditText;
     private CheckBox licensedCheckbox;
     private ClinicInfo clinicInfo;
-    private Address address;
+    private Location location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
         clinicNameEditText = findViewById(R.id.edit_clinic_name);
         phoneNumberEditText = findViewById(R.id.edit_clinic_phoneNumber);
         descriptionEditText = findViewById(R.id.edit_description);
-        streetNameEditText = findViewById(R.id.edit_street_name);
+        addressEditText = findViewById(R.id.edit_address);
         cityEditText = findViewById(R.id.edit_city);
         provinceEditText = findViewById(R.id.edit_province_name);
         postalCodeEditText = findViewById(R.id.edit_postal_code);
@@ -86,7 +86,7 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
         final String clinicName = clinicNameEditText.getText().toString().trim();
         final String phoneNumber = phoneNumberEditText.getText().toString().trim();
         final String description = descriptionEditText.getText().toString().trim();
-        final String streetName = streetNameEditText.getText().toString().trim();
+        final String address = addressEditText.getText().toString().trim();
         final String city = cityEditText.getText().toString().trim();
         final String postalCode = postalCodeEditText.getText().toString().trim();
         final String province = provinceEditText.getText().toString();
@@ -94,10 +94,10 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
         final boolean licensed = licensedCheckbox.isChecked();
 
         final DatabaseReference userRef = usersReference.child(userId).child("clinicInfo");
-        if (validProfileForm(clinicName, phoneNumber, description, streetName, city, postalCode, province)) {
+        if (validProfileForm(clinicName, phoneNumber, description, address, city, postalCode, province)) {
 
-            address = new Address(streetName, city, postalCode, province, country);
-            clinicInfo = new ClinicInfo(clinicName, phoneNumber, address, description, licensed);
+            location = new Location(address, city, postalCode, province, country);
+            clinicInfo = new ClinicInfo(clinicName, phoneNumber, location, description, licensed);
             try {
                 userRef.setValue(clinicInfo);
                 Intent intent = new Intent(getApplicationContext(), EmployeeMainActivity.class);
@@ -111,7 +111,7 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
 
     }
 
-    public boolean validProfileForm(String clinicName, String phoneNumber, String description, String streetName, String city, String postalCode, String province) {
+    public boolean validProfileForm(String clinicName, String phoneNumber, String description, String address, String city, String postalCode, String province) {
 
         boolean error = true;
 
@@ -133,17 +133,20 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
             phoneNumberEditText.setError("Invalid Phone Number.");
             error = false;
         }
+
         if (TextUtils.isEmpty(description)) {
             descriptionEditText.setError("Please provide a simple description.");
             error = false;
-        } else if (TextUtils.isEmpty(streetName)) {
-            streetNameEditText.setError("Street Name cannot be empty.");
+        }
+
+        if (TextUtils.isEmpty(address)) {
+            addressEditText.setError("Please provide an address.");
+            error = false;
+        } else if (!ValidationUtilities.isValidAddress(address)) {
+            addressEditText.setError("Invalid address.");
             error = false;
         }
-        if (streetName.length() < 4) {
-            streetNameEditText.setError("Invalid Street Name. [Street name should be at least 4 characters]");
-            error = false;
-        }
+
         if (TextUtils.isEmpty(city)) {
             cityEditText.setError("City cannot be empty.");
             error = false;
@@ -151,6 +154,7 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
             cityEditText.setError("Invalid City Name. [City should be at least 2 characters]");
             error = false;
         }
+
         if (TextUtils.isEmpty(postalCode)) {
             postalCodeEditText.setError("PostalCode cannot be empty.");
             error = false;
@@ -158,6 +162,7 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
             postalCodeEditText.setError("Invalid PostalCode.");
             error = false;
         }
+
         if (TextUtils.isEmpty(province)) {
             provinceEditText.setError("Province cannot be empty.");
             error = false;

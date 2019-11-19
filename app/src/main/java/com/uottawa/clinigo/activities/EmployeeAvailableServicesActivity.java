@@ -1,8 +1,7 @@
 package com.uottawa.clinigo.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +10,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -46,7 +47,7 @@ public class EmployeeAvailableServicesActivity extends AppCompatActivity {
                 if (service.getEmployees() == null) {
                     service.initializeEmptyEmployeeArray();
                 }
-                showUpdateServiceDialog(service);//Adding employee Id to the service
+                showAddServiceDialog(service);//Adding employee Id to the service
                 return true;
             }
         });
@@ -68,7 +69,7 @@ public class EmployeeAvailableServicesActivity extends AppCompatActivity {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Service service = postSnapshot.getValue(Service.class);
 
-                    if ((service.getEmployees() == null) ||(!clinicHasThisService(service.getEmployees())))
+                    if ((service.getEmployees() == null) || (!clinicHasThisService(service.getEmployees())))
                         services.add(service);
                 }
 
@@ -84,8 +85,7 @@ public class EmployeeAvailableServicesActivity extends AppCompatActivity {
     }
 
 
-
-    public void showUpdateServiceDialog(final Service service) {
+    public void showAddServiceDialog(final Service service) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.add_service_to_clinic_dialog, null);
@@ -105,7 +105,10 @@ public class EmployeeAvailableServicesActivity extends AppCompatActivity {
                 //ADD Service HERE!!!!!
                 addService(service, userId);
                 b.dismiss();
-
+                Intent intent = new Intent(getApplicationContext(), EmployeeServicesActivity.class);
+                intent.putExtra("userId", userId);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -128,10 +131,10 @@ public class EmployeeAvailableServicesActivity extends AppCompatActivity {
 
     }
 
-    public boolean clinicHasThisService (ArrayList<String> employees) {
+    public boolean clinicHasThisService(ArrayList<String> employees) {
         boolean returnValue = false;
 
-        for (int i =0; i < employees.size(); i++) {
+        for (int i = 0; i < employees.size(); i++) {
             if (employees.get(i).equals(userId))
                 returnValue = true;
         }
