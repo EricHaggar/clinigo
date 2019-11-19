@@ -62,21 +62,26 @@
             android:gravity="center"
             android:text="@string/monday"
             android:textAlignment="gravity"
-            android:textStyle="bold" />
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_monday_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/default_start_time" />
+            android:text="@string/default_start_time"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_monday_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/default_end_time" />
+            android:text="@string/default_end_time"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
 
     </TableRow>
@@ -91,21 +96,26 @@
             android:height="35dp"
             android:gravity="center"
             android:text="@string/tuesday"
-            android:textStyle="bold" />
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_tuesday_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/default_start_time" />
+            android:text="@string/default_start_time"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_tuesday_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/default_end_time" />
+            android:text="@string/default_end_time"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
     </TableRow>
 
@@ -119,21 +129,26 @@
             android:height="35dp"
             android:gravity="center"
             android:text="@string/wednesday"
-            android:textStyle="bold" />
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_wednesday_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/default_start_time" />
+            android:text="@string/default_start_time"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_wednesday_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/default_end_time" />
+            android:text="@string/default_end_time"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
     </TableRow>
 
@@ -147,21 +162,26 @@
             android:height="35dp"
             android:gravity="center"
             android:text="@string/thursday"
-            android:textStyle="bold" />
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_thursday_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/default_start_time" />
+            android:text="@string/default_start_time"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_thursday_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/default_end_time" />
+            android:text="@string/default_end_time"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
     </TableRow>
 
@@ -175,21 +195,26 @@
             android:height="35dp"
             android:gravity="center"
             android:text="@string/friday"
-            android:textStyle="bold" />
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_friday_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/default_start_time" />
+            android:text="@string/default_start_time"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_friday_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/default_end_time" />
+            android:text="@string/default_end_time"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
     </TableRow>
 
@@ -203,25 +228,30 @@
             android:height="35dp"
             android:gravity="center"
             android:text="@string/saturday"
-            android:textStyle="bold" />
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_saturday_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/default_start_time" />
+            android:text="@string/default_start_time"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_saturday_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/default_end_time" />
+            android:text="@string/default_end_time"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
     </TableRow>
 
-    <TableRow android:paddingBottom="10dp">
+    <TableRow android:paddingBottom="5dp">
 
         <TextView
             android:id="@+id/text_sunday"
@@ -231,21 +261,26 @@
             android:height="35dp"
             android:gravity="center"
             android:text="@string/sunday"
-            android:textStyle="bold" />
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_sunday_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/default_start_time" />
+            android:text="@string/default_start_time"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_sunday_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/default_end_time" />
+            android:text="@string/default_end_time"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
     </TableRow>
 
@@ -259,7 +294,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="5dp"
-        android:paddingTop="10dp">
+        android:paddingTop="5dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -301,31 +336,34 @@
         <Spinner
             android:id="@+id/spinner_days_of_week"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_column="1"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="5dp"
             android:textAlignment="viewEnd" />
 
-        <TextView
-            android:id="@+id/text_update_start_time"
+        <Button
+            android:id="@+id/button_update_start_time"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="false"
-            android:gravity="center"
+            android:layout_height="35dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/standard_buttons"
             android:onClick="showTimePickerDialog"
             android:text="@string/default_start_time"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold" />
+            android:textColor="@color/colorText"
+            android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/text_update_end_time"
+        <Button
+            android:id="@+id/button_update_end_time"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_height="35dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/standard_buttons"
             android:onClick="showTimePickerDialog"
             android:text="@string/default_end_time"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold" />
+            android:textColor="@color/colorText"
+            android:textSize="16sp" />
 
 
     </TableRow>
@@ -362,7 +400,7 @@
         android:layout_width="@dimen/standard_button_width"
         android:layout_height="wrap_content"
         android:layout_marginStart="120dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="120dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/standard_buttons"

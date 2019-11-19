@@ -72,6 +72,7 @@
     <string name="update_time">Update Time</string>
     <string name="edit_profile_info">Are you sure you want to update your clinic information?</string>
     <string name="empty_availability_list">There are currently no availabilities provided.</string>
+    <string name="empty" />
     <string-array name="countries">
         <item>Argentina</item>
         <item>Australia</item>

@@ -13,7 +13,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="5dp"
@@ -33,7 +33,7 @@
                     android:layout_weight="1"
                     android:paddingTop="5dp"
                     android:text="@string/clinic_name"
-                    android:textSize="13dp" />
+                    android:textSize="13sp" />
 
                 <EditText
                     android:id="@+id/update_clinic_name_"
@@ -41,7 +41,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ellipsize="end"
-                    android:gravity="center|left" />
+                    android:gravity="start"
+                    android:hint="@string/empty"
+                    android:importantForAutofill="no"
+                    android:inputType="none" />
 
             </LinearLayout>
 
@@ -56,14 +59,17 @@
                     android:layout_weight="1"
                     android:paddingTop="5dp"
                     android:text="@string/clinic_phone_number"
-                    android:textSize="13dp" />
+                    android:textSize="13sp" />
 
                 <EditText
                     android:id="@+id/update_clinic_phoneNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center|left" />
+                    android:gravity="start"
+                    android:hint="@string/empty"
+                    android:importantForAutofill="no"
+                    android:inputType="phone" />
             </LinearLayout>
 
             <LinearLayout
@@ -77,14 +83,17 @@
                     android:layout_weight="1"
                     android:padding="5dp"
                     android:text="@string/prompt_description"
-                    android:textSize="13dp" />
+                    android:textSize="13sp" />
 
                 <EditText
                     android:id="@+id/update_clinic_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center|left" />
+                    android:gravity="start"
+                    android:hint="@string/empty"
+                    android:importantForAutofill="no"
+                    android:inputType="text" />
             </LinearLayout>
 
             <LinearLayout
@@ -98,14 +107,18 @@
                     android:layout_weight="1"
                     android:padding="5dp"
                     android:text="@string/prompt_address"
-                    android:textSize="13dp" />
+                    android:textSize="13sp" />
 
                 <EditText
                     android:id="@+id/update_clinic_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center|left" />
+                    android:autofillHints=""
+                    android:gravity="start"
+                    android:hint="@string/empty"
+                    android:inputType="text"
+                    tools:targetApi="o" />
             </LinearLayout>
 
             <LinearLayout
@@ -119,14 +132,17 @@
                     android:layout_weight="1"
                     android:paddingTop="5dp"
                     android:text="@string/prompt_city"
-                    android:textSize="13dp" />
+                    android:textSize="13sp" />
 
                 <EditText
                     android:id="@+id/update_clinic_city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center|left" />
+                    android:gravity="start"
+                    android:hint="@string/empty"
+                    android:importantForAutofill="no"
+                    android:inputType="text" />
             </LinearLayout>
 
             <LinearLayout
@@ -140,14 +156,17 @@
                     android:layout_weight="1"
                     android:paddingTop="5dp"
                     android:text="@string/postal_code"
-                    android:textSize="12dp" />
+                    android:textSize="13sp" />
 
                 <EditText
                     android:id="@+id/update_clinic_postal_code"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center|left" />
+                    android:gravity="start"
+                    android:hint="@string/empty"
+                    android:importantForAutofill="no"
+                    android:inputType="none|text|textCapCharacters" />
             </LinearLayout>
 
             <LinearLayout
@@ -161,14 +180,17 @@
                     android:layout_weight="1"
                     android:paddingTop="5dp"
                     android:text="@string/prompt_province"
-                    android:textSize="13dp" />
+                    android:textSize="13sp" />
 
                 <EditText
                     android:id="@+id/update_clinic_province"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center|left" />
+                    android:gravity="start"
+                    android:hint="@string/empty"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords" />
             </LinearLayout>
 
             <LinearLayout
@@ -182,7 +204,7 @@
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:text="@string/country"
-                    android:textSize="13dp" />
+                    android:textSize="13sp" />
 
                 <Spinner
                     android:id="@+id/update_clinic_country"
@@ -204,7 +226,7 @@
                     android:layout_marginEnd="15dp"
                     android:padding="5dp"
                     android:text="@string/licensed"
-                    android:textSize="13dp" />
+                    android:textSize="13sp" />
 
                 <CheckBox
                     android:id="@+id/update_clinic_license"
@@ -219,14 +241,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginVertical="15dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/standard_buttons"
                 android:gravity="center|center_horizontal|center_vertical"
                 android:onClick="saveOnClick"
                 android:text="@string/update_clinic_information"
                 android:textColor="@color/colorText"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintTop_toBottomOf="@+id/licensedTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/licensedTitle" tools:targetApi="o" />
 
         </LinearLayout>
     </ScrollView>

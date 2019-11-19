@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -31,8 +32,8 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
     String userId;
     TextView[] startTimeTextViews;
     TextView[] endTimeTextViews;
-    TextView updateStartTimeTextView;
-    TextView updateEndTimeTextView;
+    Button updateStartTimeButton;
+    Button updateEndTimeButton;
     Switch closedSwitch;
     Spinner spinner;
     private String selectedDay;
@@ -61,8 +62,8 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
 
         startTimeTextViews = new TextView[]{findViewById(R.id.text_monday_start), findViewById(R.id.text_tuesday_start), findViewById(R.id.text_wednesday_start), findViewById(R.id.text_thursday_start), findViewById(R.id.text_friday_start), findViewById(R.id.text_saturday_start), findViewById(R.id.text_sunday_start)};
         endTimeTextViews = new TextView[]{findViewById(R.id.text_monday_end), findViewById(R.id.text_tuesday_end), findViewById(R.id.text_wednesday_end), findViewById(R.id.text_thursday_end), findViewById(R.id.text_friday_end), findViewById(R.id.text_saturday_end), findViewById(R.id.text_sunday_end)};
-        updateStartTimeTextView = findViewById(R.id.text_update_start_time);
-        updateEndTimeTextView = findViewById(R.id.text_update_end_time);
+        updateStartTimeButton = findViewById(R.id.button_update_start_time);
+        updateEndTimeButton = findViewById(R.id.button_update_end_time);
         closedSwitch = findViewById(R.id.switch_closed);
     }
 
@@ -96,7 +97,7 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
             DialogFragment newFragment = new TimePickerFragment(this);
             newFragment.show(getSupportFragmentManager(), "timePicker");
 
-            if (v.getId() == R.id.text_update_start_time)
+            if (v.getId() == R.id.button_update_start_time)
                 isStartTimeSelected = true;
             else
                 isStartTimeSelected = false;
@@ -146,8 +147,8 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
             ArrayList<String> newStartTime = workingHours.getStartTime();
             ArrayList<String> newEndTime = workingHours.getEndTime();
 
-            newStartTime.set(getIndexForSelectedDay(selectedDay), updateStartTimeTextView.getText().toString());
-            newEndTime.set(getIndexForSelectedDay(selectedDay), updateEndTimeTextView.getText().toString());
+            newStartTime.set(getIndexForSelectedDay(selectedDay), updateStartTimeButton.getText().toString());
+            newEndTime.set(getIndexForSelectedDay(selectedDay), updateEndTimeButton.getText().toString());
 
             workingHours.setStartTime(newStartTime);
             workingHours.setEndTime(newEndTime);
@@ -160,26 +161,26 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
 
     public void updateTextViewFromTimePicker(int hours, int minutes) {
 
-        TextView textChange;
+        Button button;
 
         if (isStartTimeSelected)
-            textChange = updateStartTimeTextView;
+            button = updateStartTimeButton;
         else
-            textChange = updateEndTimeTextView;
+            button = updateEndTimeButton;
 
-        textChange.setText(String.format("%02d:%02d", hours, minutes));
+        button.setText(String.format("%02d:%02d", hours, minutes));
     }
 
     public void updateTextViewsFromWidget() {
 
-        if (!closedSwitch.isChecked()) {
+        if (!closedSwitch.isChecked() && workingHours != null) {
             int index = getIndexForSelectedDay(selectedDay);
 
             String startTime = workingHours.getStartTime().get(index);
             String endTime = workingHours.getEndTime().get(index);
 
-            updateStartTimeTextView.setText(startTime);
-            updateEndTimeTextView.setText(endTime);
+            updateStartTimeButton.setText(startTime);
+            updateEndTimeButton.setText(endTime);
         }
     }
 
@@ -193,13 +194,13 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
     public void handleSwitchOnClick(View view) {
 
         if (closedSwitch.isChecked()) {
-            updateStartTimeTextView.setText("--");
-            updateEndTimeTextView.setText("--");
-            updateStartTimeTextView.setEnabled(false);
-            updateEndTimeTextView.setEnabled(false);
+            updateStartTimeButton.setText("--");
+            updateEndTimeButton.setText("--");
+            updateStartTimeButton.setEnabled(false);
+            updateEndTimeButton.setEnabled(false);
         } else {
-            updateStartTimeTextView.setEnabled(true);
-            updateEndTimeTextView.setEnabled(true);
+            updateStartTimeButton.setEnabled(true);
+            updateEndTimeButton.setEnabled(true);
         }
 
         updateTextViewsFromWidget();
@@ -209,8 +210,8 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
 
         boolean valid = true;
 
-        String startTime = updateStartTimeTextView.getText().toString();
-        String endTime = updateEndTimeTextView.getText().toString();
+        String startTime = updateStartTimeButton.getText().toString();
+        String endTime = updateEndTimeButton.getText().toString();
 
         if (closedSwitch.isChecked()) {
             if (!startTime.equals("--") && !endTime.equals("--")) {
