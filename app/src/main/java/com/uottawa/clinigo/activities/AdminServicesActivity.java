@@ -6,9 +6,11 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -97,7 +99,6 @@ public class AdminServicesActivity extends AppCompatActivity {
         dialogBuilder.setView(dialogView);
 
         final EditText serviceEditText = dialogView.findViewById(R.id.edit_service);
-        final EditText roleEditText = dialogView.findViewById(R.id.edit_role);
         final Button addButton = dialogView.findViewById(R.id.button_add_service);
 
         dialogBuilder.setTitle("Add Service");
@@ -105,13 +106,19 @@ public class AdminServicesActivity extends AppCompatActivity {
         final AlertDialog alertDialog = dialogBuilder.create();
         alertDialog.show();
 
+        final Spinner roleSpinner = alertDialog.findViewById(R.id.spinner_role);
+        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.roles, android.R.layout.simple_spinner_item);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        roleSpinner.setAdapter(spinnerAdapter);
+
+
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String name = serviceEditText.getText().toString().trim();
-                String role = roleEditText.getText().toString().trim();
+                String role = roleSpinner.getSelectedItem().toString();
 
-                if (validServiceForm(serviceEditText, roleEditText)) {
+                if (validServiceForm(serviceEditText)) {
                     if (serviceExists(name)) {
                         serviceEditText.setError("The given service already exists.");
                     } else {
@@ -130,13 +137,18 @@ public class AdminServicesActivity extends AppCompatActivity {
         dialogBuilder.setView(dialogView);
 
         final EditText serviceEditText = dialogView.findViewById(R.id.edit_service);
-        final EditText roleEditText = dialogView.findViewById(R.id.edit_role);
         final Button buttonUpdate = dialogView.findViewById(R.id.button_update);
         final Button buttonDelete = dialogView.findViewById(R.id.button_cancel);
 
+        final Spinner roleSpinner = dialogView.findViewById(R.id.spinner_role);
+        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.roles, android.R.layout.simple_spinner_item);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        roleSpinner.setAdapter(spinnerAdapter);
+
         dialogBuilder.setTitle("Edit Service");
         serviceEditText.setText(serviceName);
-        roleEditText.setText(role);
+        int spinnerPosition = spinnerAdapter.getPosition(role);
+        roleSpinner.setSelection(spinnerPosition);
 
         final AlertDialog b = dialogBuilder.create();
         b.show();
@@ -145,9 +157,9 @@ public class AdminServicesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String name = serviceEditText.getText().toString().trim();
-                String role = roleEditText.getText().toString().trim();
+                String role = roleSpinner.getSelectedItem().toString();
 
-                if (validServiceForm(serviceEditText, roleEditText)) {
+                if (validServiceForm(serviceEditText)) {
                     updateService(serviceId, name, role);
                     b.dismiss();
                 }
@@ -192,11 +204,10 @@ public class AdminServicesActivity extends AppCompatActivity {
         return false;
     }
 
-    public boolean validServiceForm(EditText serviceEditText, EditText roleEditText) {
+    public boolean validServiceForm(EditText serviceEditText) {
         boolean valid = true;
 
         String serviceName = serviceEditText.getText().toString().trim();
-        String role = roleEditText.getText().toString().trim();
 
         if (TextUtils.isEmpty(serviceName)) {
             serviceEditText.setError("Service field cannot be empty.");
@@ -206,13 +217,6 @@ public class AdminServicesActivity extends AppCompatActivity {
             valid = false;
         }
 
-        if (TextUtils.isEmpty(role)) {
-            roleEditText.setError("Role field cannot be empty.");
-            valid = false;
-        } else if (!ValidationUtilities.isValidName(role)) {
-            roleEditText.setError("The given role name is invalid.");
-            valid = false;
-        }
         return valid;
     }
 
