@@ -173,7 +173,7 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
 
     public void updateTextViewsFromWidget() {
 
-        if (!closedSwitch.isChecked() && workingHours != null) {
+        if (workingHours != null) {
             int index = getIndexForSelectedDay(selectedDay);
 
             String startTime = workingHours.getStartTime().get(index);
@@ -181,6 +181,20 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
 
             updateStartTimeButton.setText(startTime);
             updateEndTimeButton.setText(endTime);
+        }
+
+        updateSwitchFromTextViews();
+    }
+
+    public void updateSwitchFromTextViews() {
+
+        if (workingHours != null) {
+
+            if (workingHours.getStartTime().get(getIndexForSelectedDay(selectedDay)).equals("--")) {
+                closedSwitch.setChecked(true);
+            } else {
+                closedSwitch.setChecked(false);
+            }
         }
     }
 
@@ -202,8 +216,6 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
             updateStartTimeButton.setEnabled(true);
             updateEndTimeButton.setEnabled(true);
         }
-
-        updateTextViewsFromWidget();
     }
 
     public boolean validateUpdate() {
