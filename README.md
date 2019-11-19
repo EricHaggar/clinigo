@@ -1,6 +1,6 @@
 # Clinigo
 
-[![CircleCI](https://circleci.com/gh/professor-forward/project-camel/tree/f%2Fdeliverable03.svg?style=svg&circle-token=de8e997a5af65c61b9b0ccb1d475baef3611d409)](https://circleci.com/gh/professor-forward/project-camel/tree/f%2Fdeliverable03)
+[![CircleCI](https://circleci.com/gh/professor-forward/project-camel.svg?style=svg&circle-token=de8e997a5af65c61b9b0ccb1d475baef3611d409)](https://circleci.com/gh/professor-forward/project-camel)
 
 Our team developed an app to address the need for people to know wait times at nearby walk-in clinics without having to leave their home. It also allows users to know the services offered by nearby walk-in clinics and allow them to check-in/book appointments at the clinic of their choice. 
 
