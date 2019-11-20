@@ -154,20 +154,45 @@ The UML diagram for this deliverable is shown below:
     <img src="screenshots/employee_home.jpeg" height="400" /> 
 </p>
 
-2. Clinic Working Hours
+2. Create Profile
+
+<p align="center">
+    <img src="screenshots/create_profile.png" height="400" /> 
+</p>
+
+3. Edit Profile Information
+
+<p align="center">
+    <img src="screenshots/edit_profile.png" height="400" /> 
+</p>
+
+4. Clinic Working Hours
 
 <p align="center">
     <img src="screenshots/working_hours.jpeg" height="400" /> 
 </p>
 
-3. Clinic Services
+5. Clinic Services
 
 <p align="center">
-    <img src="screenshots/clinic_services.jpeg" height="400" /> 
+    <img src="screenshots/empty_services.png" height="400" /> 
 </p>
-
-4. Edit Profile Information
 
 <p align="center">
-    <img src="screenshots/edit_profile.jpeg" height="400" /> 
+    <img src="screenshots/clinic_services_list.png" height="400" /> 
 </p>
+
+6. Add Clinic Services
+
+<p align="center">
+    <img src="screenshots/add_service.png" height="400" /> 
+</p>
+
+<p align="center">
+    <img src="screenshots/add_service_dialog.png" height="400" /> 
+</p>
+
+
+
+
+
