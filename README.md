@@ -37,6 +37,7 @@ We present to you: `Clinigo`
     - [Employee Account](#employee-account)
     - [UML Diagram](#uml-diagram-2)
     - [Activities Screenshots](#activities-screenshots-2)
+  - [Deliverable 4](#deliverable-4)
 ## Deliverable 1
 
 The first deliverable concentrates on creating accounts and storing them into a database (Firebase).
@@ -212,7 +213,9 @@ these fields were not mentioned [here](https://github.com/professor-forward/walk
     <img src="screenshots/add_service_dialog.png" height="400" /> 
 </p>
 
+## Deliverable 4
 
+All information concerning this deliverable can be found in [REPORT](https://github.com/professor-forward/project-camel/blob/master/REPORT.md)
 
 
 
