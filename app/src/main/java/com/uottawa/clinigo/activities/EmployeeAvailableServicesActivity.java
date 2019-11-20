@@ -104,7 +104,6 @@ public class EmployeeAvailableServicesActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //ADD Service HERE!!!!!
                 addService(service, userId);
-                b.dismiss();
                 Intent intent = new Intent(getApplicationContext(), EmployeeServicesActivity.class);
                 intent.putExtra("userId", userId);
                 startActivity(intent);
