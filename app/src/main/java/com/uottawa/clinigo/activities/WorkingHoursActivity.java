@@ -32,13 +32,14 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
     String userId;
     TextView[] startTimeTextViews;
     TextView[] endTimeTextViews;
-    Button updateStartTimeButton;
-    Button updateEndTimeButton;
+    public Button updateStartTimeButton;
+    public Button updateEndTimeButton;
     Switch closedSwitch;
     Spinner spinner;
-    private String selectedDay;
-    private boolean isStartTimeSelected;
-    private WorkingHours workingHours;
+    String selectedDay;
+    public boolean isStartTimeSelected;
+    public WorkingHours workingHours;
+    String closedString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,7 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
         updateStartTimeButton = findViewById(R.id.button_update_start_time);
         updateEndTimeButton = findViewById(R.id.button_update_end_time);
         closedSwitch = findViewById(R.id.switch_closed);
+        closedString = getString(R.string.clinic_closed);
     }
 
     @Override
@@ -190,7 +192,7 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
 
         if (workingHours != null) {
 
-            if (workingHours.getStartTime().get(getIndexForSelectedDay(selectedDay)).equals("--")) {
+            if (workingHours.getStartTime().get(getIndexForSelectedDay(selectedDay)).equals(closedString)) {
                 closedSwitch.setChecked(true);
             } else {
                 closedSwitch.setChecked(false);
@@ -208,8 +210,8 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
     public void handleSwitchOnClick(View view) {
 
         if (closedSwitch.isChecked()) {
-            updateStartTimeButton.setText("--");
-            updateEndTimeButton.setText("--");
+            updateStartTimeButton.setText(closedString);
+            updateEndTimeButton.setText(closedString);
             updateStartTimeButton.setEnabled(false);
             updateEndTimeButton.setEnabled(false);
         } else {
@@ -226,10 +228,10 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
         String endTime = updateEndTimeButton.getText().toString();
 
         if (closedSwitch.isChecked()) {
-            if (!startTime.equals("--") && !endTime.equals("--")) {
+            if (!startTime.equals(closedString) && !endTime.equals(closedString)) {
                 valid = false;
             }
-        } else if (startTime.equals("--") || endTime.equals("--")) {
+        } else if (startTime.equals(closedString) || endTime.equals(closedString)) {
             Toast.makeText(getApplicationContext(), "Both start time and end time need to be filled!", Toast.LENGTH_SHORT).show();
             valid = false;
         } else {
