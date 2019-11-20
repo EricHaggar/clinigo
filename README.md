@@ -34,7 +34,8 @@ We present to you: `Clinigo`
     - [UML Diagram](#uml-diagram-1)
     - [Activities Screenshots](#activities-screenshots-1)
   - [Deliverable 3](#deliverable-3)
-
+    - [UML Diagram](#uml-diagram-1)
+    - [Clinic Employee Screenshots](#clinic-employee-screenshots)
 ## Deliverable 1
 
 The first deliverable concentrates on creating accounts and storing them into a database (Firebase).
@@ -134,3 +135,39 @@ The UML diagram for this deliverable is shown below:
 </p>
 
 ## Deliverable 3
+
+The third deliverable implemented the walk in clinic employee related functionality. Employees can create a profile and associate their clinic to the set of predefined and available services (that were created by the admin). The walk in clinic employee must also be able to set the working hours of the clinic.
+
+### UML Diagram
+
+The UML diagram for this deliverable is shown below:
+
+<p align="center">
+    <img src="screenshots/UML_Deliverable03.png"/> 
+</p>
+
+### Clinic Employee Screenshots
+
+1. Employee Homepage
+
+<p align="center">
+    <img src="screenshots/employee_home.jpeg" height="400" /> 
+</p>
+
+2. Clinic Working Hours
+
+<p align="center">
+    <img src="screenshots/working_hours.jpeg" height="400" /> 
+</p>
+
+3. Clinic Services
+
+<p align="center">
+    <img src="screenshots/clinic_services.jpeg" height="400" /> 
+</p>
+
+4. Edit Profile Information
+
+<p align="center">
+    <img src="screenshots/edit_profile.jpeg" height="400" /> 
+</p>
