@@ -34,8 +34,9 @@ We present to you: `Clinigo`
     - [UML Diagram](#uml-diagram-1)
     - [Activities Screenshots](#activities-screenshots-1)
   - [Deliverable 3](#deliverable-3)
-    - [UML Diagram](#uml-diagram-1)
-    - [Clinic Employee Screenshots](#clinic-employee-screenshots)
+    - [Employee Account](#employee-account)
+    - [UML Diagram](#uml-diagram-2)
+    - [Activities Screenshots](#activities-screenshots-2)
 ## Deliverable 1
 
 The first deliverable concentrates on creating accounts and storing them into a database (Firebase).
@@ -136,7 +137,29 @@ The UML diagram for this deliverable is shown below:
 
 ## Deliverable 3
 
-The third deliverable implemented the walk in clinic employee related functionality. Employees can create a profile and associate their clinic to the set of predefined and available services (that were created by the admin). The walk in clinic employee must also be able to set the working hours of the clinic.
+The third deliverable implemented the walk in clinic employee related functionality. Employees can create a profile and associate their clinic to the set of predefined and available services (that were created by the admin). The walk in clinic employee can also set the working hours of his clinic.
+
+**Please note**: It is assumed that an employee is responsible for a walk-in clinic. Therefore, an employee account represents a clinic account.
+
+### Employee Account
+
+In order to use an existing employee account, use the following credentials:
+
+```
+Email: siraj@ghassel.com
+Password: qwe123
+```
+
+To create a new employee account, follow the following steps:
+
+1. Navigate to the sign-up page and fill in the information to create an employee account.
+2. Log in, and it will prompt to create a clinic profile. All fields must be filled.
+3. Upon successful creation of a clinic profile, an employee home page will come up where the employee can navigate to either:
+
+    - Add services to the clinic from the available services
+    - Add and update working hours
+    - Edit the clinic profile information
+
 
 ### UML Diagram
 
@@ -146,18 +169,18 @@ The UML diagram for this deliverable is shown below:
     <img src="screenshots/UML_Deliverable03.png"/> 
 </p>
 
-### Clinic Employee Screenshots
+### Activities Screenshots
 
-1. Employee Homepage
-
-<p align="center">
-    <img src="screenshots/employee_home.jpeg" height="400" /> 
-</p>
-
-2. Create Profile
+1. Create Clinic Profile
 
 <p align="center">
     <img src="screenshots/create_profile.png" height="400" /> 
+</p>
+
+2. Employee Homepage
+
+<p align="center">
+    <img src="screenshots/employee_home.jpeg" height="400" /> 
 </p>
 
 3. Edit Profile Information
@@ -179,7 +202,7 @@ The UML diagram for this deliverable is shown below:
     <img src="screenshots/clinic_services_list.png" height="400" /> 
 </p>
 
-6. Add Clinic Services
+6. Available Clinic Services To Choose From
 
 <p align="center">
     <img src="screenshots/add_service.png" height="400" />
