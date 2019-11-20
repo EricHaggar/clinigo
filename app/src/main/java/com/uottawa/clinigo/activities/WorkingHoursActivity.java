@@ -146,14 +146,14 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
 
         if (validateUpdate()) {
 
-            ArrayList<String> newStartTime = workingHours.getStartTime();
-            ArrayList<String> newEndTime = workingHours.getEndTime();
+            ArrayList<String> newStartTime = workingHours.getStartTimes();
+            ArrayList<String> newEndTime = workingHours.getEndTimes();
 
             newStartTime.set(getIndexForSelectedDay(selectedDay), updateStartTimeButton.getText().toString());
             newEndTime.set(getIndexForSelectedDay(selectedDay), updateEndTimeButton.getText().toString());
 
-            workingHours.setStartTime(newStartTime);
-            workingHours.setEndTime(newEndTime);
+            workingHours.setStartTimes(newStartTime);
+            workingHours.setEndTimes(newEndTime);
 
             pushToFirebase(workingHours);
 
@@ -178,8 +178,8 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
         if (workingHours != null) {
             int index = getIndexForSelectedDay(selectedDay);
 
-            String startTime = workingHours.getStartTime().get(index);
-            String endTime = workingHours.getEndTime().get(index);
+            String startTime = workingHours.getStartTimes().get(index);
+            String endTime = workingHours.getEndTimes().get(index);
 
             updateStartTimeButton.setText(startTime);
             updateEndTimeButton.setText(endTime);
@@ -192,7 +192,7 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
 
         if (workingHours != null) {
 
-            if (workingHours.getStartTime().get(getIndexForSelectedDay(selectedDay)).equals(closedString)) {
+            if (workingHours.getStartTimes().get(getIndexForSelectedDay(selectedDay)).equals(closedString)) {
                 closedSwitch.setChecked(true);
             } else {
                 closedSwitch.setChecked(false);
@@ -202,8 +202,8 @@ public class WorkingHoursActivity extends AppCompatActivity implements AdapterVi
 
     private void populateTimeInTable(WorkingHours workingHours) {
         for (int i = 0; i < 7; i++) {
-            startTimeTextViews[i].setText(workingHours.getStartTime().get(i));
-            endTimeTextViews[i].setText(workingHours.getEndTime().get(i));
+            startTimeTextViews[i].setText(workingHours.getStartTimes().get(i));
+            endTimeTextViews[i].setText(workingHours.getEndTimes().get(i));
         }
     }
 

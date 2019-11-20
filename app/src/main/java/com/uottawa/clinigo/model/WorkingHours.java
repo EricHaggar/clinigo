@@ -4,58 +4,58 @@ import java.util.ArrayList;
 
 public class WorkingHours {
 
-    private ArrayList<String> startTime;
-    private ArrayList<String> endTime;
+    private ArrayList<String> startTimes;
+    private ArrayList<String> endTimes;
 
     public WorkingHours() {
-        this.startTime = new ArrayList<>();
-        this.endTime = new ArrayList<>();
+        this.startTimes = new ArrayList<>();
+        this.endTimes = new ArrayList<>();
 
         //Default Working hours
         for (int i = 0; i < 7; i++) {
-            this.startTime.add("--");
-            this.endTime.add("--");
+            this.startTimes.add("--");
+            this.endTimes.add("--");
         }
     }
 
-    public WorkingHours(ArrayList<String> startTime, ArrayList<String> endTime) {
-        this.startTime = startTime;
-        this.endTime = endTime;
+    public WorkingHours(ArrayList<String> startTimes, ArrayList<String> endTimes) {
+        this.startTimes = startTimes;
+        this.endTimes = endTimes;
     }
 
     /**
-     * Getter for startTime attribute
+     * Getter for startTimes attribute
      *
-     * @return ArrayList<String> startTime
+     * @return ArrayList<String> startTimes
      */
-    public ArrayList<String> getStartTime() {
-        return this.startTime;
+    public ArrayList<String> getStartTimes() {
+        return this.startTimes;
     }
 
     /**
-     * Setter for role startTime
+     * Setter for role startTimes
      *
-     * @param startTime ArrayList<String> to be assigned
+     * @param startTimes ArrayList<String> to be assigned
      */
-    public void setStartTime(ArrayList<String> startTime) {
-        this.startTime = startTime;
+    public void setStartTimes(ArrayList<String> startTimes) {
+        this.startTimes = startTimes;
     }
 
     /**
-     * Getter for endTime attribute
+     * Getter for endTimes attribute
      *
-     * @return ArrayList<String> endTime
+     * @return ArrayList<String> endTimes
      */
-    public ArrayList<String> getEndTime() {
-        return this.endTime;
+    public ArrayList<String> getEndTimes() {
+        return this.endTimes;
     }
 
     /**
-     * Setter for role endTime
+     * Setter for role endTimes
      *
-     * @param endTime ArrayList<String> to be assigned
+     * @param endTimes ArrayList<String> to be assigned
      */
-    public void setEndTime(ArrayList<String> endTime) {
-        this.endTime = endTime;
+    public void setEndTimes(ArrayList<String> endTimes) {
+        this.endTimes = endTimes;
     }
 }
