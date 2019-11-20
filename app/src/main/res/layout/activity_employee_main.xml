@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.AdminMainActivity">
+    tools:context=".activities.EmployeeMainActivity">
 
     <TextView
         android:id="@+id/text_welcome_message"
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
         android:gravity="center"
-        android:text="@string/admin_welcome_message"
+        android:text="@string/employee_welcome_message"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -25,44 +25,42 @@
         android:id="@+id/button_manage_users"
         android:layout_width="@dimen/large_button_width"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/standard_buttons"
-        android:onClick="manageUsersOnClick"
-        android:text="@string/manage_users"
+        android:onClick="manageWorkingHoursOnClick"
+        android:text="@string/manage_working_hours"
         android:textColor="@color/colorText"
-        app:layout_constraintBottom_toTopOf="@+id/horizontal_guideline"
+        app:layout_constraintBottom_toTopOf="@+id/button_services"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button_services"
         android:layout_width="@dimen/large_button_width"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:background="@drawable/standard_buttons"
-        android:onClick="manageServicesOnClick"
-        android:text="@string/manage_services"
+        android:onClick="manageEmployeeServiceOnClick"
+        android:text="@string/choose_clinic_services"
+        android:textColor="@color/colorText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_edit_profile"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/standard_buttons"
+        android:onClick="manageProfileInformation"
+        android:text="@string/edit_profile"
         android:textColor="@color/colorText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/vertical_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontal_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintTop_toBottomOf="@+id/button_services" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

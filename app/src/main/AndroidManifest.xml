@@ -10,32 +10,49 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.uottawa.clinigo.activities.AdminServicesActivity"
-            android:label="Services"/>
+            android:name=".activities.EditClinicInfoActivity"
+            android:label="Edit Profile Information" />
         <activity
-            android:name="com.uottawa.clinigo.adapters.ServiceAdapter" />
+            android:name=".activities.WorkingHoursActivity"
+            android:label="Clinic Working Hours" />
         <activity
-            android:name="com.uottawa.clinigo.activities.AdminUsersActivity"
-            android:label="Accounts"
+            android:name=".activities.ClinicInfoActivity"
+            android:label="Create Clinic Profile" />
+        <activity
+            android:name=".activities.EmployeeAvailableServicesActivity"
+            android:label="Add From Available Services" />
+        <activity
+            android:name=".activities.EmployeeServicesActivity"
+            android:label="Clinic Services" />
+        <activity
+            android:name=".activities.EmployeeMainActivity"
+            android:label="Employee Home" />
+        <activity
+            android:name=".activities.AdminServicesActivity"
+            android:label="Services" />
+        <activity android:name=".adapters.ServiceAdapter" />
+        <activity
+            android:name=".activities.AdminUsersActivity"
+            android:label="Users"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.uottawa.clinigo.activities.AdminMainActivity"
+            android:name=".activities.AdminMainActivity"
             android:label="Administrator Home"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.uottawa.clinigo.activities.LoginActivity"
+            android:name=".activities.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.uottawa.clinigo.activities.SuccessfulLoginActivity"
+            android:name=".activities.SuccessfulLoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.uottawa.clinigo.activities.SignUpActivity"
+            android:name=".activities.SignUpActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.uottawa.clinigo.activities.MainActivity"
+            android:name=".activities.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

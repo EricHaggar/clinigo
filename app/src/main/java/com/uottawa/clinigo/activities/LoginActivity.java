@@ -3,6 +3,7 @@ package com.uottawa.clinigo.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -61,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
+                            public void onComplete(@NonNull final Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     final String userId = task.getResult().getUser().getUid();
                                     usersReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -73,8 +74,21 @@ public class LoginActivity extends AppCompatActivity {
                                                     userWasDeleted = false;
                                                     final String role = data.child("role").getValue().toString();
                                                     final String firstName = data.child("firstName").getValue().toString();
-                                                    Intent intent = new Intent(getApplicationContext(), SuccessfulLoginActivity.class);
-                                                    intent.putExtra("welcomeMessage", "Welcome " + firstName + "! You are logged in as " + role + ".");
+                                                    Intent intent;
+                                                    if (!role.equals("Employee")) {
+                                                        intent = new Intent(getApplicationContext(), SuccessfulLoginActivity.class);
+                                                        intent.putExtra("welcomeMessage", "Welcome " + firstName + "! You are logged in as " + role + ".");
+                                                    }else if (role.equals("Employee") & data.hasChild("clinicInfo")){
+                                                        intent = new Intent(getApplicationContext(), EmployeeMainActivity.class);
+                                                        intent.putExtra("userId", userId);
+                                                    }else {
+                                                        intent = new Intent(getApplicationContext(), ClinicInfoActivity.class);
+                                                        intent.putExtra("welcomeMessage", "Welcome " + firstName + "! You are logged in as " + role + "." + " Manage your services and working hours below.");
+
+                                                        //Pass the user to the next Activity
+                                                        intent.putExtra("userId",userId);
+                                                    }
+
                                                     startActivity(intent);
                                                 }
                                             }

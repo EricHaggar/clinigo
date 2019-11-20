@@ -65,4 +65,50 @@ public class UserInputUnitTest {
         boolean valid = ValidationUtilities.isValidName("Physiotherapy2go");
         assertEquals("check invalid service name", false, valid);
     }
+
+    @Test
+    public void checkValidPostalCode(){
+        boolean valid = ValidationUtilities.isValidPostalCode("k4a0s5");
+        assertEquals("check valid postal code", true, valid);
+    }
+
+    @Test
+    public void checkInvalidPostalCode(){
+        boolean valid = ValidationUtilities.isValidPostalCode("k4a005");
+        assertEquals("check invalid postal code", false, valid);
+    }
+
+    @Test
+    public void checkValidPhoneNumber(){
+        boolean valid = ValidationUtilities.isValidPhoneNumber("123-456-4954");
+        assertEquals("check valid phone number", true, valid);
+    }
+
+    @Test
+    public void checkInvalidPhoneNumber(){
+        boolean valid = ValidationUtilities.isValidPhoneNumber("123456495");
+        assertEquals("check invalid phone number", false, valid);
+    }
+
+    @Test
+    public void checkValidAddress(){
+        boolean valid = false;
+        String[] addresses = new String[]{"1234, Queen Street Ouest", "123 Queen Street", "1420 Winterspring"};
+        for(int i =0; i < addresses.length; i++){
+            valid = ValidationUtilities.isValidAddress(addresses[i]);
+            if(valid == false){break;}
+        }
+        assertEquals("check valid address", true, valid);
+    }
+
+    @Test
+    public void checkInvalidAddress(){
+        boolean valid = true;
+        String[] addresses = new String[]{"Street", "Queen West","Street NY 12"};
+        for(int i =0; i < addresses.length; i++) {
+            valid = ValidationUtilities.isValidAddress(addresses[i]);
+            if(valid == true){break;}
+        }
+        assertEquals("check invalid address", false, valid);
+    }
 }

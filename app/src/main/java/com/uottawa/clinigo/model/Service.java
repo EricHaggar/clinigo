@@ -1,10 +1,13 @@
 package com.uottawa.clinigo.model;
 
+import java.util.ArrayList;
+
 public class Service {
 
     private String id;
     private String name;
     private String role;
+    private ArrayList<String> employees;//List of employee Ids(clinics) that have chosen this service
 
     public Service() {
     }
@@ -13,11 +16,44 @@ public class Service {
         this.id = id;
         this.name = name;
         this.role = role;
+        this.employees=  new ArrayList<String>();
     }
 
     public Service(String name, String role) {
         this.name = name;
         this.role = role;
+        this.employees=  new ArrayList<String>();
+    }
+
+    /**
+     * Getter for employess attribute
+     *
+     * @return ArrayList<String> employees
+     */
+    public ArrayList<String> getEmployees()
+    {
+        return this.employees;
+    }
+
+    /**
+     * Function that adds an employee (clinic) that is using the service
+     * */
+    public void addEmployee(String employeeId) {
+        this.employees.add(employeeId);
+    }
+
+    /**
+     * Function that initializes an empty array
+     * */
+    public void initializeEmptyEmployeeArray() {
+        this.employees = new ArrayList<String>();
+    }
+
+    /**
+     * Function that removes an employee Id (clinic) that is no longer using the service
+     * */
+    public void removeEmployee (String employeeId) {
+        this.employees.remove(employeeId);
     }
 
     /**

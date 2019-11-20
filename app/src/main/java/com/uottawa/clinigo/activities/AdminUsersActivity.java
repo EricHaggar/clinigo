@@ -84,7 +84,7 @@ public class AdminUsersActivity extends AppCompatActivity {
         final View dialogView = inflater.inflate(R.layout.delete_user_dialog, null);
         dialogBuilder.setView(dialogView);
 
-        final Button deleteButton = dialogView.findViewById(R.id.button_delete);
+        final Button deleteButton = dialogView.findViewById(R.id.button_update);
         final Button cancelButton = dialogView.findViewById(R.id.button_cancel);
 
         dialogBuilder.setTitle("Delete User");

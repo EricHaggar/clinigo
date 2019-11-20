@@ -29,9 +29,81 @@
     <string name="there_are_no_users_in_the_database">There are no users in the database.</string>
     <string name="name">Name</string>
     <string name="empty_user_list">There are currently no users.</string>
-    <string name="delete_user">Are you sure you want to delete this user?</string>
+    <string name="delete_user_account">Are you sure you want to delete this user\'s account?</string>
     <string name="cancel">Cancel</string>
-    <string name="manage_accounts">Manage Accounts</string>
+    <string name="manage_users">Manage Users</string>
+    <string name="employee_welcome_message">Welcome Employee!</string>
+    <string name="manage_working_hours">Working Hours</string>
+    <string name="choose_clinic_services">Clinic Services</string>
+    <string name="clinic_name">Clinic Name</string>
+    <string name="clinic_phone_number">Phone Number</string>
+    <string name="prompt_clinic_name">Clinic Name</string>
+    <string name="prompt_description">Description</string>
+    <string name="prompt_street_name">Street Name</string>
+    <string name="prompt_city">City</string>
+    <string name="prompt_province">Province/State</string>
+    <string name="prompt_phone_number">Phone Number</string>
+    <string name="delete_service">Are you sure you want to delete this service?</string>
+    <string name="add_clinic_service">Are you sure you want to offer this service to your patients?</string>
+    <string name="location">Address</string>
+    <string name="postal_code">Postal Code</string>
+    <string name="country">Country</string>
+    <string name="licensed">Licensed?</string>
+    <string name="create_profile">Create Profile</string>
+    <string name="edit_clinic_profile">Edit Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="edit_profile_welcome_message">Edit Profile</string>
+    <string name="updated_profile_infromation">Save Changes</string>
+    <string name="prompt_address">Address</string>
+    <string name="update_clinic_information">SAVE</string>
+    <string name="day">Day</string>
+    <string name="start">Start</string>
+    <string name="end">End</string>
+    <string name="monday">Monday</string>
+    <string name="clinic_closed">--</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="closed">Closed</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="update_time">Update Time</string>
+    <string name="edit_profile_info">Are you sure you want to update your clinic information?</string>
+    <string name="empty_availability_list">There are currently no availabilities provided.</string>
+    <string name="empty" />
+    <string name="empty_services_selection">There are no more services to choose from.</string>
+    <string-array name="countries">
+        <item>Argentina</item>
+        <item>Australia</item>
+        <item>Austria</item>
+        <item>Canada</item>
+        <item>China</item>
+        <item>Denmark</item>
+        <item>Egypt</item>
+        <item>France</item>
+        <item>Greece</item>
+        <item>Morocco</item>
+        <item>Italy</item>
+        <item>Ukraine</item>
+        <item>United Kingdom</item>
+        <item>United States</item>
+        <item>Zambia</item>
+    </string-array>
+    <string-array name="daysOfTheWeek">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+    <string-array name="roles">
+        <item>Doctor</item>
+        <item>Nurse</item>
+        <item>Staff</item>
+    </string-array>
     />
     />
 </resources>
