@@ -175,20 +175,14 @@ The UML diagram for this deliverable is shown below:
 5. Clinic Services
 
 <p align="center">
-    <img src="screenshots/empty_services.png" height="400" /> 
-</p>
-
-<p align="center">
+    <img src="screenshots/empty_services_page.png" height="400" />
     <img src="screenshots/clinic_services_list.png" height="400" /> 
 </p>
 
 6. Add Clinic Services
 
 <p align="center">
-    <img src="screenshots/add_service.png" height="400" /> 
-</p>
-
-<p align="center">
+    <img src="screenshots/add_service.png" height="400" />
     <img src="screenshots/add_service_dialog.png" height="400" /> 
 </p>
 
