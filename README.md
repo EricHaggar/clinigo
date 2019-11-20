@@ -173,6 +173,9 @@ The UML diagram for this deliverable is shown below:
 
 1. Create Clinic Profile
 
+**Please note**: There are no fields for insurance types and payment methods since 
+these fields were not mentioned [here](https://github.com/professor-forward/walkinclinic/blob/master/docs/deliverable03.md).
+
 <p align="center">
     <img src="screenshots/create_profile.png" height="400" /> 
 </p>
