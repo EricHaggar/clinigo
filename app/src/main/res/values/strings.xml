@@ -73,6 +73,7 @@
     <string name="empty_availability_list">There are currently no availabilities provided.</string>
     <string name="empty" />
     <string name="empty_services_selection">There are no more services to choose from.</string>
+    <string name="empty_clinics_list">There are currently no clinics available.</string>
     <string-array name="countries">
         <item>Argentina</item>
         <item>Australia</item>
