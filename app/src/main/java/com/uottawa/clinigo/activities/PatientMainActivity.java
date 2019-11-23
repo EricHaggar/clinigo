@@ -30,6 +30,7 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
 
     //These contain the available adresses, working hours and services for the patient to choose when searching for a clinic
     private ArrayList<String>  availableAddresses;
+    private ArrayList<String> availableCities;
     private ArrayList<String> availableWorkingHours;
     private ArrayList<String> availableServices;
     private ArrayList<User> availableClinics;
@@ -59,6 +60,7 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
         availableWorkingHours = new ArrayList<String>(
                 Arrays.asList("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"));
         availableServices = new ArrayList<>();
+        availableCities = new ArrayList<>();
 
         this.initVariables();
 
@@ -85,7 +87,11 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
                         availableClinics.add(user);
 
                         String address = postSnapshot.child("clinicInfo").child("location").child("address").getValue().toString();
+                        String city = postSnapshot.child("clinicInfo").child("location").child("city").getValue().toString();
                         availableAddresses.add(address);
+
+                        if (!availableCities.contains(city))
+                            availableCities.add(city);
                     }
                 }
 
@@ -161,6 +167,12 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
         } else if (sortRadioButton.getText().toString().equals("Type of Services")){
             spinner_adapter =
                     new ArrayAdapter<String>(getApplicationContext(),  android.R.layout.simple_spinner_item, availableServices);
+            spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(spinner_adapter);
+
+        } else if (sortRadioButton.getText().toString().equals("City")){
+            spinner_adapter =
+                    new ArrayAdapter<String>(getApplicationContext(),  android.R.layout.simple_spinner_item, availableCities);
             spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(spinner_adapter);
 
