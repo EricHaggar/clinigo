@@ -47,5 +47,16 @@ public class Employee extends User {
         }
         return null;
     }
+    // returns waiting time of all active bookings in minutes
+    public int getWaitingTime(String date){
+        int activeBookings = 0;
+        ArrayList<Booking> temp = bookings.get(date);
+        for(Booking booking: temp){
+            if(booking.getStatus().equals("Active")){
+                activeBookings++;
+            }
+        }
+        return activeBookings*15;
+    }
 
 }

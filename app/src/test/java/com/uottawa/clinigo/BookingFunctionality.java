@@ -39,4 +39,18 @@ public class BookingFunctionality {
         Booking temp = tester.getBookingByPatientId(booking2.getPatientId());
         assertEquals("10/01/2010", temp.getDate());
     }
+    @Test
+    public void checkWaitingTime(){
+        tester.addBooking(booking1);
+        assertEquals("check waiting time is 15", 15, tester.getWaitingTime(booking1.getDate()));
+        tester.addBooking(booking2);
+        assertEquals("check waiting time is 30 mins", 30, tester.getWaitingTime(booking1.getDate()));
+    }
+    @Test
+    public void checkWaitingTimeChange(){
+        tester.addBooking(booking1);
+        tester.addBooking(booking2);
+        booking2.setStatusToCancel();
+        assertEquals("check waiting time is now 15 mins", 15, tester.getWaitingTime(booking1.getDate()));
+    }
 }
