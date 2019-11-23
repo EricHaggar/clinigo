@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activities.PatientMainActivity"
-            android:label="Patient"></activity>
+            android:label="Clinic Search"></activity>
         <activity
             android:name=".activities.EditClinicInfoActivity"
             android:label="Edit Profile Information" />
