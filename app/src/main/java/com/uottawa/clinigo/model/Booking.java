@@ -4,13 +4,13 @@ public class Booking {
 
     private String date;
     private bookingStatus status;
-    private String patiendId;
+    private String patientId;
 
     enum bookingStatus{Canceled, Active, Completed}
 
     public Booking(String date, String id){
         this.date = date;
-        this.patiendId = id;
+        this.patientId = id;
         this.status = bookingStatus.Active;
     }
 
@@ -26,5 +26,5 @@ public class Booking {
 
     public String getDate(){return this.date;}
 
-    public String getPatientId(){return this.patiendId;}
+    public String getPatientId(){return this.patientId;}
 }
