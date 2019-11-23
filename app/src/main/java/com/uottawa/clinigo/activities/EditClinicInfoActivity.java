@@ -147,7 +147,6 @@ public class EditClinicInfoActivity extends AppCompatActivity implements Adapter
         }
     }
 
-
     public void saveOnClick(View view) {
 
         if (validProfileForm()) {

@@ -7,14 +7,17 @@ public class ClinicInfo {
     private Location location;
     private String description;
     private boolean licensed;
+    private double sumOfRatings;
+    private int numberOfRatings;
 
     public ClinicInfo(String name, String phoneNumber, Location location, String description, boolean licensed){
-
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.location = location;
         this.description = description;
         this.licensed = licensed;
+        this.numberOfRatings = 0;
+        this.sumOfRatings = 0.0;
     }
 
     public void setName(String name){this.name = name;}
@@ -36,4 +39,17 @@ public class ClinicInfo {
     public String getDescription(){return this.description;}
 
     public boolean getLicense(){return this.licensed;}
+
+    public void addRating(double rating){
+        this.sumOfRatings += rating;
+        this.numberOfRatings ++;
+    }
+
+    public int getNumberOfRatings(){return this.numberOfRatings;}
+
+    public double getRating(){
+        if(numberOfRatings == 0){return 0.0;}
+        return this.sumOfRatings/this.numberOfRatings;
+    }
 }
+

@@ -71,5 +71,10 @@ public class ValidationUtilities {
             //return false if nothing matches the input
         else return false;
     }
+
+    public static boolean CanViewRating(int numberOfRatings){
+        if(numberOfRatings == 0){return false;}
+        return true;
+    }
 }
 
