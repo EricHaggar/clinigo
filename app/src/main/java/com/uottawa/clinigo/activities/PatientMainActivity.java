@@ -52,6 +52,7 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
     Spinner spinner;
     ArrayAdapter<String> spinner_adapter;
     private String patientClinicChoice;
+    private String patientId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,12 +84,10 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
 
         TextView pressOnSearchText = findViewById(R.id.text_press_on_search);
         clinicListView.setEmptyView(pressOnSearchText);
-
     }
 
     private void initVariables() {
-
-
+        patientId = getIntent().getStringExtra("userId");
         //Getting the Address for All the clinics
         usersReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -404,6 +403,7 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
 
         Intent intent = new Intent(this, BookingActivity.class);
         intent.putExtra("userId", patientClinicChoice);
+        intent.putExtra("patientId", patientId);
         startActivity(intent);
     }
 
