@@ -29,6 +29,7 @@
     <string name="there_are_no_users_in_the_database">There are no users in the database.</string>
     <string name="name">Name</string>
     <string name="empty_user_list">There are currently no users.</string>
+    <string name="press_on_search">Press on Search to display/update results.</string>
     <string name="delete_user_account">Are you sure you want to delete this user\'s account?</string>
     <string name="cancel">Cancel</string>
     <string name="manage_users">Manage Users</string>

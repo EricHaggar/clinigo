@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -19,6 +21,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.uottawa.clinigo.R;
+import com.uottawa.clinigo.adapters.ClinicAdapter;
+import com.uottawa.clinigo.adapters.UserAdapter;
 import com.uottawa.clinigo.model.ClinicInfo;
 import com.uottawa.clinigo.model.Service;
 import com.uottawa.clinigo.model.User;
@@ -40,6 +44,8 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
 
     DatabaseReference usersReference;
     DatabaseReference servicesReference;
+
+    ListView clinicListView;
 
     Spinner spinner;
     ArrayAdapter<String> spinner_adapter;
@@ -70,6 +76,10 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
         // should be moved to adapters later.
         spinner = findViewById(R.id.spinner_options);
         spinner.setOnItemSelectedListener(this);
+        clinicListView = findViewById(R.id.list_clinics);
+
+        TextView pressOnSearchText = findViewById(R.id.text_press_on_search);
+        clinicListView.setEmptyView(pressOnSearchText);
 
     }
 
@@ -141,9 +151,6 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//        String day = parent.getItemAtPosition(position).toString();
-//        selectedDay = day;
-//        updateTextViewsFromWidget();
     }
 
     @Override
@@ -359,25 +366,28 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
     }
 
     public void getSearchResults(View view) {
-        //String address = spinner.getSelectedItem().toString();
-        //getClinicWithAddress(address);
 
-//        String city = spinner.getSelectedItem().toString();
-//        getClinicInCity(city);
+        String optionsVariable = spinner.getSelectedItem().toString();
 
-//        String service= spinner.getSelectedItem().toString();
-//        getClinicForService(service);
+        int radioButtonId = sortRadioGroup.getCheckedRadioButtonId();
+        sortRadioButton = findViewById(radioButtonId);
 
-        String day = spinner.getSelectedItem().toString();
-        getClinicForWorkingHours(day);
-
-        //Get the search variables here and call one of the 4 functions depending
-        //In Display Results, display the Clinics in the same page or next page
+        if (sortRadioButton.getText().toString().equals("Address")) {
+            getClinicWithAddress(optionsVariable);
+        } else if (sortRadioButton.getText().toString().equals("Working Hours")) {
+            getClinicForWorkingHours(optionsVariable);
+        } else if (sortRadioButton.getText().toString().equals("Type of Services")){
+            getClinicForService(optionsVariable);
+        } else if (sortRadioButton.getText().toString().equals("City")){
+            getClinicInCity(optionsVariable);
+        }
 
     }
 
     public void displayResults(ArrayList<Employee> results) {
-        System.out.println(results);
+
+        ClinicAdapter clinicAdapter = new ClinicAdapter(PatientMainActivity.this, results);
+        clinicListView.setAdapter(clinicAdapter);
     }
 
 }
