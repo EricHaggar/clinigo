@@ -10,6 +10,10 @@ public class ClinicInfo {
     private double sumOfRatings;
     private int numberOfRatings;
 
+    public ClinicInfo() {
+
+    }
+
     public ClinicInfo(String name, String phoneNumber, Location location, String description, boolean licensed){
         this.name = name;
         this.phoneNumber = phoneNumber;

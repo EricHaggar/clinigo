@@ -8,6 +8,10 @@ public class Location {
     private String province;
     private String country;
 
+    public Location() {
+
+    }
+
     public Location(String address, String city, String postalCode, String province, String country){
 
         this.address = address;

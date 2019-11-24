@@ -8,14 +8,8 @@ public class WorkingHours {
     private ArrayList<String> endTimes;
 
     public WorkingHours() {
-        this.startTimes = new ArrayList<>();
-        this.endTimes = new ArrayList<>();
-
-        //Default Working hours
-        for (int i = 0; i < 7; i++) {
-            this.startTimes.add("--");
-            this.endTimes.add("--");
-        }
+        startTimes = new ArrayList<>();
+        endTimes = new ArrayList<>();
     }
 
     public WorkingHours(ArrayList<String> startTimes, ArrayList<String> endTimes) {

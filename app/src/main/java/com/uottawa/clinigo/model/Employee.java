@@ -10,6 +10,11 @@ public class Employee extends User {
     private WorkingHours workingHours;
     private Map<String, ArrayList<Booking>> bookings = new HashMap<String, ArrayList<Booking>>();
 
+    public Employee() {
+        clinicInfo = new ClinicInfo();
+        workingHours = new WorkingHours();
+    }
+
     public Employee(String id, String email, String firstName, String lastName) {
         super(id, email, firstName, lastName);
         setRole("Employee");

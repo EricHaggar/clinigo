@@ -19,9 +19,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.uottawa.clinigo.R;
+import com.uottawa.clinigo.model.ClinicInfo;
 import com.uottawa.clinigo.model.Service;
 import com.uottawa.clinigo.model.User;
 import java.util.Arrays;
+import com.uottawa.clinigo.model.Employee;
+import com.uottawa.clinigo.model.WorkingHours;
 
 public class PatientMainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -180,18 +183,201 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
 
     }
 
+    public void getClinicWithAddress(final String address) {
+
+        final ArrayList<Employee> clincsWithThatAddress = new ArrayList<>();
+
+        //Getting the User (Clinic) with the appropriate address
+        usersReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+
+                    User user = postSnapshot.getValue(User.class);
 
 
+                    if (user.getRole().equals("Employee")) {
+                        Employee emp = postSnapshot.getValue(Employee.class);
+
+                        String currentAddress = postSnapshot.child("clinicInfo").child("location").child("address").getValue().toString();
+
+                        if (currentAddress.equals(address))
+                            clincsWithThatAddress.add(emp);
+
+                    }
+                }
+                displayResults(clincsWithThatAddress);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void getClinicInCity(final String city) {
+
+        final ArrayList<Employee> clinicsInCity = new ArrayList<>();
+
+        //Getting the User (Clinic) in the Appropriate city
+        usersReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+
+                    User user = postSnapshot.getValue(User.class);
 
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater menuInflater = getMenuInflater();
-//        menuInflater.inflate(R.menu.menu_search, menu);
-//        MenuItem menuItem = menu.findItem(R.id.menu_search);
-//
-//        SearchView searchView = (SearchView) menuItem.getActionView();
-//
-//        return super.onCreateOptionsMenu(menu);
-//    }
+                    if (user.getRole().equals("Employee")) {
+                        Employee emp = postSnapshot.getValue(Employee.class);
+
+                        String currentAddress = postSnapshot.child("clinicInfo").child("location").child("city").getValue().toString();
+
+                        if (currentAddress.equals(city))
+                            clinicsInCity.add(emp);
+
+                    }
+                }
+                displayResults(clinicsInCity);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void getClinicForService(final String serviceName) {
+        final ArrayList<Employee> clinicsForService = new ArrayList<>();
+
+
+        final ArrayList<String> clinicsIds = new ArrayList<>();
+
+
+        //Getting the User (Clinic) for a specific service
+        servicesReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+
+                    Service service = postSnapshot.getValue(Service.class);
+
+
+                    if (service.getName().equals(serviceName)) {
+                        for (int i=0; i< service.getEmployees().size(); i++) {
+                            clinicsIds.add(service.getEmployees().get(i));
+                        }
+                    }
+
+                }
+
+                usersReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+
+                            if (clinicsIds.contains(postSnapshot.getKey())) {
+                                Employee emp = postSnapshot.getValue(Employee.class);
+                                clinicsForService.add(emp);
+                            }
+
+                        }
+                        displayResults(clinicsForService);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private int getIndexForSelectedDay(String day) {
+
+        if (day.equals("Monday"))
+            return 0;
+        else if (day.equals("Tuesday"))
+            return 1;
+        else if (day.equals("Wednesday"))
+            return 2;
+        else if (day.equals("Thursday"))
+            return 3;
+        else if (day.equals("Friday"))
+            return 4;
+        else if (day.equals("Saturday"))
+            return 5;
+        else if (day.equals("Sunday"))
+            return 6;
+        else
+            return 0;
+    }
+
+    public void getClinicForWorkingHours(String day) {
+        final int dayIndex = this.getIndexForSelectedDay(day);
+
+        final ArrayList<Employee> clinicsForWorkingHours = new ArrayList<>();
+
+        //Getting the User (Clinic) for the appropriate working hours/day
+        usersReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+
+                    User user = postSnapshot.getValue(User.class);
+
+                    if (user.getRole().equals("Employee")) {
+                        Employee emp = postSnapshot.getValue(Employee.class);
+
+                        WorkingHours wh = postSnapshot.child("workingHours").getValue(WorkingHours.class);
+
+                        if (!wh.getStartTimes().get(dayIndex).equals("--"))
+                            clinicsForWorkingHours.add(emp);
+
+                    }
+                }
+                displayResults(clinicsForWorkingHours);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void getSearchResults(View view) {
+        //String address = spinner.getSelectedItem().toString();
+        //getClinicWithAddress(address);
+
+//        String city = spinner.getSelectedItem().toString();
+//        getClinicInCity(city);
+
+//        String service= spinner.getSelectedItem().toString();
+//        getClinicForService(service);
+
+        String day = spinner.getSelectedItem().toString();
+        getClinicForWorkingHours(day);
+
+        //Get the search variables here and call one of the 4 functions depending
+        //In Display Results, display the Clinics in the same page or next page
+
+    }
+
+    public void displayResults(ArrayList<Employee> results) {
+        System.out.println(results);
+    }
+
 }
