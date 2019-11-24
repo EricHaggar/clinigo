@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activities.BookingActivity"></activity>
         <activity
             android:name=".activities.PatientMainActivity"
-            android:label="Clinic Search"></activity>
+            android:label="Clinic Search" />
         <activity
             android:name=".activities.EditClinicInfoActivity"
             android:label="Edit Profile Information" />

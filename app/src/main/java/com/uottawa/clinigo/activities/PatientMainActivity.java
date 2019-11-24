@@ -1,5 +1,6 @@
 package com.uottawa.clinigo.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,6 +10,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -49,6 +51,7 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
 
     Spinner spinner;
     ArrayAdapter<String> spinner_adapter;
+    private String patientClinicChoice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -386,8 +389,22 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
 
     public void displayResults(ArrayList<Employee> results) {
 
-        ClinicAdapter clinicAdapter = new ClinicAdapter(PatientMainActivity.this, results);
+        final ClinicAdapter clinicAdapter = new ClinicAdapter(PatientMainActivity.this, results);
         clinicListView.setAdapter(clinicAdapter);
+        clinicListView.setClickable(true);
+        clinicListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                patientClinicChoice = clinicAdapter.getItem(position).getId();
+                patientBookingActivity();
+            }
+        });
+    }
+    public void patientBookingActivity(){
+
+        Intent intent = new Intent(this, BookingActivity.class);
+        intent.putExtra("userId", patientClinicChoice);
+        startActivity(intent);
     }
 
 }
