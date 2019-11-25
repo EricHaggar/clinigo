@@ -58,4 +58,15 @@ public class WorkingHours {
     public void setEndTimes(ArrayList<String> endTimes) {
         this.endTimes = endTimes;
     }
+
+    /**
+     * returns true if clinic is open on the specified day of the week
+     * @param position int
+     */
+    public boolean isOperational(int position){
+        if(this.getStartTimes().get(position).equals("--")){
+            return false;
+        }
+        return true;
+    }
 }

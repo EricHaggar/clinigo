@@ -56,7 +56,6 @@ public class BookingActivity extends AppCompatActivity {
         clinicName = findViewById(R.id.textView_clinic_name);
         clinicAddress = findViewById(R.id.textView_clinic_address);
 
-
         clinicReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -81,7 +80,7 @@ public class BookingActivity extends AppCompatActivity {
     }
     public void book(String date, String dayOfWeek){
         int mappingOfDay = ValidationUtilities.mapDayOfWeekToInt(dayOfWeek);
-        if(workingHours.getStartTimes().get(mappingOfDay).equals("--")){Toast.makeText(getApplicationContext(), "This clinic is closed on "+dayOfWeek, Toast.LENGTH_LONG).show();}
+        if(!workingHours.isOperational(mappingOfDay)){Toast.makeText(getApplicationContext(), "This Clinic is closed on "+dayOfWeek, Toast.LENGTH_LONG).show();}
     }
 
     public void showDatePicker(View v) {
