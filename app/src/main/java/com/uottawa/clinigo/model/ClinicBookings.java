@@ -40,5 +40,41 @@ public class ClinicBookings {
     public ArrayList<Booking> getBookingsByDate(String date){
         return this.bookings.get(date);
     }
-    
+
+    public Booking getBookingForPatient(String patientId){
+
+        for(Map.Entry<String, ArrayList<Booking>> entry : bookings.entrySet()){
+            ArrayList<Booking> tempArr = entry.getValue();
+            for(int i = 0; i < tempArr.size(); i++){
+                Booking temp = tempArr.get(i);
+                if(temp.getPatientId().equals(patientId)){
+                    return this.bookings.get(temp.getDate()).get(i);
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @param date
+     * @return int of waiting time in minutes
+     */
+    public int getWaitingTime(String date){
+        return this.bookings.get(date).size()*15;
+    }
+
+    public void deleteBookingForPatient(String patientId){
+        boolean found =false;
+        for(Map.Entry<String, ArrayList<Booking>> entry : bookings.entrySet()){
+            int i = -1;
+            for(Booking booking: entry.getValue()){
+                i++;
+                if(booking.getPatientId().equals(patientId)){
+                    found = true;
+                    break;
+                }
+            }
+            if(found){entry.getValue().remove(i);}
+        }
+    }
 }
