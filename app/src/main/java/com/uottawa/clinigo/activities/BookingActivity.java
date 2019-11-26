@@ -25,7 +25,10 @@ import com.uottawa.clinigo.model.Employee;
 import com.uottawa.clinigo.model.WorkingHours;
 import com.uottawa.clinigo.utilities.ValidationUtilities;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,12 +37,14 @@ public class BookingActivity extends AppCompatActivity {
     String clinicId, patientId;
     private ClinicBookings clinicsBookings;
     private Employee employee;
-    private TextView clinicName, clinicAddress, clinicRating;
+    private TextView clinicName, clinicAddress, clinicRating, clinicCheckInWaitTime;
     private FirebaseDatabase mDatabase;
     private DatabaseReference clinicReference, clinicBookingsReference;
     private DatabaseReference patientReference;
     private WorkingHours workingHours;
+    private int checkInWaitTime;
     private boolean patientHasBooking;
+    private String currentDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +55,7 @@ public class BookingActivity extends AppCompatActivity {
         patientId = getIntent().getStringExtra("patientId");
         initVariables();
         final SelectDateFragement newFragement = new SelectDateFragement();
+
     }
 
     public void initVariables(){
@@ -60,7 +66,9 @@ public class BookingActivity extends AppCompatActivity {
         patientReference = mDatabase.getReference().child("users").child(patientId);
         clinicName = findViewById(R.id.textView_clinic_name);
         clinicAddress = findViewById(R.id.textView_clinic_address);
-
+        clinicCheckInWaitTime = findViewById(R.id.textView_clinic_checkIn_wait_time);
+        currentDate = getCurrentDate();
+        patientHasBooking = false;
 
         clinicReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -81,7 +89,6 @@ public class BookingActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-
         clinicBookingsReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -101,10 +108,8 @@ public class BookingActivity extends AppCompatActivity {
                     clinicsBookings = new ClinicBookings();
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
         patientReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -114,8 +119,6 @@ public class BookingActivity extends AppCompatActivity {
                     if(data.getKey().equals("hasBooking")){
                         if(data.getValue().toString().equals("true")){
                             patientHasBooking = true;
-                        }else{
-                            patientHasBooking = false;
                         }
                     }
                 }
@@ -123,12 +126,12 @@ public class BookingActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}
         });
-
     }
     public void book(String date, String dayOfWeek){
         int mappingOfDay = ValidationUtilities.mapDayOfWeekToInt(dayOfWeek);
         if(!workingHours.isOperational(mappingOfDay)){Toast.makeText(getApplicationContext(), "This Clinic is closed on "+dayOfWeek, Toast.LENGTH_LONG).show();}
         else{
+
             if(patientHasBooking){
                 Toast.makeText(getApplicationContext(), "You Already have a Booking!", Toast.LENGTH_LONG).show();
             }
@@ -141,7 +144,6 @@ public class BookingActivity extends AppCompatActivity {
             }
         }
     }
-
     public void showDatePicker(View v) {
         DialogFragment newFragment = new SelectDateFragement();
         newFragment.show(getSupportFragmentManager(), "date picker");
@@ -149,5 +151,21 @@ public class BookingActivity extends AppCompatActivity {
     public void setPatientHasBooking(boolean hasBooking){
         patientReference.child("hasBooking").setValue(hasBooking);
         patientHasBooking = true;
+    }
+    public int getCheckinWaitTime(){
+
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        Calendar calendarObj= Calendar.getInstance();
+        String currentDate = df.format(calendarObj.getTime());
+        if(clinicsBookings.getBookingsByDate(currentDate) != null){
+            return clinicsBookings.getWaitingTime(currentDate);
+        }
+        return 0;
+    }
+    public String getCurrentDate(){
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        Calendar calendarObj= Calendar.getInstance();
+        String currentDate = df.format(calendarObj.getTime());
+        return currentDate;
     }
 }

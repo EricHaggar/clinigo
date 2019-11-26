@@ -42,7 +42,7 @@ public class SelectDateFragement extends DialogFragment {
 
                     if(view.getYear() < currentYear){valid = false;}
                     if(currentYear == view.getYear() && view.getMonth()+1 < currentMonth){valid = false;}
-                    if(view.getMonth() == currentMonth && currentDay > view.getDayOfMonth()){valid = false;}
+                    if(view.getMonth()+1 == currentMonth && currentDay > view.getDayOfMonth()){valid = false;}
                     if(!valid){Toast.makeText(getActivity(), "Invalid Date Selection.", Toast.LENGTH_LONG).show();}
 
                     else {

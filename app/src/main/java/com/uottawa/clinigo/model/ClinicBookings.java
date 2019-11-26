@@ -24,8 +24,8 @@ public class ClinicBookings {
         }
         ArrayList<Booking> temp = this.bookings.get(booking.getDate());
         temp.add(booking);
-
     }
+
     public Booking getBookingByPatientId(String patientId){
         for (Map.Entry<String, ArrayList<Booking>> entry : bookings.entrySet()) {
             for (Booking booking : entry.getValue()) {

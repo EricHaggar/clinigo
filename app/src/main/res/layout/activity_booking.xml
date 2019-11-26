@@ -47,6 +47,24 @@
                 </TextView>
 
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearLayout_checkIn_waitTime"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/textView_clinic_checkIn_wait_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Today's Check-in average wait time : ">
+                </TextView>
+                <TextView
+                    android:id="@+id/edit_checkIn_waitTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/button_book"
@@ -61,7 +79,7 @@
                 android:onClick="showDatePicker"
                 android:textColor="@color/colorText"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout_rating"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_checkIn_waitTime"
                 tools:targetApi="o" />
         </LinearLayout>
     </ScrollView>
