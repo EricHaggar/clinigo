@@ -1,12 +1,16 @@
 package com.uottawa.clinigo.model;
 
+import java.util.ArrayList;
+
 public class Booking {
 
     private String date;
     private bookingStatus status;
     private String patientId;
-
     enum bookingStatus{Canceled, Active, Completed}
+
+    public Booking(){
+    }
 
     public Booking(String date, String id){
         this.date = date;

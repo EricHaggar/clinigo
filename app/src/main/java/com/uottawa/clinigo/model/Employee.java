@@ -1,18 +1,15 @@
 package com.uottawa.clinigo.model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 public class Employee extends User {
 
     private ClinicInfo clinicInfo;
     private WorkingHours workingHours;
-    private Map<String, ArrayList<Booking>> bookings = new HashMap<String, ArrayList<Booking>>();
+    private ClinicBookings bookings;
 
     public Employee() {
         clinicInfo = new ClinicInfo();
         workingHours = new WorkingHours();
+        bookings = new ClinicBookings();
     }
 
     public Employee(String id, String email, String firstName, String lastName) {
@@ -29,39 +26,7 @@ public class Employee extends User {
 
     public ClinicInfo getClinicInfo(){return this.clinicInfo;}
 
-    public void addBooking(Booking booking){
-        if(bookings.containsKey(booking.getDate())){
-            bookings.get(booking.getDate()).add(booking);
-        }
-        else {
-            System.out.println("Booking :"+booking.getDate());
-            bookings.put(booking.getDate(), new ArrayList<Booking>());
-            bookings.get(booking.getDate()).add(booking);
-        }
-    }
+    public ClinicBookings getClinicBookings(){return this.bookings;}
 
-    public ArrayList<Booking> getBookingsByDate(String date){return bookings.get(date);}
-
-    public Booking getBookingByPatientId(String patientId){
-        for (Map.Entry<String, ArrayList<Booking>> entry : bookings.entrySet()) {
-            for (Booking booking : entry.getValue()) {
-                if (booking.getPatientId().equals(patientId) && booking.getStatus().equals("Active")) {
-                    return booking;
-                }
-            }
-        }
-        return null;
-    }
-    // returns waiting time of all active bookings in minutes
-    public int getWaitingTime(String date){
-        int activeBookings = 0;
-        ArrayList<Booking> temp = bookings.get(date);
-        for(Booking booking: temp){
-            if(booking.getStatus().equals("Active")){
-                activeBookings++;
-            }
-        }
-        return activeBookings*15;
-    }
-
+    public void setClinicBookings(ClinicBookings bookings){this.bookings = bookings;}
 }

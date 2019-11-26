@@ -33,7 +33,7 @@ public class SelectDateFragement extends DialogFragment {
                     SimpleDateFormat simpledateformat = new SimpleDateFormat("EEEE");
                     Date date = new Date(year, month, day-1);
                     String dayOfWeek = simpledateformat.format(date);
-                    datePicked = view.getDayOfMonth()+"/"+(view.getMonth()+1)+"/"+view.getYear();
+                    datePicked = view.getDayOfMonth()+"-"+(view.getMonth()+1)+"-"+view.getYear();
                     boolean valid = true;
                     Calendar cal = Calendar.getInstance();
                     int currentMonth = Calendar.getInstance().get(Calendar.MONTH)+1;

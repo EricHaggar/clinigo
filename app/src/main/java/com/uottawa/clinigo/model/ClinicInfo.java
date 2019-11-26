@@ -11,7 +11,6 @@ public class ClinicInfo {
     private int numberOfRatings;
 
     public ClinicInfo() {
-
     }
 
     public ClinicInfo(String name, String phoneNumber, Location location, String description, boolean licensed){
