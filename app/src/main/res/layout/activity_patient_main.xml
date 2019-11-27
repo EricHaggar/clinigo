@@ -26,14 +26,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingTop="5dp"
-                    android:text="Sort By"
-                    android:textSize="18sp" />
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingTop="5dp"
+                        android:text="Sort By"
+                        android:textSize="18sp" />
+
+                    <Button
+                        android:id="@+id/button_view_my_bookings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="patientViewBookings"
+                        android:text="@string/patient_view_bookings" />
+
+                </LinearLayout>
 
                 <RadioGroup
                     android:id="@+id/rb_group_sort_types"

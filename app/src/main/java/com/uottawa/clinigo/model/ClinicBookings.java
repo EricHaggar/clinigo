@@ -26,15 +26,29 @@ public class ClinicBookings {
         temp.add(booking);
     }
 
-    public Booking getBookingByPatientId(String patientId){
+    public ArrayList<Booking> getBookingByPatientId(String patientId){
+        ArrayList<Booking> temp = new ArrayList<>();
         for (Map.Entry<String, ArrayList<Booking>> entry : bookings.entrySet()) {
             for (Booking booking : entry.getValue()) {
                 if (booking.getPatientId().equals(patientId) && booking.getStatus().equals("Active")) {
-                    return booking;
+                    temp.add(booking);
                 }
             }
         }
-        return null;
+        return temp;
+    }
+    public boolean patientHasBookingOnDate(String date, String patientId){
+        ArrayList<Booking> patientsBooking = getBookingByPatientId(patientId);
+        if(patientsBooking.size() == 0){
+            return false;
+        }
+        else{
+            for(int i =0; i < patientsBooking.size(); i++){
+                Booking booking = patientsBooking.get(i);
+                if(booking.getDate().equals(date)){return true;}
+            }
+            return false;
+        }
     }
 
     public ArrayList<Booking> getBookingsByDate(String date){

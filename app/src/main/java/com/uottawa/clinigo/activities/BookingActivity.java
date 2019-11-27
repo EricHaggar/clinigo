@@ -6,6 +6,7 @@ import androidx.fragment.app.DialogFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +44,7 @@ public class BookingActivity extends AppCompatActivity {
     private int checkInWaitTime;
     private boolean patientHasBooking;
     private String currentDate;
+    private ArrayList<Booking> patientArrayOfBookings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,6 +125,17 @@ public class BookingActivity extends AppCompatActivity {
                             patientHasBooking = true;
                         }
                     }
+                    if(data.getKey().equals("bookings")){
+                        ArrayList<Booking> patientsTempBookings = new ArrayList<>();
+                        for(DataSnapshot patientBookings: data.getChildren() ){
+                            Booking patientApp = patientBookings.getValue(Booking.class);
+                            patientsTempBookings.add(patientApp);
+                        }
+                        patientArrayOfBookings = patientsTempBookings;
+                    }
+                }
+                if(patientArrayOfBookings == null){
+                    patientArrayOfBookings = new ArrayList<>();
                 }
             }
             @Override
@@ -134,16 +147,17 @@ public class BookingActivity extends AppCompatActivity {
         int mappingOfDay = ValidationUtilities.mapDayOfWeekToInt(dayOfWeek);
         if(!workingHours.isOperational(mappingOfDay)){Toast.makeText(getApplicationContext(), "This Clinic is closed on "+dayOfWeek, Toast.LENGTH_LONG).show();}
         else{
-
-            if(patientHasBooking){
-                Toast.makeText(getApplicationContext(), "You Already have a Booking!", Toast.LENGTH_LONG).show();
+            if(clinicsBookings.patientHasBookingOnDate(date, patientId)){
+                Toast.makeText(getApplicationContext(), "You Already have a Booking on that date!", Toast.LENGTH_LONG).show();
             }
             else {
                 Booking newBooking = new Booking(date, patientId);
                 DatabaseReference bookingsReference = clinicReference.child("bookings");
                 clinicsBookings.addBooking(newBooking);
+                patientArrayOfBookings.add(newBooking);
                 bookingsReference.child(newBooking.getDate()).setValue(clinicsBookings.getBookingsByDate(newBooking.getDate()));
-                setPatientHasBooking(true);
+                setPatientHasBooking(false);
+                setPatientArrayOfBookings(patientArrayOfBookings);
             }
         }
     }
@@ -152,8 +166,11 @@ public class BookingActivity extends AppCompatActivity {
         newFragment.show(getSupportFragmentManager(), "date picker");
     }
     public void setPatientHasBooking(boolean hasBooking){
-        patientReference.child("hasBooking").setValue(hasBooking);
+        patientReference.child("test").setValue(hasBooking);
         patientHasBooking = true;
+    }
+    public void setPatientArrayOfBookings(ArrayList<Booking> bookings){
+        patientReference.child("bookings").setValue(bookings);
     }
     public int getCheckinWaitTime(){
 

@@ -407,4 +407,10 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
         startActivity(intent);
     }
 
+    public void patientViewBookings(View view) {
+
+        Intent intent = new Intent(this, PatientBookingActivity.class);
+        intent.putExtra("patientId", patientId);
+        startActivity(intent);
+    }
 }
