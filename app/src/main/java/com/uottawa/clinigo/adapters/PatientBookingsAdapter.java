@@ -28,9 +28,11 @@ public class PatientBookingsAdapter extends ArrayAdapter<Booking> {
         LayoutInflater inflater = context.getLayoutInflater();
         View lisViewItem = inflater.inflate(R.layout.patient_bookings_adapter, null, true);
         TextView textViewBookingDate = lisViewItem.findViewById(R.id.textView_patient_booking_date);
+        TextView textViewBookingClinicName = lisViewItem.findViewById(R.id.textView_patient_booking_ClinicName);
 
         Booking booking = bookings.get(positoin);
         textViewBookingDate.setText(booking.getDate());
+        textViewBookingClinicName.setText(booking.getClinicName());
         return lisViewItem;
 
     }

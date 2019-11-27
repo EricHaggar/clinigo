@@ -7,6 +7,8 @@ public class Booking {
     private String date;
     private bookingStatus status;
     private String patientId;
+    public String address;
+    public String clinicName;
     enum bookingStatus{Canceled, Active, Completed}
 
     public Booking(){
@@ -16,6 +18,14 @@ public class Booking {
         this.date = date;
         this.patientId = id;
         this.status = bookingStatus.Active;
+    }
+
+    public Booking(String date, String clinicName, String address){
+        this.date = date;
+        this.clinicName = clinicName;
+        this.address = address;
+        this.status = bookingStatus.Active;
+
     }
 
     public void setStatus(String status){
@@ -31,4 +41,8 @@ public class Booking {
     public String getDate(){return this.date;}
 
     public String getPatientId(){return this.patientId;}
+
+    public String getClinicName(){return this.clinicName;}
+
+    public String getClinicAddress(){return this.address;}
 }

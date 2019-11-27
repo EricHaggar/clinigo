@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.uottawa.clinigo.R;
+import com.uottawa.clinigo.adapters.PatientBookingsAdapter;
 import com.uottawa.clinigo.model.Booking;
 
 import java.util.ArrayList;
@@ -53,6 +55,7 @@ public class PatientBookingActivity extends AppCompatActivity {
                             patientsTempBookings.add(patientApp);
                         }
                         patientArrayOfBookings = patientsTempBookings;
+                        displayResults(patientArrayOfBookings);
                     }
                 }
                 if(patientArrayOfBookings == null){
@@ -62,5 +65,11 @@ public class PatientBookingActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}
         });
+    }
+
+    public void displayResults(ArrayList<Booking> results){
+        final PatientBookingsAdapter patientBookingsAdapter = new PatientBookingsAdapter(PatientBookingActivity.this, results);
+        bookingsListView.setAdapter(patientBookingsAdapter);
+        bookingsListView.setClickable(true);
     }
 }

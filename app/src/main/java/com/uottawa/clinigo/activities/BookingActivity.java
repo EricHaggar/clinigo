@@ -134,9 +134,6 @@ public class BookingActivity extends AppCompatActivity {
                         patientArrayOfBookings = patientsTempBookings;
                     }
                 }
-                if(patientArrayOfBookings == null){
-                    patientArrayOfBookings = new ArrayList<>();
-                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}
@@ -151,13 +148,19 @@ public class BookingActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "You Already have a Booking on that date!", Toast.LENGTH_LONG).show();
             }
             else {
+                if(patientArrayOfBookings == null){
+                    patientArrayOfBookings = new ArrayList<>();
+                }
                 Booking newBooking = new Booking(date, patientId);
+                String clinicNamestr = clinicName.getText().toString().trim();
+                String clinicAddressStr =  clinicAddress.getText().toString().trim();
+                Booking patientBooking = new Booking(date, clinicNamestr, clinicAddressStr);
                 DatabaseReference bookingsReference = clinicReference.child("bookings");
                 clinicsBookings.addBooking(newBooking);
-                patientArrayOfBookings.add(newBooking);
+                patientArrayOfBookings.add(patientBooking);
                 bookingsReference.child(newBooking.getDate()).setValue(clinicsBookings.getBookingsByDate(newBooking.getDate()));
-                setPatientHasBooking(false);
                 setPatientArrayOfBookings(patientArrayOfBookings);
+                Toast.makeText(getApplicationContext(), "patient array sizeL "+ patientArrayOfBookings.size(), Toast.LENGTH_LONG).show();
             }
         }
     }
