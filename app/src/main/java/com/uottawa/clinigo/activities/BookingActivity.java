@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +14,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 import com.uottawa.clinigo.R;
 import com.uottawa.clinigo.fragments.SelectDateFragement;
@@ -55,7 +53,6 @@ public class BookingActivity extends AppCompatActivity {
         patientId = getIntent().getStringExtra("patientId");
         initVariables();
         final SelectDateFragement newFragement = new SelectDateFragement();
-
     }
 
     public void initVariables(){
@@ -66,7 +63,7 @@ public class BookingActivity extends AppCompatActivity {
         patientReference = mDatabase.getReference().child("users").child(patientId);
         clinicName = findViewById(R.id.textView_clinic_name);
         clinicAddress = findViewById(R.id.textView_clinic_address);
-        clinicCheckInWaitTime = findViewById(R.id.textView_clinic_checkIn_wait_time);
+        clinicCheckInWaitTime = findViewById(R.id.textView_checkIn_waitTime);
         currentDate = getCurrentDate();
         patientHasBooking = false;
 
@@ -101,10 +98,15 @@ public class BookingActivity extends AppCompatActivity {
                             tempArr.add(tempBooking);
                         }
                         tempMap.put(data.getKey(), tempArr);
+                        if(data.getKey().equals(currentDate)){
+                            checkInWaitTime = tempArr.size()*15;
+                            clinicCheckInWaitTime.setText(Integer.toString(checkInWaitTime) + " min");
+                        }
                     }
                     clinicsBookings = new ClinicBookings(tempMap);
                 }
                 else{
+                    clinicCheckInWaitTime.setText("0 min");
                     clinicsBookings = new ClinicBookings();
                 }
             }
@@ -126,6 +128,7 @@ public class BookingActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}
         });
+
     }
     public void book(String date, String dayOfWeek){
         int mappingOfDay = ValidationUtilities.mapDayOfWeekToInt(dayOfWeek);
@@ -167,5 +170,9 @@ public class BookingActivity extends AppCompatActivity {
         Calendar calendarObj= Calendar.getInstance();
         String currentDate = df.format(calendarObj.getTime());
         return currentDate;
+    }
+
+    public int calculateWaitTime(int size){
+        return size*15;
     }
 }

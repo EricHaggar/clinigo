@@ -59,7 +59,7 @@
                     android:text="Today's Check-in average wait time : ">
                 </TextView>
                 <TextView
-                    android:id="@+id/edit_checkIn_waitTime"
+                    android:id="@+id/textView_checkIn_waitTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 </TextView>
