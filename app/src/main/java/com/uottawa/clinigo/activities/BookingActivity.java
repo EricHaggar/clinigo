@@ -160,7 +160,8 @@ public class BookingActivity extends AppCompatActivity {
                 patientArrayOfBookings.add(patientBooking);
                 bookingsReference.child(newBooking.getDate()).setValue(clinicsBookings.getBookingsByDate(newBooking.getDate()));
                 setPatientArrayOfBookings(patientArrayOfBookings);
-                Toast.makeText(getApplicationContext(), "patient array sizeL "+ patientArrayOfBookings.size(), Toast.LENGTH_LONG).show();
+
+                getPatientBookingsActivity(null);
             }
         }
     }
@@ -194,5 +195,12 @@ public class BookingActivity extends AppCompatActivity {
 
     public int calculateWaitTime(int size){
         return size*15;
+    }
+
+    public void getPatientBookingsActivity(View view){
+        Intent intent = new Intent(getApplicationContext(), PatientBookingActivity.class);
+        intent.putExtra("patientId", patientId);
+        startActivity(intent);
+        finish();
     }
 }
