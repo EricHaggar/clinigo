@@ -112,7 +112,6 @@ public class PatientBookingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 b.dismiss();
-                Toast.makeText(getApplicationContext(), "removed : "+ position, Toast.LENGTH_LONG).show();
                 Booking toBeDeleted = patientArrayOfBookings.get(position);
                 deleteClinicPatientBooking(toBeDeleted);
                 patientArrayOfBookings.remove(position);
