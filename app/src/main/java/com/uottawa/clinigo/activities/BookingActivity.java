@@ -143,9 +143,11 @@ public class BookingActivity extends AppCompatActivity {
     }
     public void book(String date, String dayOfWeek){
         int mappingOfDay = ValidationUtilities.mapDayOfWeekToInt(dayOfWeek);
-        if(!workingHours.isOperational(mappingOfDay)){Toast.makeText(getApplicationContext(), "This Clinic is closed on "+dayOfWeek, Toast.LENGTH_LONG).show();}
+        if(!workingHours.isOperational(mappingOfDay)){
+            Toast.makeText(getApplicationContext(), "This Clinic is closed on "+dayOfWeek, Toast.LENGTH_LONG).show();}
         else{
             if(clinicsBookings.patientHasBookingOnDate(date, patientId)){
+
                 Toast.makeText(getApplicationContext(), "You Already have a Booking on that date!", Toast.LENGTH_LONG).show();
             }
             else {
@@ -155,7 +157,7 @@ public class BookingActivity extends AppCompatActivity {
                 Booking newBooking = new Booking(date, patientId);
                 String clinicNamestr = clinicName.getText().toString().trim();
                 String clinicAddressStr =  clinicAddress.getText().toString().trim();
-                Booking patientBooking = new Booking(date, clinicNamestr, clinicAddressStr);
+                Booking patientBooking = new Booking(date, clinicNamestr, clinicAddressStr, clinicId);
                 DatabaseReference bookingsReference = clinicReference.child("bookings");
                 clinicsBookings.addBooking(newBooking);
                 patientArrayOfBookings.add(patientBooking);
@@ -176,10 +178,6 @@ public class BookingActivity extends AppCompatActivity {
     public void showDatePicker(View v) {
         DialogFragment newFragment = new SelectDateFragement();
         newFragment.show(getSupportFragmentManager(), "date picker");
-    }
-    public void setPatientHasBooking(boolean hasBooking){
-        patientReference.child("test").setValue(hasBooking);
-        patientHasBooking = true;
     }
     public void setPatientArrayOfBookings(ArrayList<Booking> bookings){
         patientReference.child("bookings").setValue(bookings);
@@ -208,6 +206,7 @@ public class BookingActivity extends AppCompatActivity {
     public void getPatientBookingsActivity(View view){
         Intent intent = new Intent(getApplicationContext(), PatientBookingActivity.class);
         intent.putExtra("patientId", patientId);
+        intent.putExtra("clinicId", clinicId);
         startActivity(intent);
         finish();
     }

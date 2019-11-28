@@ -9,6 +9,7 @@ public class Booking {
     private String patientId;
     public String address;
     public String clinicName;
+    private String clinicId;
     enum bookingStatus{Canceled, Active, Completed}
 
     public Booking(){
@@ -20,10 +21,11 @@ public class Booking {
         this.status = bookingStatus.Active;
     }
 
-    public Booking(String date, String clinicName, String address){
+    public Booking(String date, String clinicName, String address, String clinicId){
         this.date = date;
         this.clinicName = clinicName;
         this.address = address;
+        this.clinicId =clinicId;
         this.status = bookingStatus.Active;
 
     }
@@ -45,4 +47,6 @@ public class Booking {
     public String getClinicName(){return this.clinicName;}
 
     public String getClinicAddress(){return this.address;}
+
+    public String getClinicId(){return this.clinicId;}
 }

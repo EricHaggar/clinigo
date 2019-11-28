@@ -37,6 +37,7 @@ public class ClinicBookings {
         }
         return temp;
     }
+
     public boolean patientHasBookingOnDate(String date, String patientId){
         ArrayList<Booking> patientsBooking = getBookingByPatientId(patientId);
         if(patientsBooking.size() == 0){
@@ -68,7 +69,6 @@ public class ClinicBookings {
         }
         return null;
     }
-
     /**
      * @param date
      * @return int of waiting time in minutes
@@ -89,6 +89,11 @@ public class ClinicBookings {
                 }
             }
             if(found){entry.getValue().remove(i);}
+        }
+    }
+    public void setBookingsForPatient(ArrayList<Booking> bookings){
+        for(int i = 0; i < bookings.size(); i ++){
+            this.addBooking(bookings.get(i));
         }
     }
 }

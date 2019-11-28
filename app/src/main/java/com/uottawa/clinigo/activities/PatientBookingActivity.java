@@ -29,9 +29,11 @@ import java.util.ArrayList;
 
 public class PatientBookingActivity extends AppCompatActivity {
 
-    String patientId;
+    String patientId, clinicId;
     private FirebaseDatabase mDatabase;
     private DatabaseReference patientReference;
+    private DatabaseReference clinicReference, clinicBookingsReference;
+    private DatabaseReference users;
     private ArrayList<Booking> patientArrayOfBookings;
     private TextView patientHasNoBookings;
     private String[] patientBookingDelete;
@@ -43,6 +45,7 @@ public class PatientBookingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_booking);
         patientId = getIntent().getStringExtra("patientId");
+        clinicId = getIntent().getStringExtra("clinicId");
         initVariables();
     }
 
@@ -51,6 +54,7 @@ public class PatientBookingActivity extends AppCompatActivity {
         patientReference = mDatabase.getReference().child("users").child(patientId);
         patientHasNoBookings = findViewById(R.id.textView_patient_noBookings);
         bookingsListView = findViewById(R.id.listView_patient_bookings);
+        users = mDatabase.getReference().child("users");
 
         patientReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -84,6 +88,7 @@ public class PatientBookingActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 patientBookingDelete[0] = patientBookingsAdapter.getItem(position).getClinicName();
                 patientBookingDelete[1] = patientBookingsAdapter.getItem(position).getDate();
+                Toast.makeText(getApplicationContext(), "clinic name :"+patientBookingDelete[0]+" "+patientBookingDelete[1], Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -108,8 +113,12 @@ public class PatientBookingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 b.dismiss();
                 Toast.makeText(getApplicationContext(), "removed : "+ position, Toast.LENGTH_LONG).show();
+                Booking toBeDeleted = patientArrayOfBookings.get(position);
+                deleteClinicPatientBooking(toBeDeleted);
                 patientArrayOfBookings.remove(position);
                 displayResults(patientArrayOfBookings);
+                savePatientChanges(patientArrayOfBookings);
+                Toast.makeText(getApplicationContext(), "Successfully deleted booing!", Toast.LENGTH_LONG).show();
             }
         });
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -118,6 +127,33 @@ public class PatientBookingActivity extends AppCompatActivity {
                 b.dismiss();
             }
         });
+    }
+    public void savePatientChanges(ArrayList<Booking> bookings){
+        patientReference.child("bookings").setValue(bookings);
+    }
+
+    public void deleteClinicPatientBooking(Booking deleted){
+
+        DatabaseReference tempRef = users.child(deleted.getClinicId()).child("bookings").child(deleted.getDate());
+        tempRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot data : dataSnapshot.getChildren()){
+                    if(data.child("patientId").getValue().toString().equals(patientId)){
+                        data.getRef().removeValue();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
 
     }
+
 }

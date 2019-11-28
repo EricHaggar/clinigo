@@ -35,15 +35,16 @@ public class BookingFunctionality {
         assertEquals(30, tester.getClinicBookings().getWaitingTime(booking2.getDate()));
         tester.getClinicBookings().addBooking(booking3);
         assertEquals(15, tester.getClinicBookings().getWaitingTime(booking3.getDate()));
+        ArrayList<Booking> tempArr = tester.getClinicBookings().getBookingByPatientId(booking1.getPatientId());
+        assertEquals(2, tempArr.size());
     }
     @Test
     public void verifyDeletingFunctionality(){
         tester.getClinicBookings().addBooking(booking1);
         tester.getClinicBookings().addBooking(booking2);
         tester.getClinicBookings().addBooking(booking3);
-        Booking temp = tester.getClinicBookings().getBookingByPatientId(booking1.getPatientId());
-        assertEquals(booking1.getPatientId(), temp.getPatientId());
-        tester.getClinicBookings().deleteBookingForPatient(temp.getPatientId());
-        assertEquals(15,tester.getClinicBookings().getWaitingTime(temp.getDate()));
+        assertEquals(booking1.getPatientId(), booking1.getPatientId());
+        tester.getClinicBookings().deleteBookingForPatient(booking1.getPatientId());
+        assertEquals(15,tester.getClinicBookings().getWaitingTime(booking1.getDate()));
     }
 }
