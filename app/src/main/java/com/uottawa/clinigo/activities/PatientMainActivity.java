@@ -176,7 +176,7 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
             spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(spinner_adapter);
 
-        } else if (sortRadioButton.getText().toString().equals("Type of Services")) {
+        } else if (sortRadioButton.getText().toString().equals("Service Type")) {
             spinner_adapter =
                     new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, availableServices);
             spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -381,7 +381,7 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
             getClinicWithAddress(optionsVariable);
         } else if (sortRadioButton.getText().toString().equals("Working Hours")) {
             getClinicForWorkingHours(optionsVariable);
-        } else if (sortRadioButton.getText().toString().equals("Type of Services")) {
+        } else if (sortRadioButton.getText().toString().equals("Service Type")) {
             getClinicForService(optionsVariable);
         } else if (sortRadioButton.getText().toString().equals("City")) {
             getClinicInCity(optionsVariable);
