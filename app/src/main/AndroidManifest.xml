@@ -12,7 +12,8 @@
         <activity
             android:name=".activities.PatientBookingActivity"
             android:label="My Bookings"></activity>
-        <activity android:name=".activities.BookingActivity" />
+        <activity android:name=".activities.BookingActivity"
+            android:label="Clinic Booking"/>
         <activity
             android:name=".activities.PatientMainActivity"
             android:label="Clinic Search" />

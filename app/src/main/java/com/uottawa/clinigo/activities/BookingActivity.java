@@ -136,8 +136,7 @@ public class BookingActivity extends AppCompatActivity {
                         }
                     }
                     clinicsBookings = new ClinicBookings(tempMap);
-                }
-                else{
+                } else {
                     clinicCheckInWaitTime.setText(" 0 min");
                     clinicsBookings = new ClinicBookings();
                 }

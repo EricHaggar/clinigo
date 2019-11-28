@@ -84,7 +84,6 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
         super.onStart();
 
         checkSortBySelection(this.getCurrentFocus());
-
     }
 
     private void initVariables() {
@@ -167,25 +166,25 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
 
         if (sortRadioButton.getText().toString().equals("Address")) {
             spinner_adapter =
-                    new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, availableAddresses);
+                    new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, availableAddresses);
             spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(spinner_adapter);
 
         } else if (sortRadioButton.getText().toString().equals("Working Hours")) {
             spinner_adapter =
-                    new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, availableWorkingHours);
+                    new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, availableWorkingHours);
             spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(spinner_adapter);
 
         } else if (sortRadioButton.getText().toString().equals("Type of Services")) {
             spinner_adapter =
-                    new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, availableServices);
+                    new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, availableServices);
             spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(spinner_adapter);
 
         } else if (sortRadioButton.getText().toString().equals("City")) {
             spinner_adapter =
-                    new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, availableCities);
+                    new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, availableCities);
             spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(spinner_adapter);
 
@@ -275,10 +274,10 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
             public void onDataChange(DataSnapshot dataSnapshot) {
                 clinicsForService.clear();
                 clinicsIds.clear();
+
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 
                     Service service = postSnapshot.getValue(Service.class);
-
 
                     if (service.getName().equals(serviceName)) {
                         for (int i = 0; i < service.getEmployees().size(); i++) {
@@ -288,9 +287,10 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
 
                 }
 
-                usersReference.addValueEventListener(new ValueEventListener() {
+                usersReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                         for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 
                             if (clinicsIds.contains(postSnapshot.getKey())) {
