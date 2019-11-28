@@ -76,6 +76,10 @@
     <string name="empty_services_selection">There are no more services to choose from.</string>
     <string name="empty_clinics_list">There are currently no clinics available.</string>
     <string name="patient_view_bookings">My Bookings</string>
+    <string name="rate">Rate</string>
+    <string name="leave_comment">Leave a comment</string>
+    <string name="prompt_comment">Enter your comment here...</string>
+    <string name="submit">Submit</string>
     <string-array name="countries">
         <item>Argentina</item>
         <item>Australia</item>

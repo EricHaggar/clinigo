@@ -10,9 +10,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,33 +21,29 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.uottawa.clinigo.R;
 import com.uottawa.clinigo.adapters.ClinicAdapter;
-import com.uottawa.clinigo.adapters.UserAdapter;
-import com.uottawa.clinigo.model.ClinicInfo;
+import com.uottawa.clinigo.model.Employee;
 import com.uottawa.clinigo.model.Service;
 import com.uottawa.clinigo.model.User;
-import java.util.Arrays;
-import com.uottawa.clinigo.model.Employee;
 import com.uottawa.clinigo.model.WorkingHours;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PatientMainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    DatabaseReference usersReference;
+    DatabaseReference servicesReference;
+    ListView clinicListView;
+    Spinner spinner;
+    ArrayAdapter<String> spinner_adapter;
     private RadioGroup sortRadioGroup;
     private RadioButton sortRadioButton;
-
     //These contain the available adresses, working hours and services for the patient to choose when searching for a clinic
-    private ArrayList<String>  availableAddresses;
+    private ArrayList<String> availableAddresses;
     private ArrayList<String> availableCities;
     private ArrayList<String> availableWorkingHours;
     private ArrayList<String> availableServices;
     private ArrayList<User> availableClinics;
-
-    DatabaseReference usersReference;
-    DatabaseReference servicesReference;
-
-    ListView clinicListView;
-
-    Spinner spinner;
-    ArrayAdapter<String> spinner_adapter;
     private String patientClinicChoice;
     private String patientId;
 
@@ -70,7 +63,7 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
         //Populate the available Arrays when the instance is created
         availableClinics = new ArrayList<>();
         availableAddresses = new ArrayList<>();
-        availableWorkingHours = new ArrayList<String>(
+        availableWorkingHours = new ArrayList<>(
                 Arrays.asList("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"));
         availableServices = new ArrayList<>();
         availableCities = new ArrayList<>();
@@ -84,6 +77,14 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
 
         TextView pressOnSearchText = findViewById(R.id.text_press_on_search);
         clinicListView.setEmptyView(pressOnSearchText);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        checkSortBySelection(this.getCurrentFocus());
+
     }
 
     private void initVariables() {
@@ -111,7 +112,7 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
                 }
 
                 spinner_adapter =
-                        new ArrayAdapter<String>(getApplicationContext(),  android.R.layout.simple_spinner_item, availableAddresses);
+                        new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, availableAddresses);
                 spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(spinner_adapter);
                 spinner.setSelection(0);
@@ -166,25 +167,25 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
 
         if (sortRadioButton.getText().toString().equals("Address")) {
             spinner_adapter =
-                    new ArrayAdapter<String>(getApplicationContext(),  android.R.layout.simple_spinner_item, availableAddresses);
+                    new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, availableAddresses);
             spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(spinner_adapter);
 
         } else if (sortRadioButton.getText().toString().equals("Working Hours")) {
             spinner_adapter =
-                    new ArrayAdapter<String>(getApplicationContext(),  android.R.layout.simple_spinner_item, availableWorkingHours);
+                    new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, availableWorkingHours);
             spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(spinner_adapter);
 
-        } else if (sortRadioButton.getText().toString().equals("Type of Services")){
+        } else if (sortRadioButton.getText().toString().equals("Type of Services")) {
             spinner_adapter =
-                    new ArrayAdapter<String>(getApplicationContext(),  android.R.layout.simple_spinner_item, availableServices);
+                    new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, availableServices);
             spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(spinner_adapter);
 
-        } else if (sortRadioButton.getText().toString().equals("City")){
+        } else if (sortRadioButton.getText().toString().equals("City")) {
             spinner_adapter =
-                    new ArrayAdapter<String>(getApplicationContext(),  android.R.layout.simple_spinner_item, availableCities);
+                    new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, availableCities);
             spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(spinner_adapter);
 
@@ -200,7 +201,7 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
         usersReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
+                clincsWithThatAddress.clear();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 
                     User user = postSnapshot.getValue(User.class);
@@ -234,6 +235,7 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
         usersReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                clinicsInCity.clear();
 
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 
@@ -271,14 +273,15 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
         servicesReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
+                clinicsForService.clear();
+                clinicsIds.clear();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 
                     Service service = postSnapshot.getValue(Service.class);
 
 
                     if (service.getName().equals(serviceName)) {
-                        for (int i=0; i< service.getEmployees().size(); i++) {
+                        for (int i = 0; i < service.getEmployees().size(); i++) {
                             clinicsIds.add(service.getEmployees().get(i));
                         }
                     }
@@ -342,7 +345,7 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
         usersReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
+                clinicsForWorkingHours.clear();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 
                     User user = postSnapshot.getValue(User.class);
@@ -378,9 +381,9 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
             getClinicWithAddress(optionsVariable);
         } else if (sortRadioButton.getText().toString().equals("Working Hours")) {
             getClinicForWorkingHours(optionsVariable);
-        } else if (sortRadioButton.getText().toString().equals("Type of Services")){
+        } else if (sortRadioButton.getText().toString().equals("Type of Services")) {
             getClinicForService(optionsVariable);
-        } else if (sortRadioButton.getText().toString().equals("City")){
+        } else if (sortRadioButton.getText().toString().equals("City")) {
             getClinicInCity(optionsVariable);
         }
 
@@ -399,7 +402,8 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
             }
         });
     }
-    public void patientBookingActivity(){
+
+    public void patientBookingActivity() {
 
         Intent intent = new Intent(this, BookingActivity.class);
         intent.putExtra("userId", patientClinicChoice);
