@@ -87,6 +87,10 @@
     <string name="date">Date:</string>
     <string name="check_out">Check-out</string>
     <string name="no_upcoming_bookings">You currently have no upcoming bookings.</string>
+    <string name="filter">Filter By</string>
+    <string name="working_hours">Working Hours</string>
+    <string name="service_type">Service Type</string>
+    <string name="options">Options</string>
     <string-array name="countries">
         <item>Argentina</item>
         <item>Australia</item>
