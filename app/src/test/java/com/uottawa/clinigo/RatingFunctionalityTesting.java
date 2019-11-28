@@ -13,12 +13,12 @@ public class RatingFunctionalityTesting {
 
     @BeforeClass
     public static  void verifyRatingInitialValue(){
-        assertEquals(0.0, tester.getRating(), 0);
+        assertEquals(0.0, tester.calculateAverageRating(), 0);
     }
     @Test
     public void CheckRatingFunctionality(){
         tester.addRating(4.2);
-        assertEquals(4.2, tester.getRating(), 0.0);
+        assertEquals(4.2, tester.calculateAverageRating(), 0.0);
         assertEquals(1, tester.getNumberOfRatings(), 0);
         boolean valid = ValidationUtilities.CanViewRating(tester.getNumberOfRatings());
         assertTrue(valid);

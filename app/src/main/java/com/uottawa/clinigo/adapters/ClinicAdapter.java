@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.uottawa.clinigo.R;
 import com.uottawa.clinigo.model.Employee;
-import com.uottawa.clinigo.model.User;
+
 import java.util.List;
 
 
@@ -35,7 +35,7 @@ public class ClinicAdapter extends ArrayAdapter<Employee>{
 
         Employee clinic = clinics.get(position);
         textViewClinicName.setText(clinic.getClinicInfo().getName());
-        textViewClinicRating.setText("Rating: " + clinic.getClinicInfo().getRating());
+        textViewClinicRating.setText("Rating: " + clinic.getClinicInfo().calculateAverageRating());
         return listViewItem;
     }
 }

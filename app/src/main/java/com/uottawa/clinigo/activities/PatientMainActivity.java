@@ -99,7 +99,7 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 
                     User user = postSnapshot.getValue(User.class);
-                    if (user.getRole().equals("Employee") && postSnapshot.child("clinicInfo").exists()) {
+                    if (user.getRole().equals("Employee") && postSnapshot.hasChild("clinicInfo") && postSnapshot.hasChild("workingHours")) {
                         availableClinics.add(user);
 
                         String address = postSnapshot.child("clinicInfo").child("location").child("address").getValue().toString();
@@ -207,7 +207,7 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
                     User user = postSnapshot.getValue(User.class);
 
 
-                    if (user.getRole().equals("Employee") && postSnapshot.child("clinicInfo").exists()) {
+                    if (user.getRole().equals("Employee") && postSnapshot.hasChild("clinicInfo") && postSnapshot.hasChild("workingHours")) {
                         Employee emp = postSnapshot.getValue(Employee.class);
 
                         String currentAddress = postSnapshot.child("clinicInfo").child("location").child("address").getValue().toString();
@@ -242,7 +242,7 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
                     User user = postSnapshot.getValue(User.class);
 
 
-                    if (user.getRole().equals("Employee") && postSnapshot.child("clinicInfo").exists()) {
+                    if (user.getRole().equals("Employee") && postSnapshot.hasChild("clinicInfo") && postSnapshot.hasChild("workingHours")) {
                         Employee emp = postSnapshot.getValue(Employee.class);
 
                         String currentAddress = postSnapshot.child("clinicInfo").child("location").child("city").getValue().toString();
