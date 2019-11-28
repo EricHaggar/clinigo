@@ -28,6 +28,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -160,10 +161,17 @@ public class BookingActivity extends AppCompatActivity {
                 patientArrayOfBookings.add(patientBooking);
                 bookingsReference.child(newBooking.getDate()).setValue(clinicsBookings.getBookingsByDate(newBooking.getDate()));
                 setPatientArrayOfBookings(patientArrayOfBookings);
-
+                if(date.equals(currentDate)){
+                    Toast.makeText(getApplicationContext(), "You Are Checked-In for today !", Toast.LENGTH_LONG).show();
+                }
                 getPatientBookingsActivity(null);
             }
         }
+    }
+
+    public void checkIn(View view){
+        String day = getDayOfWeek(view);
+        book(currentDate, day);
     }
     public void showDatePicker(View v) {
         DialogFragment newFragment = new SelectDateFragement();
@@ -202,5 +210,11 @@ public class BookingActivity extends AppCompatActivity {
         intent.putExtra("patientId", patientId);
         startActivity(intent);
         finish();
+    }
+    public String getDayOfWeek(View view) {
+        Date now = new Date();
+        SimpleDateFormat simpleDateformat = new SimpleDateFormat("EEEE"); // the day of the week spelled out completely
+        String dayOfWeek = simpleDateformat.format(now);
+        return dayOfWeek;
     }
 }
