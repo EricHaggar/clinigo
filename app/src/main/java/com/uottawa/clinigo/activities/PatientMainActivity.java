@@ -2,9 +2,13 @@ package com.uottawa.clinigo.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -77,6 +81,23 @@ public class PatientMainActivity extends AppCompatActivity implements AdapterVie
 
         TextView pressOnSearchText = findViewById(R.id.text_press_on_search);
         clinicListView.setEmptyView(pressOnSearchText);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.patient_menu, menu);
+
+        MenuItem viewBookingsButton = menu.findItem(R.id.button_view_bookings);
+
+        viewBookingsButton.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                patientViewBookings(getCurrentFocus());
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

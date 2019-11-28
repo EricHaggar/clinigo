@@ -15,18 +15,29 @@ public class Employee extends User {
     public Employee(String id, String email, String firstName, String lastName) {
         super(id, email, firstName, lastName);
         setRole("Employee");
-        //this.workingHours = new WorkingHours();//Initialize Working hours as the default in the beginning
     }
 
-    public void setWorkingHours(WorkingHours workingHours) {this.workingHours = workingHours;}
+    public WorkingHours getWorkingHours() {
+        return this.workingHours;
+    }
 
-    public WorkingHours getWorkingHours() {return  this.workingHours;}
+    public void setWorkingHours(WorkingHours workingHours) {
+        this.workingHours = workingHours;
+    }
 
-    public void setClinicInfo(ClinicInfo info){ this.clinicInfo = info;}
+    public ClinicInfo getClinicInfo() {
+        return this.clinicInfo;
+    }
 
-    public ClinicInfo getClinicInfo(){return this.clinicInfo;}
+    public void setClinicInfo(ClinicInfo info) {
+        this.clinicInfo = info;
+    }
 
-    public ClinicBookings getClinicBookings(){return this.bookings;}
+    public ClinicBookings getClinicBookings() {
+        return this.bookings;
+    }
 
-    public void setClinicBookings(ClinicBookings bookings){this.bookings = bookings;}
+    public void setClinicBookings(ClinicBookings bookings) {
+        this.bookings = bookings;
+    }
 }

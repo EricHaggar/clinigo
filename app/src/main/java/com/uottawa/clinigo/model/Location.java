@@ -12,7 +12,7 @@ public class Location {
 
     }
 
-    public Location(String address, String city, String postalCode, String province, String country){
+    public Location(String address, String city, String postalCode, String province, String country) {
 
         this.address = address;
         this.city = city;
@@ -21,24 +21,44 @@ public class Location {
         this.country = country;
     }
 
-    public void setAddress(String address){this.address = address;}
+    public String getAddress() {
+        return this.address;
+    }
 
-    public void setCity(String city){this.city = city;}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-    public void setPostalCode(String postalCode){this.postalCode = postalCode;}
+    public String getCity() {
+        return this.city;
+    }
 
-    public void setProvince(String province){this.province = province;}
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-    public void setCountry(String country){this.country = country;}
+    public String getPostalCode() {
+        return this.postalCode;
+    }
 
-    public String getAddress(){return this.address;}
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
 
-    public String getCity(){return  this.city;}
+    public String getProvince() {
+        return this.province;
+    }
 
-    public String getPostalCode(){return this.postalCode;}
+    public void setProvince(String province) {
+        this.province = province;
+    }
 
-    public String getProvince(){return this.province;}
+    public String getCountry() {
+        return this.country;
+    }
 
-    public String getCountry(){return this.country;}
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
 }

@@ -30,15 +30,6 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/button_view_my_bookings"
-                android:layout_width="@dimen/standard_button_width"
-                android:layout_height="wrap_content"
-                android:background="@drawable/standard_buttons"
-                android:onClick="patientViewBookings"
-                android:text="@string/patient_view_bookings"
-                android:textColor="@color/colorText" />
-
         </LinearLayout>
 
         <RadioGroup

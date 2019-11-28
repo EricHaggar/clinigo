@@ -4,6 +4,10 @@ import org.junit.Test;
 import com.uottawa.clinigo.model.ClinicInfo;
 import com.uottawa.clinigo.model.Location;
 import com.uottawa.clinigo.utilities.ValidationUtilities;
+
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 import static org.junit.Assert.*;
 
 public class RatingFunctionalityTesting {
@@ -15,18 +19,19 @@ public class RatingFunctionalityTesting {
     public static  void verifyRatingInitialValue(){
         assertEquals(0.0, tester.calculateAverageRating(), 0);
     }
-    @Test
-    public void CheckRatingFunctionality(){
-        tester.addRating(4.2);
-        assertEquals(4.2, tester.calculateAverageRating(), 0.0);
-        assertEquals(1, tester.getNumberOfRatings(), 0);
-        boolean valid = ValidationUtilities.CanViewRating(tester.getNumberOfRatings());
-        assertTrue(valid);
-    }
-    @Test
-    public void CheckUnableViewRating(){
+
+    @BeforeClass
+    public static void checkUnableViewRating(){
         boolean valid = ValidationUtilities.CanViewRating(tester.getNumberOfRatings());
         assertEquals("check unable to view ratings", false, valid);
     }
 
+    @Test
+    public void checkRatingFunctionality(){
+        tester.addRating(4.2);
+        assertEquals(4.2, tester.calculateAverageRating(), 0.01);
+        assertEquals(1, tester.getNumberOfRatings(), 0);
+        boolean valid = ValidationUtilities.CanViewRating(tester.getNumberOfRatings());
+        assertTrue(valid);
+    }
 }

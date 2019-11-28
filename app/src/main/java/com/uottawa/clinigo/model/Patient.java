@@ -10,7 +10,11 @@ public class Patient extends User {
         this.hasBooking = false;
     }
 
-    public void setHasBooking(boolean booking){this.hasBooking = booking;}
-    
-    public boolean hasBooking(){return  this.hasBooking;}
+    public void setHasBooking(boolean booking) {
+        this.hasBooking = booking;
+    }
+
+    public boolean hasBooking() {
+        return this.hasBooking;
+    }
 }

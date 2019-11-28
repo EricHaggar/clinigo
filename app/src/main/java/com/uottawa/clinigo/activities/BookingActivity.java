@@ -24,7 +24,6 @@ import com.uottawa.clinigo.fragments.SelectDateFragement;
 import com.uottawa.clinigo.model.Booking;
 import com.uottawa.clinigo.model.ClinicBookings;
 import com.uottawa.clinigo.model.ClinicInfo;
-import com.uottawa.clinigo.model.Employee;
 import com.uottawa.clinigo.model.WorkingHours;
 import com.uottawa.clinigo.utilities.ValidationUtilities;
 
@@ -40,14 +39,12 @@ public class BookingActivity extends AppCompatActivity {
 
     String clinicId, patientId;
     private ClinicBookings clinicsBookings;
-    private Employee employee;
-    private TextView clinicName, clinicAddress, clinicRating, clinicCheckInWaitTime;
+    private TextView clinicName, clinicAddress, clinicCheckInWaitTime;
     private FirebaseDatabase mDatabase;
     private DatabaseReference clinicReference, clinicBookingsReference;
     private DatabaseReference patientReference;
     private WorkingHours workingHours;
     private int checkInWaitTime;
-    private boolean patientHasBooking;
     private String currentDate;
     private ArrayList<Booking> patientArrayOfBookings;
     private RatingBar ratingBar;
@@ -60,7 +57,6 @@ public class BookingActivity extends AppCompatActivity {
         clinicId = intent.getStringExtra("userId");
         patientId = getIntent().getStringExtra("patientId");
         initVariables();
-        final SelectDateFragement newFragement = new SelectDateFragement();
     }
 
     @Override
@@ -94,7 +90,6 @@ public class BookingActivity extends AppCompatActivity {
         clinicAddress = findViewById(R.id.textView_clinic_address);
         clinicCheckInWaitTime = findViewById(R.id.textView_checkIn_waitTime);
         currentDate = getCurrentDate();
-        patientHasBooking = false;
         ratingBar = findViewById(R.id.rating);
 
         clinicReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -150,11 +145,6 @@ public class BookingActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    if (data.getKey().equals("hasBooking")) {
-                        if (data.getValue().toString().equals("true")) {
-                            patientHasBooking = true;
-                        }
-                    }
                     if (data.getKey().equals("bookings")) {
                         ArrayList<Booking> patientsTempBookings = new ArrayList<>();
                         for (DataSnapshot patientBookings : data.getChildren()) {
@@ -176,11 +166,11 @@ public class BookingActivity extends AppCompatActivity {
     public void book(String date, String dayOfWeek) {
         int mappingOfDay = ValidationUtilities.mapDayOfWeekToInt(dayOfWeek);
         if (!workingHours.isOperational(mappingOfDay)) {
-            Toast.makeText(getApplicationContext(), "This Clinic is closed on " + dayOfWeek, Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "This clinic is closed on " + dayOfWeek, Toast.LENGTH_LONG).show();
         } else {
             if (clinicsBookings.patientHasBookingOnDate(date, patientId)) {
 
-                Toast.makeText(getApplicationContext(), "You Already have a Booking on that date!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "You already have a booking on that date!", Toast.LENGTH_LONG).show();
             } else {
                 if (patientArrayOfBookings == null) {
                     patientArrayOfBookings = new ArrayList<>();
@@ -195,7 +185,7 @@ public class BookingActivity extends AppCompatActivity {
                 bookingsReference.child(newBooking.getDate()).setValue(clinicsBookings.getBookingsByDate(newBooking.getDate()));
                 setPatientArrayOfBookings(patientArrayOfBookings);
                 if (date.equals(currentDate)) {
-                    Toast.makeText(getApplicationContext(), "You Are Checked-In for today !", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "You are checked-in for today!", Toast.LENGTH_LONG).show();
                 }
                 getPatientBookingsActivity(null);
             }
