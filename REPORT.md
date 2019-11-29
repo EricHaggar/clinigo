@@ -1,7 +1,7 @@
-<center>SEG 2105A - Walk in Clinics Services App</center>
-==========================
+# <center>SEG 2105A - Walk in Clinics Services App</center>
 
-## Presented by: Team Camel
+
+### Presented by: Team Camel
 
 | Name | Student Number |
 | --- | --- |
@@ -11,9 +11,9 @@
 | Lev Guzman Aparicio   |  300038033 |
 | Siraj Ghassel   |  8168653 |
 
-## Professor: Andrew Forward
+### Professor: Andrew Forward
 
-## Department of Electrical Engineering and Computer Science
+### Department of Electrical Engineering and Computer Science
 
 ## Table Of Contents
 - [Introduction](#introduction)
@@ -33,12 +33,12 @@ Our team developed an app to address the need for people to know wait times at n
 
 | Name | Siraj | Eric | Adel | Lev | Marc |
 | --- | --- | --- | --- | --- | --- |
-| Deliverable 1 |   |
-| Deliverable 2|   |
+| Deliverable 1 |  |
+| Deliverable 2|  |
 | Deliverable 3 |  |
 | Deliverable 4 |  |
 
-# Screenshots
+## Screenshots
 
 1. Home Activity
 
@@ -116,5 +116,5 @@ Our team developed an app to address the need for people to know wait times at n
     <img src="screenshots/clinic_services_list.png" height="400" /> 
 </p>
 
-# Lessons Learned
+## Lessons Learned
 
