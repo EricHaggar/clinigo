@@ -5,7 +5,7 @@ public class Booking {
     public String address;
     public String clinicName;
     private String date;
-    private bookingStatus status;
+    private BookingStatus status;
     private String patientId;
     private String clinicId;
 
@@ -15,7 +15,7 @@ public class Booking {
     public Booking(String date, String id) {
         this.date = date;
         this.patientId = id;
-        this.status = bookingStatus.Active;
+        this.status = BookingStatus.Active;
     }
 
     public Booking(String date, String clinicName, String address, String clinicId) {
@@ -23,7 +23,7 @@ public class Booking {
         this.clinicName = clinicName;
         this.address = address;
         this.clinicId = clinicId;
-        this.status = bookingStatus.Active;
+        this.status = BookingStatus.Active;
 
     }
 
@@ -32,7 +32,7 @@ public class Booking {
     }
 
     public void setStatusToCancel() {
-        this.setStatus("Canceled");
+        this.setStatus("Cancelled");
     }
 
     public String getStatus() {
@@ -40,7 +40,7 @@ public class Booking {
     }
 
     public void setStatus(String status) {
-        this.status = bookingStatus.valueOf(status);
+        this.status = BookingStatus.valueOf(status);
     }
 
     public String getDate() {
@@ -63,5 +63,5 @@ public class Booking {
         return this.clinicId;
     }
 
-    enum bookingStatus {Canceled, Active, Completed}
+    enum BookingStatus {Cancelled, Active, Completed}
 }

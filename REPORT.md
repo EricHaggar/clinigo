@@ -1,32 +1,35 @@
+<center>SEG 2105A - Walk in Clinics Services App</center>
+==========================
 
-Placeholder for your report to generate in [Deliverable 04](/docs/deliverable04.md)
-
-Refer to [Deliverable 04](/docs/deliverable04.md), but here's some help with markdown.
-
-
-# An image
-
-Upload SVG (or PNG) files to [/assets](/assets), and then
-you can reference them using
-
-![UML Class Diagram](/assets/classDiagram.svg)
-
-# A Table
+## Presented by: Team Camel
 
 | Name | Student Number |
 | --- | --- |
-| Andrew Forward | 1484511  |
-| James Url | 1929204  |
-| Ayana Nurse | 2128439 |
+| Eric Haggar | 7674509 |
+| Adel Araji | 7897476 |
+| Mark Bastawros | 8123595 |
+| Lev Guzman Aparicio   |  300038033 |
+| Siraj Ghassel   |  8168653 |
+
+## Professor: Andrew Forward
+
+## Department of Electrical Engineering and Computer Science
+
+## Table Of Contents
+- [Introduction](#introduction)
+- [UML Class Diagram](#uml-class-diagram)
+- [Task Distribution](#task-distribution)
+- [Screenshots](#screenshots)
+- [Lessons Learned](#lessons-learned)
 
 
-# Introduction
+## Introduction
 
 Our team developed an app to address the need for people to know wait times at nearby walk-in clinics without having to leave their home. It also allows users to know the services offered by nearby walk-in clinics and allow them to check-in/book appointments at the clinic of their choice. 
 
-# UML Class Diagram
+## UML Class Diagram
 
-# Contribution
+## Task Distribution
 
 | Name | Siraj | Eric | Adel | Lev | Marc |
 | --- | --- | --- | --- | --- | --- |
@@ -112,24 +115,6 @@ Our team developed an app to address the need for people to know wait times at n
     <img src="screenshots/empty_services_page.png" height="400" />
     <img src="screenshots/clinic_services_list.png" height="400" /> 
 </p>
-
-13. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Lessons Learned
 
