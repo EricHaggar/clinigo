@@ -104,6 +104,7 @@ public class ClinicInfoActivity extends AppCompatActivity implements AdapterView
                 intent.putExtra("userId", userId);
                 startActivity(intent);
                 finish();
+                Toast.makeText(getApplicationContext(), "Clinic Profile Created Successfully!", Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), "Error," + e, Toast.LENGTH_SHORT).show();
             }
