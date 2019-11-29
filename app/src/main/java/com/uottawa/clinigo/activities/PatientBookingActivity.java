@@ -115,7 +115,7 @@ public class PatientBookingActivity extends AppCompatActivity {
                 patientArrayOfBookings.remove(position);
                 displayResults(patientArrayOfBookings);
                 savePatientChanges(patientArrayOfBookings);
-                Toast.makeText(getApplicationContext(), "Successfully deleted booking!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Successfully checked out!", Toast.LENGTH_LONG).show();
             }
         });
         cancelButton.setOnClickListener(new View.OnClickListener() {

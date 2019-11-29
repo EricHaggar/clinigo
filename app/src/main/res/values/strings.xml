@@ -80,8 +80,8 @@
     <string name="leave_comment">Leave a comment</string>
     <string name="prompt_comment">Enter your comment here...</string>
     <string name="submit">Submit</string>
-    <string name="delete_booking_dialog_message">Are you sure you want to check-out from your booking?</string>
-    <string name="average_wait_time">"Today's Average Wait Time: "</string>
+    <string name="delete_booking_dialog_message">Are you sure you want to check-out from this booking?</string>
+    <string name="average_wait_time">"Today's Average Wait Time:"</string>
     <string name="book">Book</string>
     <string name="check_in">Check-In</string>
     <string name="date">Date:</string>
@@ -91,6 +91,14 @@
     <string name="working_hours">Working Hours</string>
     <string name="service_type">Service Type</string>
     <string name="options">Options</string>
+    <string name="availabilities">Availabilities</string>
+    <string name="monday_hours">Monday:</string>
+    <string name="tuesday_hours">Tuesday:</string>
+    <string name="wednesday_hours">Wednesday:</string>
+    <string name="thursday_hours">Thursday:</string>
+    <string name="friday_hours">Friday:</string>
+    <string name="saturday_hours">Saturday:</string>
+    <string name="sunday_hours">Sunday:</string>
     <string-array name="countries">
         <item>Argentina</item>
         <item>Australia</item>

@@ -23,6 +23,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
                 android:text="@string/filter"
@@ -45,7 +46,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@android:dimen/notification_large_icon_height"
                 android:onClick="checkSortBySelection"
-                android:text="@string/prompt_address" />
+                android:text="@string/prompt_address"
+                android:textSize="16sp" />
 
             <RadioButton
                 android:id="@+id/rbutton_city"
@@ -53,21 +55,24 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@android:dimen/notification_large_icon_height"
                 android:onClick="checkSortBySelection"
-                android:text="@string/prompt_city" />
+                android:text="@string/prompt_city"
+                android:textSize="16sp" />
 
             <RadioButton
                 android:id="@+id/rbutton_working_hours"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="checkSortBySelection"
-                android:text="@string/working_hours" />
+                android:text="@string/working_hours"
+                android:textSize="16sp" />
 
             <RadioButton
                 android:id="@+id/rbutton_services"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="checkSortBySelection"
-                android:text="@string/service_type" />
+                android:text="@string/service_type"
+                android:textSize="16sp" />
 
         </RadioGroup>
 
@@ -77,6 +82,7 @@
         android:id="@+id/horizontal_layout_country"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
         <TextView
@@ -126,6 +132,7 @@
         android:id="@+id/text_press_on_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="@string/press_on_search"
         android:textColor="@android:color/black"
         android:textSize="18sp"

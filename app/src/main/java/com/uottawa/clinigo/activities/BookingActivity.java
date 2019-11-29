@@ -48,6 +48,7 @@ public class BookingActivity extends AppCompatActivity {
     private String currentDate;
     private ArrayList<Booking> patientArrayOfBookings;
     private RatingBar ratingBar;
+    private TextView mondayHours, tuesdayHours, wednesdayHours, thursdayHours, fridayHours, saturdayHours, sundayHours;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +78,6 @@ public class BookingActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     public void initVariables() {
@@ -91,6 +91,13 @@ public class BookingActivity extends AppCompatActivity {
         clinicCheckInWaitTime = findViewById(R.id.textView_checkIn_waitTime);
         currentDate = getCurrentDate();
         ratingBar = findViewById(R.id.rating);
+        mondayHours = findViewById(R.id.text_monday_hours);
+        tuesdayHours = findViewById(R.id.text_tuesday_hours);
+        wednesdayHours = findViewById(R.id.text_wednesday_hours);
+        thursdayHours = findViewById(R.id.text_thursday_hours);
+        fridayHours = findViewById(R.id.text_friday_hours);
+        saturdayHours = findViewById(R.id.text_saturday_hours);
+        sundayHours = findViewById(R.id.text_sunday_hours);
 
         clinicReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -105,6 +112,19 @@ public class BookingActivity extends AppCompatActivity {
                     if (data.getKey().equals("workingHours")) {
                         WorkingHours temp = data.getValue(WorkingHours.class);
                         workingHours = temp;
+
+                        if (workingHours != null) {
+                            for (int i = 0; i < workingHours.getStartTimes().size(); i++) {
+                                if (workingHours.isOperational(i)) {
+                                    String startTime = workingHours.getStartTimes().get(i);
+                                    String endTime = workingHours.getEndTimes().get(i);
+
+                                    getTextViewFromIndex(i).setText(" " + startTime + " - " + endTime);
+                                } else {
+                                    getTextViewFromIndex(i).setText(" Closed");
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -127,7 +147,9 @@ public class BookingActivity extends AppCompatActivity {
                         tempMap.put(data.getKey(), tempArr);
                         if (data.getKey().equals(currentDate)) {
                             checkInWaitTime = tempArr.size() * 15;
-                            clinicCheckInWaitTime.setText(Integer.toString(checkInWaitTime) + " min");
+                            clinicCheckInWaitTime.setText(" " + checkInWaitTime + " min");
+                        } else {
+                            clinicCheckInWaitTime.setText(" N/A");
                         }
                     }
                     clinicsBookings = new ClinicBookings(tempMap);
@@ -160,7 +182,6 @@ public class BookingActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-
     }
 
     public void book(String date, String dayOfWeek) {
@@ -299,5 +320,25 @@ public class BookingActivity extends AppCompatActivity {
             }
         });
         Toast.makeText(getApplicationContext(), "Rating Submitted!", Toast.LENGTH_SHORT).show();
+    }
+
+    public TextView getTextViewFromIndex(int index) {
+
+        if (index == 0)
+            return mondayHours;
+        else if (index == 1)
+            return tuesdayHours;
+        else if (index == 2)
+            return wednesdayHours;
+        else if (index == 3)
+            return thursdayHours;
+        else if (index == 4)
+            return fridayHours;
+        else if (index == 5)
+            return saturdayHours;
+        else if (index == 6)
+            return sundayHours;
+        else
+            return null;
     }
 }
