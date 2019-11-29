@@ -1,6 +1,10 @@
 # <center>SEG 2105A - Walk in Clinics Services App</center>
 
 
+<p align="center">
+    <img src="assets/clinigo_logo_slogan.png" height="400" /> 
+</p>
+
 ### Presented by: Team Camel
 
 | Name | Student Number |
@@ -10,6 +14,7 @@
 | Mark Bastawros | 8123595 |
 | Lev Guzman Aparicio   |  300038033 |
 | Siraj Ghassel   |  8168653 |
+
 
 ### Professor: Andrew Forward
 
@@ -25,7 +30,7 @@
 
 ## Introduction
 
-Our team developed an app to address the need for people to know wait times at nearby walk-in clinics without having to leave their home. It also allows users to know the services offered by nearby walk-in clinics and allow them to check-in/book appointments at the clinic of their choice.
+Our team developed an app to address the need for people to know wait times at nearby walk-in clinics without having to leave their home. It also allows users to know the services offered by nearby walk-in clinics and allows them to check-in/book appointments at the clinic of their choice. The project was divided into 4 deliverables: Account Creation, Admin Functionality, Employee (Clinic) Functionality and Patient Functionality.
 
 ## UML Class Diagram
 
