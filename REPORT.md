@@ -104,16 +104,16 @@ The screenshots for all deliverables are presented in this section.
 6. Manage Services Activity
 
 <p align="center">
-    <img src="screenshots/list_service.png" height="400" />
-    <img src="screenshots/add_services.png" height="400" />
-    <img src="screenshots/delete_service.png" height="400" />
+    <img src="screenshots/list_services.png" height="400" />
+    <img src="screenshots/add_service.png" height="400" />
+    <img src="screenshots/edit_service.png" height="400" />
 </p>
 
 7. Manage Users Activity
 
 <p align="center">
-    <img src="screenshots/list_accounts.png" height="400" />
-    <img src="screenshots/delete_account.png" height="400" />
+    <img src="screenshots/list_users.png" height="400" />
+    <img src="screenshots/delete_user.png" height="400" />
 </p>
 
 8. Create Clinic Profile
