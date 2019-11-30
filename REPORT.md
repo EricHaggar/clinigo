@@ -147,4 +147,18 @@ The screenshots for all deliverables are presented in this section.
     <img src="screenshots/clinic_services_list.png" height="400" />
 </p>
 
+13. Clinic Search
+
+<p align="center">
+    <img src="screenshots/clinic_search.png" height="400" />
+</p>
+
+14. Clinic Booking
+
+<p align="center">
+    <img src="screenshots/clinic_booking.png" height="400" />
+    <img src="screenshots/my_booking.png" height="400" />
+    <img src="screenshots/rate.png" height="400" />
+</p>
+
 ## Lessons Learned
