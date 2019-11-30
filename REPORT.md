@@ -162,3 +162,5 @@ The screenshots for all deliverables are presented in this section.
 </p>
 
 ## Lessons Learned
+
+We learned a great deal about the fundemental principles of making an app. Utilizing an emulator to test UI and other app functionality meant we could find mistakes like text spacing and adjust them accordingly. The emulator also allowed us to figure out what activites were instantiated when a certain button was called by the user. Next time, we plan on making UI guidlines that showcase which colors were used, sizing and positioning of elements. This will help future developers and ourselves to center our attention on improving the overall app functionality.
