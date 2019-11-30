@@ -137,10 +137,10 @@ The screenshots for all deliverables are presented in this section.
 11. Clinic Working Hours
 
 <p align="center">
-    <img src="screenshots/working_hours.jpeg" height="400" />
+    <img src="screenshots/working_hours.png" height="400" />
 </p>
 
-12. Clinic Services
+1.  Clinic Services
 
 <p align="center">
     <img src="screenshots/empty_services_page.png" height="400" />
