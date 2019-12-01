@@ -5,21 +5,29 @@
     <img src="assets/clinigo_logo_slogan.png" height="400" /> 
 </p>
 
-<center> <h3> Presented by: Team Camel </h3> </center>
+<p align="center">
+Presented by: Team Camel
+</p>
 
-| Name | Student Number |
-|:---:|:---:|
-| Eric Haggar | 7674509 |
-| Adel Araji | 7897476 |
-| Mark Bastawros | 8123595 |
-| Lev Guzman Aparicio   |  300038033 |
-| Siraj Ghassel   |  8168653 |
+| Name | Role | Student Number | Email |
+|:---:|:---:|:---:|:---:|
+| Eric Haggar | Team Lead, Developer and UI Designer | 7674509 | ehagg014@uottawa.ca |
+| Adel Araji | System Designer and Developer | 7897476 | adel_araji@hotmail.com |
+| Mark Bastawros | System Designer and Developer | 8123595 | mbast.amin97@gmail.com |
+| Lev Guzman Aparicio | Developer |  300038033 |  lguzm038@uottawa.ca |
+| Siraj Ghassel | Developer |  8168653 | sghas058@uottawa.ca |
 
+<p align="center">
+Professor: Andrew Forward
+</p>
 
-<center> <h3> Professor: Andrew Forward </h3> </center>
-<center> <h3> Department of Electrical Engineering and Computer Science </h3> </center>
+<p align="center">
+Department of Electrical Engineering and Computer Science
+</p>
 
-<center> <h3> University of Ottawa </h3> </center>
+<p align="center">
+University of Ottawa
+</p>
 
 ## Table Of Contents
   - [Introduction](#introduction)
