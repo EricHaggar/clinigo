@@ -72,6 +72,7 @@ public class BookingActivity extends AppCompatActivity {
                     ratingBar.setRating(clinicInfo.calculateAverageRating());
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -146,17 +147,17 @@ public class BookingActivity extends AppCompatActivity {
                         tempMap.put(data.getKey(), tempArr);
                     }
                     clinicsBookings = new ClinicBookings(tempMap);
+
                     ArrayList<Booking> todayBookings = tempMap.get(currentDate);
-                    if(todayBookings != null){
-                        checkInWaitTime = todayBookings.size()*15;
-                        clinicCheckInWaitTime.setText(" "+ checkInWaitTime + " min");
-                    }
-                    else{
+                    if (todayBookings != null) {
+                        checkInWaitTime = todayBookings.size() * 15;
+                        clinicCheckInWaitTime.setText(" " + checkInWaitTime + " min");
+                    } else {
                         int dayOfWeek = ValidationUtilities.mapDayOfWeekToInt(getDayOfWeek(null));
-                        if(workingHours.isOperational(dayOfWeek)){
+                        if (workingHours.isOperational(dayOfWeek)) {
                             clinicCheckInWaitTime.setText(" 0 min");
-                        }else{
-                            clinicCheckInWaitTime.setText(" N/A");
+                        } else {
+                            clinicCheckInWaitTime.setText(" N/A (Closed)");
                         }
                     }
                 } else {
@@ -164,6 +165,7 @@ public class BookingActivity extends AppCompatActivity {
                     clinicsBookings = new ClinicBookings();
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
