@@ -45,7 +45,6 @@ public class BookingActivity extends AppCompatActivity {
     private DatabaseReference patientReference;
     private WorkingHours workingHours;
     private int checkInWaitTime;
-    private boolean clinicOpenToday;
     private String currentDate;
     private ArrayList<Booking> patientArrayOfBookings;
     private RatingBar ratingBar;
@@ -73,7 +72,6 @@ public class BookingActivity extends AppCompatActivity {
                     ratingBar.setRating(clinicInfo.calculateAverageRating());
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -166,7 +164,6 @@ public class BookingActivity extends AppCompatActivity {
                     clinicsBookings = new ClinicBookings();
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
@@ -251,10 +248,6 @@ public class BookingActivity extends AppCompatActivity {
         Calendar calendarObj = Calendar.getInstance();
         String currentDate = df.format(calendarObj.getTime());
         return currentDate;
-    }
-
-    public int calculateWaitTime(int size) {
-        return size * 15;
     }
 
     public void getPatientBookingsActivity(View view) {
