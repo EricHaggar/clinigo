@@ -137,10 +137,10 @@ The screenshots for all deliverables are presented in this section.
 11. Clinic Working Hours
 
 <p align="center">
-    <img src="screenshots/working_hours.jpeg" height="400" />
+    <img src="screenshots/working_hours.png" height="400" />
 </p>
 
-12. Clinic Services
+1.  Clinic Services
 
 <p align="center">
     <img src="screenshots/empty_services_page.png" height="400" />
@@ -163,4 +163,4 @@ The screenshots for all deliverables are presented in this section.
 
 ## Lessons Learned
 
-We learned a great deal about the fundemental principles of making an app. Utilizing an emulator to test UI and other app functionality meant we could find mistakes like text spacing and adjust them accordingly. The emulator also allowed us to figure out what activites were instantiated when a certain button was called by the user. Next time, we plan on making UI guidlines that showcase which colors were used, sizing and positioning of elements. This will help future developers and ourselves to center our attention on improving the overall app functionality.
+All in all, we learned a lot about the fundamentals of building an Android app as well as using version control to work in collaboration. While developing, we learned a lot about how to use adapters and how complex they can become. We also ran into many problems with the asynchronous calls to Firebase and were forced to read more about how to develop around asynchronous functions. Another important technical lesson was to ensure to read the documentation of Android's Lifecycle Activity to truly understand what happens "under the hood". Finally, we learned about how communication and frequent team meetings are very important when developing in collaboration since any misunderstanding can cost a lot of time to fix and debug design code. It's fair to say that all team members enjoyed developing the app and took away valuable lessons that will be useful in future projects.
