@@ -45,6 +45,7 @@ public class BookingActivity extends AppCompatActivity {
     private DatabaseReference patientReference;
     private WorkingHours workingHours;
     private int checkInWaitTime;
+    private boolean clinicOpenToday;
     private String currentDate;
     private ArrayList<Booking> patientArrayOfBookings;
     private RatingBar ratingBar;
@@ -145,14 +146,21 @@ public class BookingActivity extends AppCompatActivity {
                             tempArr.add(tempBooking);
                         }
                         tempMap.put(data.getKey(), tempArr);
-                        if (data.getKey().equals(currentDate)) {
-                            checkInWaitTime = tempArr.size() * 15;
-                            clinicCheckInWaitTime.setText(" " + checkInWaitTime + " min");
-                        } else {
+                    }
+                    clinicsBookings = new ClinicBookings(tempMap);
+                    ArrayList<Booking> todayBookings = tempMap.get(currentDate);
+                    if(todayBookings != null){
+                        checkInWaitTime = todayBookings.size()*15;
+                        clinicCheckInWaitTime.setText(" "+ checkInWaitTime + " min");
+                    }
+                    else{
+                        int dayOfWeek = ValidationUtilities.mapDayOfWeekToInt(getDayOfWeek(null));
+                        if(workingHours.isOperational(dayOfWeek)){
+                            clinicCheckInWaitTime.setText(" 0 min");
+                        }else{
                             clinicCheckInWaitTime.setText(" N/A");
                         }
                     }
-                    clinicsBookings = new ClinicBookings(tempMap);
                 } else {
                     clinicCheckInWaitTime.setText(" 0 min");
                     clinicsBookings = new ClinicBookings();

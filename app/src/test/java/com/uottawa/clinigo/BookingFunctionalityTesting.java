@@ -60,4 +60,21 @@ public class BookingFunctionalityTesting {
         tester.getClinicBookings().deleteBookingForPatient(booking1.getPatientId());
         assertEquals(15, tester.getClinicBookings().getWaitingTime(booking1.getDate()));
     }
+    @Test
+    public void verifyWaitTimeFunctionality(){
+
+        Booking booking1 = new Booking("10-01-2010", "123");
+        Booking booking2 = new Booking("10-01-2010", "1234");
+        Booking booking3 = new Booking("11-01-2010", "12345");
+        Employee tester = new Employee("1234", "test@test.com", "Marc", "Bastawros");
+        ClinicBookings employeeBookings = new ClinicBookings();
+        tester.setClinicBookings(employeeBookings);
+
+        tester.getClinicBookings().addBooking(booking1);
+        tester.getClinicBookings().addBooking(booking2);
+        tester.getClinicBookings().addBooking(booking3);
+
+        assertEquals(30, tester.getClinicBookings().getWaitingTime("10-01-2010"));
+    }
+
 }
