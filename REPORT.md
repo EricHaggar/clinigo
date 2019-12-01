@@ -6,27 +6,27 @@
 </p>
 
 <p align="center">
-Presented by: Team Camel
+<b>Presented by: Team Camel</b>
 </p>
 
 | Name | Role | Student Number | Email |
 |:---:|:---:|:---:|:---:|
 | Eric Haggar | Team Lead, Developer and UI Designer | 7674509 | ehagg014@uottawa.ca |
-| Adel Araji | System Designer and Developer | 7897476 | adel_araji@hotmail.com |
-| Mark Bastawros | System Designer and Developer | 8123595 | mbast.amin97@gmail.com |
+| Adel Araji | System Designer and Developer | 7897476 | Aaraj081@uottawa.ca |
+| Mark Bastawros | System Designer and Developer | 8123595 | mbast100@uottawa.ca |
 | Lev Guzman Aparicio | Developer |  300038033 |  lguzm038@uottawa.ca |
 | Siraj Ghassel | Developer |  8168653 | sghas058@uottawa.ca |
 
 <p align="center">
-Professor: Andrew Forward
+<b>Professor: Andrew Forward</b>
 </p>
 
 <p align="center">
-Department of Electrical Engineering and Computer Science
+<b>Department of Electrical Engineering and Computer Science</b>
 </p>
 
 <p align="center">
-University of Ottawa
+<b>University of Ottawa</b>
 </p>
 
 ## Table Of Contents
@@ -86,13 +86,13 @@ The screenshots for all deliverables are presented in this section.
     <img src="screenshots/home.png" height="400" />
 </p>
 
-2. Sign Up Activities
+2. Sign Up Activity
 
 <p align="center">
     <img src="screenshots/sign_up.png" height="400" />
 </p>
 
-3. Login Activities
+3. Login Activity
 
 <p align="center">
     <img src="screenshots/login.png" height="400" />
@@ -172,4 +172,4 @@ The screenshots for all deliverables are presented in this section.
 
 ## Lessons Learned
 
-All in all, we learned a lot about the fundamentals of building an Android app as well as using version control to work in collaboration. While developing, we learned a lot about how to use adapters and how complex they can become. We also ran into many problems with the asynchronous calls to Firebase and were forced to read more about how to develop around asynchronous functions. Another important technical lesson was to ensure to read the documentation of Android's Lifecycle Activity to truly understand what happens "under the hood". Finally, we learned about how communication and frequent team meetings are very important when developing in collaboration since any misunderstanding can cost a lot of time to fix and debug design code. It's fair to say that all team members enjoyed developing the app and took away valuable lessons that will be useful in future projects.
+All in all, we learned a lot about the fundamentals of building an Android app as well as using version control to work in collaboration. While developing the app, we learned a lot about how to use adapters and how complex they can become. We also ran into many problems with the asynchronous calls to Firebase and were forced to read more about how to develop around asynchronous functions. Another important technical lesson was to ensure to read the documentation of Android's Lifecycle Activity to truly understand what happens "under the hood". Finally, we learned about how communication and frequent team meetings are very important when developing in collaboration since any misunderstanding can cost a lot of time to fix and debug design code. It's fair to say that all team members enjoyed developing the app and took away valuable lessons that will be useful in future projects.
