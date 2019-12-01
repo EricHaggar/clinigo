@@ -5,10 +5,10 @@
     <img src="assets/clinigo_logo_slogan.png" height="400" /> 
 </p>
 
-### Presented by: Team Camel
+<center> <h3> Presented by: Team Camel </h3> </center>
 
 | Name | Student Number |
-| --- | --- |
+|:---:|:---:|
 | Eric Haggar | 7674509 |
 | Adel Araji | 7897476 |
 | Mark Bastawros | 8123595 |
@@ -16,16 +16,17 @@
 | Siraj Ghassel   |  8168653 |
 
 
-### Professor: Andrew Forward
+<center> <h3> Professor: Andrew Forward </h3> </center>
+<center> <h3> Department of Electrical Engineering and Computer Science </h3> </center>
 
-### Department of Electrical Engineering and Computer Science
+<center> <h3> University of Ottawa </h3> </center>
 
 ## Table Of Contents
-- [Introduction](#introduction)
-- [UML Class Diagram](#uml-class-diagram)
-- [Task Distribution](#task-distribution)
-- [Screenshots](#screenshots)
-- [Lessons Learned](#lessons-learned)
+  - [Introduction](#introduction)
+  - [UML Class Diagram](#uml-class-diagram)
+  - [Task Distribution](#task-distribution)
+  - [Screenshots](#screenshots)
+  - [Lessons Learned](#lessons-learned)
 
 
 ## Introduction
