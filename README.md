@@ -12,13 +12,13 @@ We present to you: `Clinigo`
 
 ## Team Members
 
-| Name | Student Number |
-| --- | --- |
-| Eric Haggar | 7674509 |
-| Adel Araji | 7897476 |
-| Mark Bastawros | 8123595 |
-| Lev Guzman Aparicio   |  300038033 |
-| Siraj Ghassel   |  8168653 |
+| Name | Role | Student Number | Email |
+|:---:|:---:|:---:|:---:|
+| Eric Haggar | Team Lead, Developer and UI Designer | 7674509 | ehagg014@uottawa.ca |
+| Adel Araji | System Designer and Developer | 7897476 | Aaraj081@uottawa.ca |
+| Mark Bastawros | System Designer and Developer | 8123595 | mbast100@uottawa.ca |
+| Lev Guzman Aparicio | Developer |  300038033 |  lguzm038@uottawa.ca |
+| Siraj Ghassel | Developer |  8168653 | sghas058@uottawa.ca |
 
 ## Table Of Contents
 
