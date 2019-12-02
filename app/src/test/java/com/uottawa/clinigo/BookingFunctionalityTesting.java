@@ -3,6 +3,7 @@ package com.uottawa.clinigo;
 import com.uottawa.clinigo.model.Booking;
 import com.uottawa.clinigo.model.ClinicBookings;
 import com.uottawa.clinigo.model.Employee;
+import com.uottawa.clinigo.utilities.ValidationUtilities;
 
 import org.junit.Test;
 
@@ -76,5 +77,46 @@ public class BookingFunctionalityTesting {
 
         assertEquals(30, tester.getClinicBookings().getWaitingTime("10-01-2010"));
     }
+    @Test
+    public void verifyBookingSearch(){
 
+        Booking booking1 = new Booking("10-01-2010", "123");
+        Booking booking2 = new Booking("10-01-2010", "1234");
+        Booking booking3 = new Booking("11-01-2010", "12345");
+        Booking booking4 = new Booking("12-02-2010", "123");
+        Employee tester = new Employee("1234", "test@test.com", "Marc", "Bastawros");
+        ClinicBookings employeeBookings = new ClinicBookings();
+        tester.setClinicBookings(employeeBookings);
+
+        tester.getClinicBookings().addBooking(booking1);
+        tester.getClinicBookings().addBooking(booking2);
+        tester.getClinicBookings().addBooking(booking3);
+        tester.getClinicBookings().addBooking(booking4);
+        assertEquals(2, tester.getClinicBookings().getBookingsByDate("10-01-2010").size());
+    }
+    @Test
+    public void verifyPatientHasBooking(){
+
+        Booking booking1 = new Booking("10-01-2010", "123");
+        Booking booking2 = new Booking("10-01-2010", "1234");
+        Booking booking3 = new Booking("11-01-2010", "12345");
+        Booking booking4 = new Booking("12-02-2010", "123");
+        Employee tester = new Employee("1234", "test@test.com", "Marc", "Bastawros");
+        ClinicBookings employeeBookings = new ClinicBookings();
+        tester.setClinicBookings(employeeBookings);
+
+        tester.getClinicBookings().addBooking(booking1);
+        tester.getClinicBookings().addBooking(booking2);
+        tester.getClinicBookings().addBooking(booking3);
+        tester.getClinicBookings().addBooking(booking4);
+        assertEquals(true, tester.getClinicBookings().patientHasBookingOnDate("10-01-2010","123"));
+    }
+    @Test
+    public void verifyDayOfWeekMapping(){
+        
+        int monday = ValidationUtilities.mapDayOfWeekToInt("monday");
+        assertEquals(0, monday);
+        int friday = ValidationUtilities.mapDayOfWeekToInt("Friday");
+        assertEquals(4, friday);
+    }
 }
