@@ -1,135 +1,175 @@
-
-Placeholder for your report to generate in [Deliverable 04](/docs/deliverable04.md)
-
-Refer to [Deliverable 04](/docs/deliverable04.md), but here's some help with markdown.
+# <center>SEG 2105A - Walk in Clinics Services App</center>
 
 
-# An image
+<p align="center">
+    <img src="assets/clinigo_logo_slogan.png" height="400" /> 
+</p>
 
-Upload SVG (or PNG) files to [/assets](/assets), and then
-you can reference them using
+<p align="center">
+<b>Presented by: Team Camel</b>
+</p>
 
-![UML Class Diagram](/assets/classDiagram.svg)
+| Name | Role | Student Number | Email |
+|:---:|:---:|:---:|:---:|
+| Eric Haggar | Team Lead, Developer and UI Designer | 7674509 | ehagg014@uottawa.ca |
+| Adel Araji | System Designer and Developer | 7897476 | Aaraj081@uottawa.ca |
+| Mark Bastawros | System Designer and Developer | 8123595 | mbast100@uottawa.ca |
+| Lev Guzman Aparicio | Developer |  300038033 |  lguzm038@uottawa.ca |
+| Siraj Ghassel | Developer |  8168653 | sghas058@uottawa.ca |
 
-# A Table
+<p align="center">
+<b>Professor: Andrew Forward</b>
+</p>
 
-| Name | Student Number |
-| --- | --- |
-| Andrew Forward | 1484511  |
-| James Url | 1929204  |
-| Ayana Nurse | 2128439 |
+<p align="center">
+<b>Department of Electrical Engineering and Computer Science</b>
+</p>
+
+<p align="center">
+<b>University of Ottawa</b>
+</p>
+
+## Table Of Contents
+  - [Introduction](#introduction)
+  - [UML Class Diagram](#uml-class-diagram)
+  - [Task Distribution](#task-distribution)
+  - [Screenshots](#screenshots)
+  - [Lessons Learned](#lessons-learned)
 
 
-# Introduction
+## Introduction
 
-Our team developed an app to address the need for people to know wait times at nearby walk-in clinics without having to leave their home. It also allows users to know the services offered by nearby walk-in clinics and allow them to check-in/book appointments at the clinic of their choice. 
+Our team developed an app called `Clinigo` to address the need for people to know wait times at nearby walk-in clinics without having to leave their home. It allows users to know the services offered by nearby walk-in clinics and allows them to check-in/book appointments at the clinic of their choice. The project was divided into 4 deliverables: Account Creation, Admin Functionality, Employee (Clinic) Functionality and Patient Functionality. 
 
-# UML Class Diagram
+The first deliverable consisted in developing account creation for employees and patients, while the admin login was harcoded based on the system requirements. Firebase Authentication as well as Firebase Realtime Database were used for authentication and storing new users. 
 
-# Contribution
+The second deliverable consisted in allowing the admin to manage users and services. The admin is allowed to delete employee and patient accounts, as well as create, update and delete services that clinics can offer.
 
-| Name | Siraj | Eric | Adel | Lev | Marc |
-| --- | --- | --- | --- | --- | --- |
-| Deliverable 1 |   |
-| Deliverable 2|   |
-| Deliverable 3 |  |
-| Deliverable 4 |  |
+The third deliverable consisted in allowing employees to create a profile for their clinic. The clinic therefore has access to add services from the existing services (created by the admin), update their working hours and edit their profile information.
 
-# Screenshots
+The fourth and final deliverable consisted in allowing patients to search for walk-in clinics, book/check-in to the clinics of their choice and rate clinics from 1 to 5. The patient can search by using different filters: Address, City, Working Hours and Types of Services Provided. The patient can also choose to book a date as an appointment or check-in to the clinic immediately. Before doing so, the patient has access to the current day's average wait-times to make an informed decision. Finally, the patient can remove bookings or check-out from bookings as well as submit a rating and optional comment.
+
+## UML Class Diagram
+
+All important assumptions made throughout the life of this project are presented below:
+
+- An employee account is associated to 1 clinic account (they are the same).
+- Bookings are made for a day of the week in a yearly calendar rather than a time of day.
+- A patient can only book or check-in to 1 clinic/day.
+- A patient can rate a clinic however many times they want, and leaving comments is optional.
+
+The final UML Class Diagram for the project is shown below and can be found on [Umple](https://cruise.eecs.uottawa.ca/umpleonline/umple.php?model=191019783621124).
+
+<p align="center">
+    <img src="screenshots/UML_Deliverable04.png"/> 
+</p>
+
+## Task Distribution
+
+The table below shows the general task distribution that was used for each deliverable. However, the team worked closely for each deliverable and some features were implemented/revised by multiple team members. For more details, please see the [projects](https://github.com/professor-forward/project-camel/projects) on Github, where all issues were created, assigned and completed.
+
+| Team Members |      Deliverable 1      |     Deliverable 2     |      Deliverable 3      |           Deliverable 4           |
+|:------------:|:-----------------------:|:---------------------:|:-----------------------:|:---------------------------------:|
+|     Siraj    |       UML Diagram       |   Admin Manage Users  | Updating Models and UML | Preparing Presentation and Report |
+|     Eric     | Firebase Authentication | Circle CI Integration |  Manage Clinic Services |           Rating Clinics          |
+|     Adel     |         Sign-up         |     Error Handling    |   Clinic Working Hours  |           Clinic Search           |
+|      Lev     |         Sign-in         | Admin Manage Services |        Unit Tests       |      Updating Models and UML      |
+|     Marc     |      Model Creation     |       Unit Tests      |    Clinic Information   |      Booking/Check-In Feature     |
+
+## Screenshots
+
+The screenshots for all deliverables are presented in this section.
 
 1. Home Activity
 
 <p align="center">
-    <img src="screenshots/home.png" height="400" /> 
+    <img src="screenshots/home.png" height="400" />
 </p>
 
-2. Sign Up Activities
+2. Sign Up Activity
 
 <p align="center">
-    <img src="screenshots/sign_up.png" height="400" /> 
+    <img src="screenshots/sign_up.png" height="400" />
 </p>
 
-3. Login Activities
+3. Login Activity
 
 <p align="center">
     <img src="screenshots/login.png" height="400" />
 </p>
 
-4. Admin Example 
+4. Admin Example
 
 <p align="center">
     <img src="screenshots/admin_login.png" height="400" />
 </p>
 
-5. Admin Homepage 
+5. Admin Homepage
 
 <p align="center">
-    <img src="screenshots/admin_home_page.png" height="400" /> 
+    <img src="screenshots/admin_home_page.png" height="400" />
 </p>
 
 6. Manage Services Activity
 
 <p align="center">
-    <img src="screenshots/list_service.png" height="400" /> 
-    <img src="screenshots/add_services.png" height="400" />
-    <img src="screenshots/delete_service.png" height="400" /> 
+    <img src="screenshots/list_services.png" height="400" />
+    <img src="screenshots/add_service.png" height="400" />
+    <img src="screenshots/edit_service.png" height="400" />
 </p>
 
 7. Manage Users Activity
 
 <p align="center">
-    <img src="screenshots/list_accounts.png" height="400" />
-    <img src="screenshots/delete_account.png" height="400" /> 
+    <img src="screenshots/list_users.png" height="400" />
+    <img src="screenshots/delete_user.png" height="400" />
 </p>
 
 8. Create Clinic Profile
 
 <p align="center">
-    <img src="screenshots/create_profile.png" height="400" /> 
+    <img src="screenshots/create_profile.png" height="400" />
 </p>
 
 9. Employee Homepage
 
 <p align="center">
-    <img src="screenshots/employee_home.jpeg" height="400" /> 
+    <img src="screenshots/employee_home.jpeg" height="400" />
 </p>
 
 10. Edit Profile Information
 
 <p align="center">
-    <img src="screenshots/edit_profile.png" height="400" /> 
+    <img src="screenshots/edit_profile.png" height="400" />
 </p>
 
 11. Clinic Working Hours
 
 <p align="center">
-    <img src="screenshots/working_hours.jpeg" height="400" /> 
+    <img src="screenshots/working_hours.png" height="400" />
 </p>
 
-12. Clinic Services
+1.  Clinic Services
 
 <p align="center">
     <img src="screenshots/empty_services_page.png" height="400" />
-    <img src="screenshots/clinic_services_list.png" height="400" /> 
+    <img src="screenshots/clinic_services_list.png" height="400" />
 </p>
 
-13. 
+13. Clinic Search
 
+<p align="center">
+    <img src="screenshots/clinic_search.png" height="400" />
+</p>
 
+14. Clinic Booking
 
+<p align="center">
+    <img src="screenshots/clinic_booking.png" height="400" />
+    <img src="screenshots/my_booking.png" height="400" />
+    <img src="screenshots/rate.png" height="400" />
+</p>
 
+## Lessons Learned
 
-
-
-
-
-
-
-
-
-
-
-
-
-# Lessons Learned
-
+All in all, we learned a lot about the fundamentals of building an Android app as well as using version control to work in collaboration. While developing the app, we learned a lot about how to use adapters and how complex they can become. We also ran into many problems with the asynchronous calls to Firebase and were forced to read more about how to develop around asynchronous functions. Another important technical lesson was to ensure to read the documentation of Android's Lifecycle Activity to truly understand what happens "under the hood". Finally, we learned about how communication and frequent team meetings are very important when developing in collaboration since any misunderstanding can cost a lot of time to fix and debug design code. It's fair to say that all team members enjoyed developing the app and took away valuable lessons that will be useful in future projects.

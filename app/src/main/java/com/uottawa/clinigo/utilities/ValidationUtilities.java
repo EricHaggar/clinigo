@@ -71,5 +71,23 @@ public class ValidationUtilities {
             //return false if nothing matches the input
         else return false;
     }
+
+    public static boolean CanViewRating(int numberOfRatings){
+        if(numberOfRatings == 0){return false;}
+        return true;
+    }
+
+    public static int mapDayOfWeekToInt(String dayOfWeek){
+        dayOfWeek = dayOfWeek.toLowerCase();
+        if(dayOfWeek.equals("sunday")){return 6;}
+        else if(dayOfWeek.equals("saturday")){return 5;}
+        else if(dayOfWeek.equals("friday")){return 4;}
+        else if(dayOfWeek.equals("thursday")){return 3;}
+        else if(dayOfWeek.equals("wednesday")){return 2;}
+        else if(dayOfWeek.equals("tuesday")){return 1;}
+        else{
+            return 0;
+        }
+    }
 }
 

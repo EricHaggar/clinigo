@@ -1,11 +1,11 @@
 package com.uottawa.clinigo.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.uottawa.clinigo.R;
 
@@ -25,7 +25,7 @@ public class EmployeeMainActivity extends AppCompatActivity {
         welcomeMessage.setText(message);
 
 
-        userId=intent.getStringExtra("userId");
+        userId = intent.getStringExtra("userId");
 
 
     }
@@ -34,7 +34,7 @@ public class EmployeeMainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, WorkingHoursActivity.class);
 
         //Pass the user to the next Activity
-        intent.putExtra("userId",userId);
+        intent.putExtra("userId", userId);
 
         startActivity(intent);
     }
@@ -43,12 +43,12 @@ public class EmployeeMainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, EmployeeServicesActivity.class);
 
         //Pass the user to the next Activity
-        intent.putExtra("userId",userId);
+        intent.putExtra("userId", userId);
 
         startActivity(intent);
     }
 
-    public void manageProfileInformation(View view){
+    public void manageProfileInformation(View view) {
 
         Intent intent = new Intent(this, EditClinicInfoActivity.class);
         intent.putExtra("userId", userId);

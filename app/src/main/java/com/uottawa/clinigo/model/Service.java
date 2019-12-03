@@ -12,17 +12,17 @@ public class Service {
     public Service() {
     }
 
-    public Service (String id, String name, String role) {
+    public Service(String id, String name, String role) {
         this.id = id;
         this.name = name;
         this.role = role;
-        this.employees=  new ArrayList<String>();
+        this.employees = new ArrayList<String>();
     }
 
     public Service(String name, String role) {
         this.name = name;
         this.role = role;
-        this.employees=  new ArrayList<String>();
+        this.employees = new ArrayList<String>();
     }
 
     /**
@@ -30,29 +30,28 @@ public class Service {
      *
      * @return ArrayList<String> employees
      */
-    public ArrayList<String> getEmployees()
-    {
+    public ArrayList<String> getEmployees() {
         return this.employees;
     }
 
     /**
      * Function that adds an employee (clinic) that is using the service
-     * */
+     */
     public void addEmployee(String employeeId) {
         this.employees.add(employeeId);
     }
 
     /**
      * Function that initializes an empty array
-     * */
+     */
     public void initializeEmptyEmployeeArray() {
         this.employees = new ArrayList<String>();
     }
 
     /**
      * Function that removes an employee Id (clinic) that is no longer using the service
-     * */
-    public void removeEmployee (String employeeId) {
+     */
+    public void removeEmployee(String employeeId) {
         this.employees.remove(employeeId);
     }
 
@@ -66,24 +65,6 @@ public class Service {
     }
 
     /**
-     * Getter for name attribute
-     *
-     * @return string name
-     */
-    public String getName() {
-        return this.name;
-    }
-
-    /**
-     * Getter for role attribute
-     *
-     * @return string role
-     */
-    public String getRole() {
-        return this.role;
-    }
-
-    /**
      * Setter for id attribute
      *
      * @param id string to be assigned
@@ -93,12 +74,30 @@ public class Service {
     }
 
     /**
+     * Getter for name attribute
+     *
+     * @return string name
+     */
+    public String getName() {
+        return this.name;
+    }
+
+    /**
      * Setter for name attribute
      *
      * @param name string to be assigned
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * Getter for role attribute
+     *
+     * @return string role
+     */
+    public String getRole() {
+        return this.role;
     }
 
     /**

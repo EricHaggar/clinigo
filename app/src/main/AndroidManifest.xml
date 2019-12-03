@@ -10,6 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activities.PatientBookingActivity"
+            android:label="My Bookings"></activity>
+        <activity android:name=".activities.BookingActivity"
+            android:label="Clinic Booking"/>
+        <activity
+            android:name=".activities.PatientMainActivity"
+            android:label="Clinic Search" />
+        <activity
             android:name=".activities.EditClinicInfoActivity"
             android:label="Edit Profile Information" />
         <activity
@@ -41,10 +49,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.LoginActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activities.SuccessfulLoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

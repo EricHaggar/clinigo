@@ -12,13 +12,13 @@ We present to you: `Clinigo`
 
 ## Team Members
 
-| Name | Student Number |
-| --- | --- |
-| Eric Haggar | 7674509 |
-| Adel Araji | 7897476 |
-| Mark Bastawros | 8123595 |
-| Lev Guzman Aparicio   |  300038033 |
-| Siraj Ghassel   |  8168653 |
+| Name | Role | Student Number | Email |
+|:---:|:---:|:---:|:---:|
+| Eric Haggar | Team Lead, Developer and UI Designer | 7674509 | ehagg014@uottawa.ca |
+| Adel Araji | System Designer and Developer | 7897476 | Aaraj081@uottawa.ca |
+| Mark Bastawros | System Designer and Developer | 8123595 | mbast100@uottawa.ca |
+| Lev Guzman Aparicio | Developer |  300038033 |  lguzm038@uottawa.ca |
+| Siraj Ghassel | Developer |  8168653 | sghas058@uottawa.ca |
 
 ## Table Of Contents
 
@@ -37,6 +37,8 @@ We present to you: `Clinigo`
     - [Employee Account](#employee-account)
     - [UML Diagram](#uml-diagram-2)
     - [Activities Screenshots](#activities-screenshots-2)
+  - [Deliverable 4](#deliverable-4)
+    - [Patient Account](#patient-account)
 ## Deliverable 1
 
 The first deliverable concentrates on creating accounts and storing them into a database (Firebase).
@@ -212,7 +214,25 @@ these fields were not mentioned [here](https://github.com/professor-forward/walk
     <img src="screenshots/add_service_dialog.png" height="400" /> 
 </p>
 
+## Deliverable 4
 
+The fourth deliverable implemented the patient related functionality. Patients can search for walk-in clinics using different filter types (address, city, working hours and types of services provided). Patients can also view average wait times for each clinic and book/check-in to the clinic of their choice. This feature also includes the ability to check-out (or cancel) once the visit is complete. Finally, a patient can rate a clinic and leave a comment as well as view average ratings for each clinic.
+
+### Patient Account
+
+In order to use an existing patient account, use the following credentials:
+
+```
+Email: andrew@forward.com
+Password: testing
+```
+
+To create a new patient account, follow the following steps:
+
+1. Navigate to the sign-up page and fill in the information to create a patient account.
+2. Log in, and patient functionality is available.
+
+All additional information concerning this deliverable can be found in [REPORT](https://github.com/professor-forward/project-camel/blob/master/REPORT.md)
 
 
 
